@@ -39,8 +39,6 @@ export default function DataRoomPitchViewer() {
   };
 
   const handlePrevSlide = () => {
-    console.log('Previous button clicked, current slide:', currentSlide);
-    // Trigger left arrow key event to navigate - only dispatch once!
     const event = new KeyboardEvent('keydown', { 
       key: 'ArrowLeft',
       keyCode: 37,
@@ -52,8 +50,6 @@ export default function DataRoomPitchViewer() {
   };
 
   const handleNextSlide = () => {
-    console.log('Next button clicked, current slide:', currentSlide);
-    // Trigger right arrow key event to navigate - only dispatch once!
     const event = new KeyboardEvent('keydown', { 
       key: 'ArrowRight',
       keyCode: 39,
@@ -74,15 +70,13 @@ export default function DataRoomPitchViewer() {
       indicators.forEach((indicator, index) => {
         if (indicator.classList.contains('active') || 
             Array.from(indicator.classList).some(c => c.includes('active'))) {
-          console.log('Active slide found:', index);
           setCurrentSlide(index);
           foundActive = true;
         }
       });
       
       if (!foundActive && indicators.length > 0) {
-        // If no active indicator found, check the first one
-        console.log('No active indicator found, staying on slide:', currentSlide);
+        // If no active indicator found, keep current slide
       }
     };
 

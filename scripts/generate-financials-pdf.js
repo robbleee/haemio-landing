@@ -312,20 +312,19 @@ const htmlContent = `
       </div>
       <div class="summary-card">
         <div class="summary-label">First Revenue</div>
-        <div class="summary-value">Q1 2028</div>
-        <div class="summary-detail">After Q4 2027 contracts</div>
+        <div class="summary-value">Q3 2027</div>
+        <div class="summary-detail">After Class I registration & first contracts</div>
       </div>
       <div class="summary-card">
         <div class="summary-label">Break-even</div>
-        <div class="summary-value">Q4 2028</div>
+        <div class="summary-value">Q2 2028</div>
         <div class="summary-detail">Year 3</div>
       </div>
     </div>
     
     <div class="callout">
       <h3>Understanding Our Revenue Timeline</h3>
-      <p>We anticipate closing first sales contracts in <strong>Q4 2027</strong> (Year 2). However, following standard SaaS accounting practices, revenue is recognized upon service delivery. With typical NHS procurement and onboarding cycles (3-6 months), revenue recognition begins in <strong>Q1 2028</strong> (Year 3). This is why Year 2 shows contracts signed but £0 revenue — it's an accounting timing difference, not a lack of sales activity.</p>
-      <p style="margin-top: 12px;"><strong>Ancillary Revenue Streams:</strong> While the main diagnostic platform completes regulatory approval, we are generating revenue through ancillary services: (1) Outsourced diagnostic desk service (£1,000-£1,500 per case), (2) Treatment response tool (POC with The Christie), and (3) Treatment options calculator (POC with Royal Devon). These tools provide faster time-to-revenue and revenue diversification starting Q3 2027.</p>
+      <p>With Class I regulatory registration (significantly faster than Class IIa certification), we anticipate completing registration by <strong>Q3 2026</strong> and closing first sales contracts in <strong>Q2-Q3 2027</strong>. Revenue recognition begins upon service delivery. With our browser-based, zero-integration deployment model, onboarding cycles are minimal — trusts can begin using the platform immediately after contract signing.</p>
     </div>
   </div>
 
@@ -344,21 +343,21 @@ const htmlContent = `
     <ul>
       <li>Clinical Validation Lead onboarded</li>
       <li>Team complete (4 founders + 2 hires)</li>
-      <li>UKCA prep & documentation begins</li>
+      <li>Class I registration documentation begins</li>
       <li>Monthly Burn: <span class="burn">£50k</span> | Quarterly Spend: <span class="burn">£150k</span> | Cash Balance: <span class="cash-balance">£450k</span></li>
     </ul>
     
     <h3>Q3 2026</h3>
     <ul>
       <li>NHS pilot studies launch</li>
-      <li>UKCA certification process starts</li>
+      <li>Class I self-declaration process</li>
       <li>Technical documentation complete</li>
       <li>Monthly Burn: <span class="burn">£40k</span> | Quarterly Spend: <span class="burn">£120k</span> | Cash Balance: <span class="cash-balance">£330k</span></li>
     </ul>
     
     <h3>Q4 2026</h3>
     <ul>
-      <li>UKCA submission to notified body</li>
+      <li>Class I registration complete</li>
       <li>Pilot studies data collection</li>
       <li>Initial clinical validation results</li>
       <li>Monthly Burn: <span class="burn">£40k</span> | Quarterly Spend: <span class="burn">£120k</span> | Cash Balance: <span class="cash-balance">£210k</span></li>
@@ -374,7 +373,7 @@ const htmlContent = `
     
     <h3>Q1 2027</h3>
     <ul>
-      <li>UKCA certification in progress</li>
+      <li>Post-market surveillance established</li>
       <li>Pilot studies wrap-up</li>
       <li>Clinical validation reports</li>
       <li>Monthly Burn: <span class="burn">£35k</span> | Quarterly Spend: <span class="burn">£105k</span> | Cash Balance: <span class="cash-balance">£105k</span></li>
@@ -382,32 +381,29 @@ const htmlContent = `
     
     <h3>Q2 2027</h3>
     <ul>
-      <li><strong>UKCA certification received</strong></li>
+      <li><strong>First contracts signed: 2-3 NHS trusts</strong></li>
       <li><strong>Series A fundraising begins (£2M-£3M)</strong></li>
-      <li>Commercial launch preparation</li>
-      <li>Monthly Burn: <span class="burn">£35k</span> | Cash Balance reaches £0 → Series A closes</li>
+      <li>Contract Value: £150k-£200k</li>
+      <li>Cash Balance reaches £0 → Series A closes</li>
     </ul>
-    
+
     <h3>Q3 2027</h3>
     <ul>
-      <li>Sales activities begin for main diagnostic platform</li>
-      <li>NHS trust demos & presentations</li>
-      <li>Contract negotiations start</li>
-      <li><strong>Ancillary revenue streams launch:</strong> Outsourced diagnostic desk service begins (target: 10-20 cases/month), Treatment response tool POC completion with The Christie</li>
-      <li>Contracts Signed: 0 | Revenue: £0</li>
+      <li><strong>First revenue recognized</strong></li>
+      <li>Initial trusts go live (zero integration — browser-based)</li>
+      <li>Additional contract negotiations</li>
+      <li>Revenue: <span class="positive">£50k</span> | Operating Costs: <span class="burn">£105k</span></li>
     </ul>
-    
+
     <h3>Q4 2027</h3>
     <ul>
-      <li><strong>First contracts signed: 2-3 NHS trusts</strong></li>
-      <li>Implementation planning begins</li>
-      <li>Contract Value: £150k-£200k</li>
-      <li><strong>Treatment options calculator POC completion with Royal Devon</strong></li>
-      <li>Ancillary revenue streams: Diagnostic desk scaling, treatment tools in final POC phase</li>
-      <li>Revenue Recognized: £0 (Revenue starts Q1 2028)</li>
+      <li>Revenue ramp continues</li>
+      <li>5 NHS trusts active</li>
+      <li>Commercial sales hire onboarded</li>
+      <li>Revenue: <span class="positive">£100k</span> | Operating Costs: <span class="burn">£120k</span> | Net: <span class="negative">-£20k</span></li>
     </ul>
-    
-    <p style="margin-top: 16px;"><strong>Year 2 Total:</strong> Contracts Signed: £150k-£200k | Revenue Recognized: £0 | Spend: <span class="negative">£300k</span> | Net: <span class="negative">-£300k</span></p>
+
+    <p style="margin-top: 16px;"><strong>Year 2 Total:</strong> Revenue Recognized: <span class="positive">£150k</span> | Customers: 5 NHS trusts | Spend: <span class="negative">£300k</span> | Net: <span class="negative">-£150k</span></p>
   </div>
 
   <div class="section year-section">
@@ -433,21 +429,21 @@ const htmlContent = `
         </tr>
         <tr>
           <td><strong>Q2 2028</strong></td>
-          <td>10 NHS trusts onboarded, 2 private hospitals signed, revenue ramp accelerates</td>
+          <td><strong>Break-even achieved.</strong> 10 NHS trusts onboarded, 2 private hospitals signed</td>
           <td class="positive">£175k</td>
           <td class="negative">£160k</td>
           <td class="positive">+£15k</td>
         </tr>
         <tr>
           <td><strong>Q3 2028</strong></td>
-          <td>Additional trusts onboarding, positive cash flow achieved</td>
+          <td>Additional trusts onboarding, profitable operations</td>
           <td class="positive">£250k</td>
           <td class="negative">£170k</td>
           <td class="positive">+£80k</td>
         </tr>
         <tr>
           <td><strong>Q4 2028</strong></td>
-          <td>Break-even achieved, 12 NHS + 2 private active, international expansion prep</td>
+          <td>12 NHS + 2 private active, international expansion prep</td>
           <td class="positive">£275k</td>
           <td class="negative">£180k</td>
           <td class="positive">+£95k</td>
@@ -552,11 +548,11 @@ const htmlContent = `
         <tr>
           <td><strong>Year 2</strong></td>
           <td>2027</td>
-          <td>UKCA approval, first sales</td>
-          <td><strong>Q4: 2-3 trusts</strong></td>
-          <td>£0</td>
+          <td>Class I registered, first sales</td>
+          <td><strong>5 trusts (£300k-£500k)</strong></td>
+          <td class="positive">£150k</td>
           <td class="negative">£300k</td>
-          <td class="negative">-£300k</td>
+          <td class="negative">-£150k</td>
         </tr>
         <tr>
           <td><strong>Year 3</strong></td>
@@ -602,8 +598,8 @@ const htmlContent = `
     
     <h3>Revenue Recognition</h3>
     <ul>
-      <li>Contracts signed Q4 2027</li>
-      <li>Revenue recognized upon service delivery (Q1 2028+)</li>
+      <li>First contracts signed Q2 2027</li>
+      <li>Revenue recognized upon service delivery (Q3 2027+)</li>
       <li>NHS payment terms: 30-60 days</li>
       <li>Annual subscription model</li>
     </ul>
@@ -612,7 +608,7 @@ const htmlContent = `
     <ul>
       <li>Target: £2M-£3M in Q2-Q3 2027</li>
       <li>Funds growth, sales team, international expansion</li>
-      <li>Post-UKCA, with pilot validations complete</li>
+      <li>Post-registration, with pilot validations complete</li>
       <li>Valuation: £8M-£12M pre-money</li>
     </ul>
     
@@ -624,14 +620,11 @@ const htmlContent = `
       <li>Based on case volume & complexity</li>
     </ul>
     
-    <h3>Ancillary Revenue Streams</h3>
-    <p style="margin-bottom: 12px;">While our core platform (main diagnostic tool) drives primary revenue, we are actively developing additional revenue streams through specialized tools and services:</p>
+    <h3>Non-Dilutive Funding Pipeline</h3>
     <ul>
-      <li><strong>Outsourced Diagnostic Desk:</strong> Premium diagnostic service for smaller NHS trusts and private hospitals. £1,000-£1,500 per case with 48-hour turnaround (vs. weeks at traditional centers). Target: 10-20 cases/month initially, scaling to £120k-£360k/year.</li>
-      <li><strong>Treatment Response Tool:</strong> Currently building POC for The Christie NHS Foundation Trust. Post-POC, this specialized tool will be licensed to NHS trusts for monitoring treatment efficacy. Expected launch: Q3-Q4 2027.</li>
-      <li><strong>Treatment Options Calculator:</strong> POC development for Royal Devon & Exeter NHS Trust. This decision-support tool helps clinicians evaluate treatment pathways. Expected launch: Q4 2027-Q1 2028.</li>
+      <li><strong>Pharma Grants:</strong> ~£210k in active discussions with Pfizer, Servier, Jazz, and J&J</li>
+      <li><strong>National Grant:</strong> Co-applicant on £7M UK AML Research Network grant</li>
     </ul>
-    <p style="margin-top: 12px; font-style: italic; color: #666666;">These ancillary revenue streams provide diversification and faster time-to-revenue while the main platform completes regulatory approval. Revenue from these tools is included in our projections from Q3 2027 onwards.</p>
   </div>
 
   <div class="footer">

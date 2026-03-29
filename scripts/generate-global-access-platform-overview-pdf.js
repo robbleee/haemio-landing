@@ -441,7 +441,7 @@ const htmlContent = `
     
     <h3>UKCA Certification</h3>
     <p>
-      The platform is undergoing UKCA (UK Conformity Assessed) certification as a Class IIa medical device. 
+      The platform is undergoing UKCA (UK Conformity Assessed) registration as a Class I clinical decision support device. 
       This certification process includes:
     </p>
     <ul>

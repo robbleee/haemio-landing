@@ -134,9 +134,8 @@ export default function DataRoom() {
   const [requestSuccess, setRequestSuccess] = useState(false);
   const [requestError, setRequestError] = useState('');
 
-  // Simple password - in production this should be more secure with server-side validation
-  const CORRECT_PASSWORD = 'Haemio!2025$DataRoom';
-  const VIP_PASSWORD = 'Haemio!VIP$Direct2025';  // Skips NDA
+  const CORRECT_PASSWORD = process.env.NEXT_PUBLIC_DATAROOM_PASSWORD || '';
+  const VIP_PASSWORD = process.env.NEXT_PUBLIC_DATAROOM_VIP_PASSWORD || '';
 
   // Restore authentication state from sessionStorage on mount
   useEffect(() => {
@@ -153,28 +152,19 @@ export default function DataRoom() {
 
   const handlePasswordSubmit = (e) => {
     e.preventDefault();
-    console.log('Password entered:', passwordEntered);
-    console.log('VIP password:', VIP_PASSWORD);
-    console.log('Match:', passwordEntered === VIP_PASSWORD);
-    
+
     if (passwordEntered === VIP_PASSWORD) {
-      // VIP password - skip NDA entirely
-      console.log('VIP password matched - skipping NDA');
       setIsPasswordCorrect(true);
       setNdaAccepted(true);
       setPasswordError('');
-      // Persist both authentication states to sessionStorage
       sessionStorage.setItem('dataroom_password_correct', 'true');
       sessionStorage.setItem('dataroom_nda_accepted', 'true');
     } else if (passwordEntered === CORRECT_PASSWORD) {
-      console.log('Regular password matched - showing NDA');
       setIsPasswordCorrect(true);
       setShowNda(true);
       setPasswordError('');
-      // Persist password authentication to sessionStorage
       sessionStorage.setItem('dataroom_password_correct', 'true');
     } else {
-      console.log('Password incorrect');
       setPasswordError('Incorrect password. Please try again.');
     }
   };
@@ -556,7 +546,7 @@ export default function DataRoom() {
                 <div className={styles.documentCard}>
                   <div className={styles.documentIcon}>✓</div>
                   <h3>Regulatory Strategy & Pathway</h3>
-                  <p>Clear pathway to UKCA/CE marking as a Class IIa medical device, including MHRA engagement strategy.</p>
+                  <p>Clear pathway to UKCA/CE marking as a Class I clinical decision support device, including MHRA engagement strategy.</p>
                   <a 
                     href="/regulatory-strategy-and-pathway.pdf"
                     target="_blank"
@@ -657,7 +647,7 @@ export default function DataRoom() {
 
               <div className={styles.lastUpdatedSection}>
                 <p className={styles.lastUpdatedText}>
-                  <strong>Last Updated:</strong> November 8, 2025
+                  <strong>Last Updated:</strong> March 29, 2026
                 </p>
                 <p className={styles.lastUpdatedNote}>
                   This data room is regularly updated with the latest materials. Documents reflect current project status, financial projections, and clinical partnerships.

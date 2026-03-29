@@ -7,7 +7,7 @@ const teamMembers = [
     title: "Project Lead",
     bio: [
       "Robert leads software development, regulatory strategy, and research coordination. After being diagnosed with Burkitt's Lymphoma at 19, he graduated from the University of Manchester with a BSc in Computer Science and built his career in FinTech at the London Stock Exchange Group and FlexTrade, where he specialised in building and testing high-frequency algorithmic trading platforms.",
-      "Drawing on this technical background, Robert developed the initial concept for Haem.io's novel hybrid AI framework that combines AI-driven data extraction with a deterministic logic engine. He brought this concept to Dr. John Burthem, and together with Dr. Luke Carter-Brzezinski and the technical team, they developed the platform into the production-grade system it is today. Robert manages the project's intellectual property portfolio and oversees the regulatory pathway to UKCA/CE marking as a Class IIa medical device."
+      "Drawing on this technical background, Robert developed the initial concept for Haem.io's novel hybrid AI framework that combines AI-driven data extraction with a deterministic logic engine. He brought this concept to Dr. John Burthem, and together with Dr. Luke Carter-Brzezinski and the technical team, they developed the platform into the production-grade system it is today. Robert manages the project's intellectual property portfolio and oversees the regulatory pathway to UKCA/CE marking as a Class I clinical decision support device."
     ]
   },
   {

@@ -344,14 +344,14 @@ const htmlContent = `
       </div>
       <div class="summary-card">
         <div class="summary-label">Key Milestone</div>
-        <div class="summary-value">UKCA + Pilots</div>
+        <div class="summary-value">Class I + Pilots</div>
         <div class="summary-detail">4 NHS validations complete</div>
       </div>
     </div>
     
     <div class="callout">
       <h3>Investment Purpose</h3>
-      <p>This £750k seed investment provides an 18-month runway to achieve UKCA certification as a Class IIb medical device, complete 4 NHS pilot study validations, and secure first commercial contracts. These milestones position Haem.io for a successful Series A fundraising round (£2M-£3M) in Q2-Q3 2027, with a target valuation of £8M-£12M pre-money.</p>
+      <p>This £750k seed investment provides an 18-month runway to achieve Class I registration as a clinical decision support device, complete 4 NHS pilot study validations, and secure first commercial contracts. These milestones position Haem.io for a successful Series A fundraising round (£2M-£3M) in Q2-Q3 2027, with a target valuation of £8M-£12M pre-money.</p>
     </div>
   </div>
 
@@ -376,7 +376,7 @@ const htmlContent = `
       <div class="item-row">
         <div>
           <div class="item-label">Compliance Officer</div>
-          <div class="item-details">Regulatory affairs specialist for UKCA certification process (18 months)</div>
+          <div class="item-details">Regulatory affairs specialist for Class I registration process (18 months)</div>
         </div>
         <div class="item-amount">£105,000</div>
       </div>
@@ -392,7 +392,7 @@ const htmlContent = `
       <div class="category-total">Subtotal: £360,000</div>
       
       <p style="margin-top: 16px; font-size: 13px; color: #666666;">
-        <strong>Rationale:</strong> Our team structure balances technical development (founder engineer), regulatory expertise (compliance officer), and clinical validation (clinical lead). This ensures we can simultaneously progress UKCA certification while running NHS pilot studies and maintaining platform development.
+        <strong>Rationale:</strong> Our team structure balances technical development (founder engineer), regulatory expertise (compliance officer), and clinical validation (clinical lead). This ensures we can simultaneously progress Class I registration while running NHS pilot studies and maintaining platform development.
       </p>
     </div>
 
@@ -403,7 +403,7 @@ const htmlContent = `
       
       <div class="item-row">
         <div>
-          <div class="item-label">UKCA Certification</div>
+          <div class="item-label">Class I Registration</div>
           <div class="item-details">Notified body fees, technical file preparation, clinical evaluation, performance studies, audit costs</div>
         </div>
         <div class="item-amount">£100,000</div>
@@ -420,7 +420,7 @@ const htmlContent = `
       <div class="category-total">Subtotal: £180,000</div>
       
       <p style="margin-top: 16px; font-size: 13px; color: #666666;">
-        <strong>Rationale:</strong> UKCA certification is the critical regulatory milestone that enables commercial sales. The 4 NHS pilot studies provide clinical validation data and establish relationships with key NHS trusts, creating a pipeline for post-certification sales. Both are essential for Series A readiness.
+        <strong>Rationale:</strong> Class I registration is the critical regulatory milestone that enables commercial sales. The 4 NHS pilot studies provide clinical validation data and establish relationships with key NHS trusts, creating a pipeline for post-certification sales. Both are essential for Series A readiness.
       </p>
     </div>
 
@@ -494,42 +494,42 @@ const htmlContent = `
       <div class="timeline-item">
         <div class="timeline-quarter">Q1 2026</div>
         <div class="timeline-content">
-          <strong>Foundation Phase:</strong> Team hiring begins (Compliance Officer, Clinical Validation Lead), regulatory strategy finalization, initial UKCA documentation preparation. Monthly burn: £50k.
+          <strong>Foundation Phase:</strong> Team hiring begins (Compliance Officer, Clinical Validation Lead), regulatory strategy finalization, initial Class I documentation preparation. Monthly burn: £50k.
         </div>
       </div>
       
       <div class="timeline-item">
         <div class="timeline-quarter">Q2 2026</div>
         <div class="timeline-content">
-          <strong>Team Complete:</strong> All team members onboarded (4 founders + 2 hires). UKCA prep & documentation in full swing. NHS pilot study agreements finalized. Monthly burn: £50k.
+          <strong>Team Complete:</strong> All team members onboarded (4 founders + 2 hires). Class I registration documentation in full swing. NHS pilot study agreements finalized. Monthly burn: £50k.
         </div>
       </div>
       
       <div class="timeline-item">
         <div class="timeline-quarter">Q3 2026</div>
         <div class="timeline-content">
-          <strong>Pilot Launch:</strong> NHS pilot studies launch across 4 sites. UKCA certification process formally begins with notified body engagement. Technical documentation complete. Monthly burn: £40k.
+          <strong>Pilot Launch:</strong> NHS pilot studies launch across 4 sites. Class I registration process formally begins with notified body engagement. Technical documentation complete. Monthly burn: £40k.
         </div>
       </div>
       
       <div class="timeline-item">
         <div class="timeline-quarter">Q4 2026</div>
         <div class="timeline-content">
-          <strong>UKCA Submission:</strong> UKCA technical file submitted to notified body. Pilot studies data collection ongoing. Initial clinical validation results emerging. Monthly burn: £40k. Cash remaining: £210k.
+          <strong>Registration Complete:</strong> Class I self-declaration completed. Pilot studies data collection ongoing. Initial clinical validation results emerging. Monthly burn: £40k. Cash remaining: £210k.
         </div>
       </div>
       
       <div class="timeline-item">
         <div class="timeline-quarter">Q1 2027</div>
         <div class="timeline-content">
-          <strong>Certification Progress:</strong> UKCA certification in progress (audit phase). Pilot studies wrap-up and data analysis. Clinical validation reports prepared. Monthly burn: £35k. Cash remaining: £105k.
+          <strong>Certification Progress:</strong> Class I registration in progress (audit phase). Pilot studies wrap-up and data analysis. Clinical validation reports prepared. Monthly burn: £35k. Cash remaining: £105k.
         </div>
       </div>
       
       <div class="timeline-item">
         <div class="timeline-quarter">Q2 2027</div>
         <div class="timeline-content">
-          <strong>Milestone Achievement:</strong> <strong>UKCA certification received.</strong> Pilot validation reports published. <strong>Series A fundraising begins (£2M-£3M target).</strong> Cash reaches £0 → Series A closes to fund next phase.
+          <strong>Milestone Achievement:</strong> <strong>Class I registration received.</strong> Pilot validation reports published. <strong>Series A fundraising begins (£2M-£3M target).</strong> Cash reaches £0 → Series A closes to fund next phase.
         </div>
       </div>
     </div>
@@ -541,11 +541,11 @@ const htmlContent = `
     <div class="milestone-box">
       <h4>Series A Readiness Criteria</h4>
       <ul class="milestone-list">
-        <li><strong>UKCA certification complete</strong> - Enables commercial sales</li>
+        <li><strong>Class I registration complete</strong> - Enables commercial sales</li>
         <li><strong>4 NHS pilot validations published</strong> - Clinical proof of concept</li>
         <li><strong>First 2-3 contracts signed</strong> - Commercial validation (Q4 2027)</li>
         <li><strong>Team proven</strong> - Regulatory, clinical, and technical capabilities demonstrated</li>
-        <li><strong>Clear path to revenue</strong> - Contracts signed, revenue recognition begins Q1 2028</li>
+        <li><strong>Clear path to revenue</strong> - Contracts signed, revenue recognition begins Q3 2027</li>
       </ul>
     </div>
     
@@ -600,7 +600,7 @@ const htmlContent = `
     </table>
     
     <p style="margin-top: 16px; font-size: 13px; color: #666666;">
-      <strong>Note:</strong> Burn rate decreases over time as one-time costs (UKCA certification, pilot setup) are front-loaded. The variable burn rate reflects this phased approach, with higher costs in early quarters for team onboarding and regulatory setup, then decreasing as processes mature.
+      <strong>Note:</strong> Burn rate decreases over time as one-time costs (Class I registration, pilot setup) are front-loaded. The variable burn rate reflects this phased approach, with higher costs in early quarters for team onboarding and regulatory setup, then decreasing as processes mature.
     </p>
   </div>
 
@@ -610,7 +610,7 @@ const htmlContent = `
     <h4>Contingency Buffer Usage (24% - £120k)</h4>
     <p>The £120k contingency buffer provides flexibility for:</p>
     <ul>
-      <li><strong>Regulatory timeline delays:</strong> UKCA certification can take longer than expected if notified body requires additional evidence or clarification</li>
+      <li><strong>Regulatory timeline delays:</strong> Class I registration can take longer than expected if notified body requires additional evidence or clarification</li>
       <li><strong>Pilot study scope changes:</strong> NHS trusts may request additional validation endpoints or extended study periods</li>
       <li><strong>NHS administrative delays:</strong> Contract negotiations or pilot study approvals may take longer than anticipated</li>
       <li><strong>Unexpected technical requirements:</strong> Additional security audits, data residency requirements, or integration needs</li>
@@ -628,11 +628,11 @@ const htmlContent = `
     <p>Upon completion of the 18-month seed runway, Haem.io will be positioned for Series A fundraising with:</p>
     
     <ul>
-      <li><strong>Regulatory approval:</strong> UKCA certification enables immediate commercial sales</li>
+      <li><strong>Regulatory approval:</strong> Class I registration enables immediate commercial sales</li>
       <li><strong>Clinical validation:</strong> 4 NHS pilot studies provide proof of clinical utility and safety</li>
-      <li><strong>Commercial traction:</strong> First contracts signed (Q4 2027), revenue recognition beginning Q1 2028</li>
+      <li><strong>Commercial traction:</strong> First contracts signed (Q2 2027), revenue recognition beginning Q3 2027</li>
       <li><strong>Proven team:</strong> Demonstrated ability to execute on regulatory, clinical, and commercial milestones</li>
-      <li><strong>Clear growth path:</strong> Pipeline of NHS trusts, ancillary revenue streams (diagnostic desk, treatment tools), and international expansion opportunities</li>
+      <li><strong>Clear growth path:</strong> Pipeline of NHS trusts, pharma grant funding (~£210k in discussions), and international expansion opportunities</li>
     </ul>
     
     <p style="margin-top: 16px;">

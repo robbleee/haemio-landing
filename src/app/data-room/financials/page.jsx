@@ -66,12 +66,12 @@ export default function FinancialsPage() {
             </div>
             <div className={styles.summaryCard}>
               <div className={styles.summaryLabel}>First Revenue</div>
-              <div className={styles.summaryValue}>Q1 2028</div>
-              <div className={styles.summaryDetail}>After contracts in Q4 2027</div>
+              <div className={styles.summaryValue}>Q3 2027</div>
+              <div className={styles.summaryDetail}>After Class I registration & first contracts</div>
             </div>
             <div className={styles.summaryCard}>
               <div className={styles.summaryLabel}>Break-even</div>
-              <div className={styles.summaryValue}>Q4 2028</div>
+              <div className={styles.summaryValue}>Q2 2028</div>
               <div className={styles.summaryDetail}>Year 3</div>
             </div>
           </div>
@@ -81,7 +81,7 @@ export default function FinancialsPage() {
         <div className={styles.calloutBox}>
           <h3>Understanding Our Revenue Timeline</h3>
           <p>
-            We anticipate closing first sales contracts in <strong>Q4 2027</strong> (Year 2). However, following standard SaaS accounting practices, revenue is recognized upon service delivery. With typical NHS procurement and onboarding cycles (3-6 months), revenue recognition begins in <strong>Q1 2028</strong> (Year 3). This is why Year 2 shows contracts signed but £0 revenue — it's an accounting timing difference, not a lack of sales activity.
+            With Class I regulatory registration (significantly faster than Class IIa certification), we anticipate completing registration by <strong>Q3 2026</strong> and closing first sales contracts in <strong>Q2-Q3 2027</strong>. Revenue recognition begins upon service delivery. With our browser-based, zero-integration deployment model, onboarding cycles are minimal — trusts can begin using the platform immediately after contract signing.
           </p>
         </div>
 
@@ -121,7 +121,7 @@ export default function FinancialsPage() {
               <div className={styles.quarterMilestones}>
                 <div className={styles.milestone}>• Clinical Validation Lead onboarded</div>
                 <div className={styles.milestone}>• Team complete (4 founders + 2 hires)</div>
-                <div className={styles.milestone}>• UKCA prep & documentation begins</div>
+                <div className={styles.milestone}>• Class I registration documentation begins</div>
               </div>
               <div className={styles.quarterFinancials}>
                 <div className={styles.finRow}>
@@ -143,7 +143,7 @@ export default function FinancialsPage() {
               <h4>Q3 2026</h4>
               <div className={styles.quarterMilestones}>
                 <div className={styles.milestone}>• NHS pilot studies launch</div>
-                <div className={styles.milestone}>• UKCA certification process starts</div>
+                <div className={styles.milestone}>• Class I self-declaration process</div>
                 <div className={styles.milestone}>• Technical documentation complete</div>
               </div>
               <div className={styles.quarterFinancials}>
@@ -165,7 +165,7 @@ export default function FinancialsPage() {
             <div className={styles.quarterCard}>
               <h4>Q4 2026</h4>
               <div className={styles.quarterMilestones}>
-                <div className={styles.milestone}>• UKCA submission to notified body</div>
+                <div className={styles.milestone}>• Class I registration complete</div>
                 <div className={styles.milestone}>• Pilot studies data collection</div>
                 <div className={styles.milestone}>• Initial clinical validation results</div>
               </div>
@@ -217,7 +217,7 @@ export default function FinancialsPage() {
             <div className={styles.quarterCard}>
               <h4>Q1 2027</h4>
               <div className={styles.quarterMilestones}>
-                <div className={styles.milestone}>• UKCA certification in progress</div>
+                <div className={styles.milestone}>• Post-market surveillance established</div>
                 <div className={styles.milestone}>• Pilot studies wrap-up</div>
                 <div className={styles.milestone}>• Clinical validation reports</div>
               </div>
@@ -240,18 +240,18 @@ export default function FinancialsPage() {
             <div className={styles.quarterCard}>
               <h4>Q2 2027</h4>
               <div className={styles.quarterMilestones}>
-                <div className={styles.milestone}>• <strong>UKCA certification received</strong></div>
+                <div className={styles.milestone}>• <strong>First contracts signed</strong></div>
+                <div className={styles.milestone}>• 2-3 NHS trusts committed</div>
                 <div className={styles.milestone}>• Series A fundraising begins</div>
-                <div className={styles.milestone}>• Commercial launch preparation</div>
               </div>
               <div className={styles.quarterFinancials}>
                 <div className={styles.finRow}>
-                  <span>Monthly Burn:</span>
-                  <span className={styles.burnAmount}>£35k</span>
+                  <span>Contracts Signed:</span>
+                  <span className={styles.contractsAmount}>2-3 trusts</span>
                 </div>
                 <div className={styles.finRow}>
-                  <span>Quarterly Spend:</span>
-                  <span className={styles.burnAmount}>£105k</span>
+                  <span>Contract Value:</span>
+                  <span className={styles.contractsAmount}>£150k-£200k</span>
                 </div>
                 <div className={styles.finRow}>
                   <span>Cash Balance:</span>
@@ -266,22 +266,22 @@ export default function FinancialsPage() {
             <div className={styles.quarterCard}>
               <h4>Q3 2027</h4>
               <div className={styles.quarterMilestones}>
-                <div className={styles.milestone}>• Sales activities begin</div>
-                <div className={styles.milestone}>• NHS trust demos & presentations</div>
-                <div className={styles.milestone}>• Contract negotiations start</div>
+                <div className={styles.milestone}>• <strong>First revenue recognized</strong></div>
+                <div className={styles.milestone}>• Initial trusts go live (zero integration)</div>
+                <div className={styles.milestone}>• Additional contract negotiations</div>
               </div>
               <div className={styles.quarterFinancials}>
                 <div className={styles.finRow}>
-                  <span>Activity:</span>
-                  <span>Sales pipeline building</span>
+                  <span>Revenue:</span>
+                  <span className={styles.revenueAmount}>£50k</span>
                 </div>
                 <div className={styles.finRow}>
                   <span>Contracts Signed:</span>
-                  <span>0</span>
+                  <span className={styles.contractsAmount}>2-3 trusts</span>
                 </div>
                 <div className={styles.finRow}>
-                  <span>Revenue:</span>
-                  <span>£0</span>
+                  <span>Operating Costs:</span>
+                  <span className={styles.burnAmount}>£105k</span>
                 </div>
               </div>
             </div>
@@ -289,25 +289,22 @@ export default function FinancialsPage() {
             <div className={styles.quarterCard}>
               <h4>Q4 2027</h4>
               <div className={styles.quarterMilestones}>
-                <div className={styles.milestone}>• <strong>First contracts signed</strong></div>
-                <div className={styles.milestone}>• 2-3 NHS trusts committed</div>
-                <div className={styles.milestone}>• Implementation planning begins</div>
+                <div className={styles.milestone}>• Revenue ramp continues</div>
+                <div className={styles.milestone}>• 5 NHS trusts active</div>
+                <div className={styles.milestone}>• Commercial sales hire onboarded</div>
               </div>
               <div className={styles.quarterFinancials}>
                 <div className={styles.finRow}>
-                  <span>Contracts Signed:</span>
-                  <span className={styles.contractsAmount}>2-3 trusts</span>
+                  <span>Revenue:</span>
+                  <span className={styles.revenueAmount}>£100k</span>
                 </div>
                 <div className={styles.finRow}>
-                  <span>Contract Value:</span>
-                  <span className={styles.contractsAmount}>£150k-£200k</span>
+                  <span>Operating Costs:</span>
+                  <span className={styles.burnAmount}>£120k</span>
                 </div>
                 <div className={styles.finRow}>
-                  <span>Revenue Recognized:</span>
-                  <span>£0</span>
-                </div>
-                <div className={styles.revenueNote}>
-                  Revenue recognized in Q1 2028
+                  <span>Net:</span>
+                  <span className={styles.lossAmount}>-£20k</span>
                 </div>
               </div>
             </div>
@@ -319,16 +316,16 @@ export default function FinancialsPage() {
               <span className={styles.totalSpend}>£300k (from Series A)</span>
             </div>
             <div className={styles.summaryRow}>
-              <span>Contracts Signed:</span>
-              <span className={styles.contractsAmount}>£150k-£200k</span>
+              <span>Revenue Recognized:</span>
+              <span className={styles.revenueAmount}>£150k</span>
             </div>
             <div className={styles.summaryRow}>
-              <span>Revenue Recognized:</span>
-              <span>£0</span>
+              <span>Customers:</span>
+              <span>5 NHS trusts</span>
             </div>
             <div className={styles.summaryRow}>
               <span>Net Position:</span>
-              <span className={styles.lossAmount}>-£300k</span>
+              <span className={styles.lossAmount}>-£150k</span>
             </div>
           </div>
         </div>
@@ -548,8 +545,8 @@ export default function FinancialsPage() {
             <div className={styles.assumptionCard}>
               <h4>Revenue Recognition</h4>
               <ul>
-                <li>Contracts signed Q4 2027</li>
-                <li>Revenue recognized upon service delivery (Q1 2028+)</li>
+                <li>First contracts signed Q2 2027</li>
+                <li>Revenue recognized upon service delivery (Q3 2027+)</li>
                 <li>NHS payment terms: 30-60 days</li>
                 <li>Annual subscription model</li>
               </ul>
@@ -560,7 +557,7 @@ export default function FinancialsPage() {
               <ul>
                 <li>Target: £2M-£3M in Q2-Q3 2027</li>
                 <li>Funds growth, sales team, international expansion</li>
-                <li>Post-UKCA, with pilot validations complete</li>
+                <li>Post-registration, with pilot validations complete</li>
                 <li>Valuation: £8M-£12M pre-money</li>
               </ul>
             </div>
@@ -605,11 +602,11 @@ export default function FinancialsPage() {
               <tr>
                 <td><strong>Year 2</strong></td>
                 <td>2027</td>
-                <td>UKCA approval, first sales</td>
-                <td><strong>2-3 trusts (£150k-£200k)</strong></td>
-                <td>£0</td>
+                <td>Class I registered, first sales</td>
+                <td><strong>5 trusts (£300k-£500k)</strong></td>
+                <td>£150k</td>
                 <td>£300k</td>
-                <td className={styles.negativeCell}>-£300k</td>
+                <td className={styles.negativeCell}>-£150k</td>
               </tr>
               <tr>
                 <td><strong>Year 3</strong></td>
