@@ -10,6 +10,7 @@
     "postinstall": "npx puppeteer browsers install chrome || true"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.80.0",
     "@vercel/analytics": "^1.6.1",
     "archiver": "^7.0.1",
     "chart.js": "^4.4.9",

@@ -1,6 +1,7 @@
 'use client';
 
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
+import AnalyticsTools from './AnalyticsTools';
 import styles from './ConferenceAIPage.module.css';
 
 const features = [
@@ -208,6 +209,19 @@ export default function ConferenceAIPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ---- Analytics Tools ---- */}
+      <section className={styles.toolsSection} id="tools">
+        <div className={styles.container}>
+          <div className={styles.secHeader} style={{ opacity: 1, transform: 'none' }}>
+            <h2 className={styles.secTitle}>Try It Now</h2>
+            <p className={styles.toolsSubtitle}>
+              Paste a conference abstract and let AI extract structured clinical data in real time.
+            </p>
+          </div>
+          <AnalyticsTools />
         </div>
       </section>
 
