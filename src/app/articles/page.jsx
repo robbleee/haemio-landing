@@ -63,21 +63,6 @@ export default function ArticlesPage() {
 
   return (
     <div className={styles.page}>
-      {/* Page Header */}
-      <div className={styles.header}>
-        <p className={styles.headerEyebrow}>From the team at Haem.io</p>
-        <h1 className={styles.headerTitle}>Writing</h1>
-        <p className={styles.headerSubtitle}>
-          Essays on clinical systems, engineering architecture, and the future of diagnostic medicine.
-        </p>
-        <p className={styles.headerSubtitle}>
-          Looking for practical leukemia diagnosis pages? Explore our{' '}
-          <Link href="/leukemia-diagnostic-tool">leukemia diagnostic tool overview</Link>,{' '}
-          <Link href="/aml-classifier">AML classifier guide</Link>, and{' '}
-          <Link href="/mds-vs-aml-diagnosis">MDS vs AML explainer</Link>.
-        </p>
-      </div>
-
       <div className={styles.container}>
         {/* Featured Article */}
         <Link href={featured.slug} className={styles.featuredLink}>
