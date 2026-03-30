@@ -1,7 +1,6 @@
 'use client';
 
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
-import AnalyticsTools from './AnalyticsTools';
 import styles from './ConferenceAIPage.module.css';
 
 const features = [
@@ -212,16 +211,57 @@ export default function ConferenceAIPage() {
         </div>
       </section>
 
-      {/* ---- Analytics Tools ---- */}
+      {/* ---- Analytics Tools teaser ---- */}
       <section className={styles.toolsSection} id="tools">
         <div className={styles.container}>
           <div className={styles.secHeader} style={{ opacity: 1, transform: 'none' }}>
-            <h2 className={styles.secTitle}>Try It Now</h2>
+            <h2 className={styles.secTitle}>AI Analytics Tools</h2>
             <p className={styles.toolsSubtitle}>
-              Paste a conference abstract and let AI extract structured clinical data in real time.
+              Abstract analyser, session comparator, and clinical Q&A — powered by Claude AI.
             </p>
           </div>
-          <AnalyticsTools />
+          <div className={styles.toolsCards}>
+            <div className={styles.toolCard}>
+              <div className={styles.featIcon}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2" />
+                </svg>
+              </div>
+              <h3 className={styles.featTitle}>Abstract Analyser</h3>
+              <p className={styles.featDesc}>Paste any abstract and extract structured efficacy data, safety signals, and key findings.</p>
+            </div>
+            <div className={styles.toolCard}>
+              <div className={styles.featIcon}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 19V6l-6 6M15 5v13l6-6" />
+                </svg>
+              </div>
+              <h3 className={styles.featTitle}>Session Comparator</h3>
+              <p className={styles.featDesc}>Compare two abstracts side-by-side with structured endpoint and outcome analysis.</p>
+            </div>
+            <div className={styles.toolCard}>
+              <div className={styles.featIcon}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                </svg>
+              </div>
+              <h3 className={styles.featTitle}>Clinical Q&A</h3>
+              <p className={styles.featDesc}>Ask questions about session content and get AI-powered answers with data citations.</p>
+            </div>
+          </div>
+          <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+            <a
+              href="https://haemio-conferenceai-cc44c37efac2.herokuapp.com/intelligence/tools"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.btnPrimary}
+            >
+              Try the Tools
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M7 17l9.2-9.2M17 17V7H7" />
+              </svg>
+            </a>
+          </div>
         </div>
       </section>
 

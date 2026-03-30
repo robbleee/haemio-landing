@@ -439,6 +439,33 @@
   margin-top: 0.5rem;
 }
 
+.toolsCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.toolCard {
+  padding: 1.75rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
+  transition: all 0.2s ease;
+}
+
+.toolCard:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(0, 150, 136, 0.2);
+}
+
+@media (max-width: 768px) {
+  .toolsCards {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+
 /* ---- CTA ---- */
 
 .ctaSection {
