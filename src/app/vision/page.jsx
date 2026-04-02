@@ -40,7 +40,7 @@ export default function VisionPage() {
         </svg>
       ),
       details: {
-        fullDescription: 'Hematology is constantly advancing. Our platform leverages AI primarily for accurate and efficient extraction of key fields from complex reports. We take responsibility for embedding validated knowledge from the latest genetic insights into our system\'s core functional logic.',
+        fullDescription: 'Haematology is constantly advancing. Our platform leverages AI primarily for accurate and efficient extraction of key fields from complex reports. We take responsibility for embedding validated knowledge from the latest genetic insights into our system\'s core functional logic.',
         capabilities: [
           'Rapid extraction of key data fields',
           'Integration of latest WHO/ICC standards',
@@ -75,7 +75,7 @@ export default function VisionPage() {
     {
       id: 'expansion',
       title: 'Proven & Expanding',
-      description: 'Building on success in AML/MDS to cover the full spectrum of hematologic malignancies.',
+      description: 'Building on success in AML/MDS to cover the full spectrum of haematological malignancies.',
       icon: (
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
@@ -113,7 +113,7 @@ export default function VisionPage() {
           'Regimen recommendations',
           'Precise clinical trial matching'
         ],
-        impact: 'Bridges the gap between complex diagnostics and effective, personalized patient care.'
+        impact: 'Bridges the gap between complex diagnostics and effective, personalised patient care.'
       }
     },
     {
@@ -126,14 +126,14 @@ export default function VisionPage() {
         </svg>
       ),
       details: {
-        fullDescription: 'By providing clinicians with transparent, up-to-date, and actionable intelligence, we strive to revolutionize hematologic diagnostics. Our goal is to reduce errors, speed up time-to-treatment, and contribute to significantly improved outcomes for patients.',
+        fullDescription: 'By providing clinicians with transparent, up-to-date, and actionable intelligence, we strive to revolutionise haematological diagnostics. Our goal is to reduce errors, speed up time-to-treatment, and contribute to significantly improved outcomes for patients.',
         capabilities: [
           'Improved patient outcomes',
           'Reduced diagnostic errors',
           'Faster time-to-treatment',
-          'Personalized care approaches'
+          'Personalised care approaches'
         ],
-        impact: 'Transforms the landscape of hematologic care to ensure the best path for every patient.'
+        impact: 'Transforms the landscape of haematological care to ensure the best path for every patient.'
       }
     }
   ];
@@ -156,7 +156,7 @@ export default function VisionPage() {
         <div className="container" style={{ maxWidth: '800px', margin: '0 auto' }}>
           <h1>Our Vision</h1>
           <p className={styles.subtitle}>
-            Advancing Precision Hematology Through AI-Driven Insights
+            Advancing Precision Haematology Through AI-Driven Insights
           </p>
         </div>
       </section>
@@ -237,7 +237,7 @@ export default function VisionPage() {
               color: '#004d40',
               marginBottom: '1.5rem'
             }}>
-              We aim to bridge the gap between complex diagnostics and effective, personalized patient care. By providing clinicians with transparent, up-to-date, comprehensive, and actionable intelligence—derived from AI-assisted data extraction feeding into robust, provable logic—we strive to revolutionize hematologic diagnostics.
+              We aim to bridge the gap between complex diagnostics and effective, personalised patient care. By providing clinicians with transparent, up-to-date, comprehensive, and actionable intelligence—derived from AI-assisted data extraction feeding into robust, provable logic—we strive to revolutionise haematological diagnostics.
             </p>
             <p style={{
               fontSize: '1.1rem',

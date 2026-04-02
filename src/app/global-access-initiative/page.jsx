@@ -135,8 +135,8 @@ export default function GlobalAccessInitiative() {
   const [requestError, setRequestError] = useState('');
 
   // Separate password for Global Access Initiative
-  const CORRECT_PASSWORD = 'LHS_GLOBAL_ACCESS_2025';
-  const VIP_PASSWORD = 'LHS_VIP_PARTNER_2025';  // Skips NDA
+  const CORRECT_PASSWORD = 'LHS_GLOBAL_ACCESS_2026';
+  const VIP_PASSWORD = 'LHS_VIP_PARTNER_2026';  // Skips NDA
 
   // Restore authentication state from sessionStorage on mount
   useEffect(() => {

@@ -1,12 +1,10 @@
 'use client';
 
 import HeroSection from '../components/homepage/HeroSection';
-import DemoSection from '../components/homepage/DemoSection';
 import HowItWorksSection from '../components/homepage/HowItWorksSection';
 import ProductWalkthrough from '../components/homepage/ProductWalkthrough';
-import FeaturesSection from '../components/homepage/FeaturesSection';
 import StatsSection from '../components/homepage/StatsSection';
-import StandardsSection from '../components/homepage/StandardsSection';
+import EndorsementsSection from '../components/homepage/EndorsementsSection';
 import LearnSection from '../components/homepage/LearnSection';
 import CtaSection from '../components/homepage/CtaSection';
 
@@ -54,6 +52,7 @@ export default function Home() {
       <HowItWorksSection />
       <ProductWalkthrough />
       <StatsSection />
+      <EndorsementsSection />
       <LearnSection />
       <CtaSection />
     </>

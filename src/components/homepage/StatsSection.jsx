@@ -7,7 +7,7 @@ import styles from './StatsSection.module.css';
 const stats = [
   { value: 100, suffix: '%', label: 'Gene Extraction Accuracy', prefix: '' },
   { value: 2, suffix: '', label: 'Classification Frameworks', prefix: '' },
-  { value: 3, suffix: 'x', label: 'Faster with Parallel Processing', prefix: '' },
+  { value: 4, suffix: '', label: 'NHS Endorsements', prefix: '' },
   { value: 2, suffix: 'min', label: 'Report to Diagnosis', prefix: '<' },
 ];
 

@@ -65,7 +65,7 @@ export default function PlanPage() {
                 <strong>Primary Objective:</strong> Demonstrate clinical utility and safety in real-world NHS haematology departments
               </div>
               <div className={styles.keyPoint}>
-                <strong>Funding Strategy:</strong> Strategic funding rounds aligned with pilot milestones to optimize valuation and execution capability
+                <strong>Funding Strategy:</strong> Strategic funding rounds aligned with pilot milestones to optimise valuation and execution capability
               </div>
             </div>
           </section>
@@ -669,10 +669,10 @@ export default function PlanPage() {
                 <li>Develop ROI calculations for NHS procurement teams</li>
               </ul>
 
-              <h4 className={styles.subheading}>System Optimization</h4>
+              <h4 className={styles.subheading}>System Optimisation</h4>
               <ul className={styles.fundingBreakdown}>
                 <li>Implement improvements based on pilot feedback</li>
-                <li>Optimize algorithms for UK-specific reporting patterns</li>
+                <li>Optimise algorithms for UK-specific reporting patterns</li>
                 <li>Enhance user interface based on clinical workflow insights</li>
                 <li>Improve integration capabilities for broader NHS deployment</li>
               </ul>

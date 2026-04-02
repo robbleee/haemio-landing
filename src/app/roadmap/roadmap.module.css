@@ -1,522 +1,506 @@
-.roadmapPage {
+/* =============================================
+   Roadmap — Expansion timeline
+   ============================================= */
+
+.page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: #ffffff;
 }
 
-/* Header */
+/* ---- Hero header ---- */
 .header {
-  background: linear-gradient(135deg, var(--background-color) 0%, #f8f9fa 100%);
-  padding: 4rem 0 3rem;
   position: relative;
-  border-bottom: 1px solid rgba(0, 150, 136, 0.1);
+  padding: 7rem 0 5rem;
+  overflow: hidden;
+  text-align: center;
 }
 
-.backButton {
+.headerBg {
   position: absolute;
-  top: 2rem;
-  left: 2rem;
-  background: var(--primary-color);
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 150, 136, 0.3);
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0, 150, 136, 0.07) 0%, transparent 70%),
+    linear-gradient(180deg, #ffffff 0%, #f0fdfa 100%);
+  z-index: 0;
 }
 
-.backButton:hover {
-  background: #4DB6AC;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 150, 136, 0.4);
+.headerGrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 150, 136, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 150, 136, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 60% 50% at 50% 40%, black 20%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 40%, black 20%, transparent 70%);
+  z-index: 0;
 }
 
 .headerContent {
-  text-align: center;
+  position: relative;
+  z-index: 1;
   max-width: 800px;
   margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
-.headerContent h1 {
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  line-height: 1.2;
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #009688;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1.25rem;
 }
 
-.subtitle {
-  font-size: 1.2rem;
-  color: #6c757d;
-  line-height: 1.6;
-  max-width: 600px;
-  margin: 0 auto;
+.eyebrowDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #009688;
+  animation: pulse 2s ease-in-out infinite;
 }
 
-/* Progress Section */
-.progressSection {
-  padding: 3rem 0;
-  background: white;
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.3); }
 }
 
-.progressStats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.statCard {
-  text-align: center;
-  padding: 2rem;
-  background: linear-gradient(135deg, #f8f9fa 0%, white 100%);
-  border-radius: 16px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  border: 1px solid #f1f5f9;
-  position: relative;
-  transition: all 0.3s ease;
-}
-
-.statCard:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-}
-
-.statNumber {
-  font-size: 3rem;
-  font-weight: 700;
-  color: #1e293b;
-  margin-bottom: 0.5rem;
-  line-height: 1;
-}
-
-.statLabel {
-  font-size: 1rem;
-  color: #64748b;
-  font-weight: 500;
+.title {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
   margin-bottom: 1rem;
 }
 
-.statIndicator {
-  width: 60px;
-  height: 4px;
-  border-radius: 2px;
+.titleAccent {
+  display: block;
+  background: linear-gradient(135deg, #009688, #00796b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  font-size: 1.15rem;
+  color: #64748b;
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+}
+
+/* ---- Coverage bar ---- */
+.coverageBar {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 1.25rem 2rem;
+  background: white;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.coverageLabel {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.coverageTrack {
+  flex: 1;
+  height: 10px;
+  background: #f1f5f9;
+  border-radius: 99px;
+  overflow: hidden;
+  position: relative;
+}
+
+.coverageFill {
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #009688, #4DB6AC);
+  transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.coverageValue {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #009688;
+  white-space: nowrap;
+}
+
+/* ---- Phase navigation ---- */
+.phaseNav {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1.5rem 1.5rem 0;
+  max-width: 700px;
   margin: 0 auto;
 }
 
-/* Roadmap Section */
-.roadmapSection {
-  padding: 4rem 0;
+.phaseBtn {
+  padding: 0.6rem 1.25rem;
+  border: none;
+  border-radius: 99px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  background: #f1f5f9;
+  color: #64748b;
 }
 
-.roadmapContainer {
-  max-width: 1200px;
+.phaseBtn:hover {
+  background: #e2e8f0;
+  color: #334155;
+}
+
+.phaseBtnActive {
+  background: #009688;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 150, 136, 0.3);
+}
+
+/* ---- Main timeline ---- */
+.timelineSection {
+  padding: 4rem 0 6rem;
+  max-width: 1100px;
   margin: 0 auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
-.roadmapGroup {
+/* ---- Phase group ---- */
+.phaseGroup {
   margin-bottom: 4rem;
 }
 
-.groupTitle {
+.phaseGroup:last-child {
+  margin-bottom: 0;
+}
+
+.phaseHeader {
   display: flex;
   align-items: center;
   gap: 1rem;
-  font-size: 1.8rem;
-  font-weight: 600;
-  color: #1e293b;
   margin-bottom: 2rem;
-  text-align: center;
-  justify-content: center;
 }
 
-.groupIcon {
-  font-size: 2rem;
+.phaseDot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
-.itemsGrid {
+.phaseTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #334155;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0;
+}
+
+.phaseLine {
+  flex: 1;
+  height: 1px;
+  background: #e2e8f0;
+}
+
+.phaseCount {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* ---- Disease cards grid ---- */
+.cardGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1rem;
 }
 
-.roadmapItem {
-  background: white;
-  border-radius: 16px;
-  padding: 2rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  border: 2px solid transparent;
-  transition: all 0.3s ease;
-  cursor: pointer;
+/* ---- Individual card ---- */
+.card {
   position: relative;
+  background: white;
+  border-radius: 14px;
+  border: 1px solid #e8ecf1;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   overflow: hidden;
 }
 
-.roadmapItem::before {
+.card::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  height: 4px;
-  transition: all 0.3s ease;
+  width: 4px;
+  height: 100%;
+  transition: width 0.3s ease;
 }
 
-.roadmapItem.completed::before {
-  background: linear-gradient(90deg, #10b981, #059669);
+.cardCompleted::before { background: #10b981; }
+.cardInProgress::before { background: #009688; }
+.cardPlanned::before { background: #cbd5e1; }
+
+.card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
 }
 
-.roadmapItem.inProgress::before {
-  background: linear-gradient(90deg, #f59e0b, #d97706);
+.card:hover::before {
+  width: 6px;
 }
 
-.roadmapItem.planned::before {
-  background: linear-gradient(90deg, #6b7280, #4b5563);
-}
-
-.roadmapItem:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-}
-
-.roadmapItem.completed:hover {
-  border-color: #10b981;
-}
-
-.roadmapItem.inProgress:hover {
-  border-color: #f59e0b;
-}
-
-.roadmapItem.planned:hover {
-  border-color: #6b7280;
-}
-
-.itemHeader {
+.cardTop {
   display: flex;
+  align-items: flex-start;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.75rem;
 }
 
-.itemAbbrev {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--primary-color);
-  background: rgba(0, 150, 136, 0.1);
-  padding: 0.5rem 1rem;
-  border-radius: 12px;
-  min-width: 60px;
-  text-align: center;
-}
-
-.statusBadge {
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.itemName {
+.cardAbbrev {
   font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.cardAbbrevCompleted { color: #10b981; }
+.cardAbbrevInProgress { color: #009688; }
+.cardAbbrevPlanned { color: #94a3b8; }
+
+.cardBadge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.25rem 0.65rem;
+  border-radius: 99px;
+  white-space: nowrap;
+}
+
+.badgeCompleted {
+  background: #ecfdf5;
+  color: #059669;
+}
+
+.badgeInProgress {
+  background: #f0fdfa;
+  color: #009688;
+  animation: subtlePulse 3s ease-in-out infinite;
+}
+
+@keyframes subtlePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 150, 136, 0); }
+  50% { box-shadow: 0 0 0 4px rgba(0, 150, 136, 0.08); }
+}
+
+.badgePlanned {
+  background: #f8fafc;
+  color: #94a3b8;
+}
+
+.cardName {
+  font-size: 1.05rem;
   font-weight: 600;
   color: #1e293b;
-  margin-bottom: 1rem;
+  margin-bottom: 0.35rem;
   line-height: 1.3;
 }
 
-.itemDescription {
+.cardDesc {
+  font-size: 0.88rem;
   color: #64748b;
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-  font-size: 1rem;
-}
-
-.itemMeta {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 1rem;
-  border-top: 1px solid #f1f5f9;
-}
-
-.completedDate,
-.targetDate {
-  font-size: 0.9rem;
-  color: #64748b;
-  font-weight: 500;
-}
-
-.priority {
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-}
-
-/* Priority styling */
-.roadmapItem.high {
-  border-left: 4px solid #ef4444;
-}
-
-.roadmapItem.medium {
-  border-left: 4px solid #f59e0b;
-}
-
-.roadmapItem.low {
-  border-left: 4px solid #6b7280;
-}
-
-/* Modal */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  padding: 2rem;
-}
-
-.modalContent {
-  background: white;
-  border-radius: 20px;
-  max-width: 600px;
-  width: 100%;
-  max-height: 80vh;
-  overflow-y: auto;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-}
-
-.modalHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2rem 2rem 1rem;
-  border-bottom: 1px solid #f1f5f9;
-}
-
-.modalHeader h3 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #1e293b;
-  margin: 0;
-}
-
-.closeButton {
-  background: none;
-  border: none;
-  font-size: 2rem;
-  color: #6b7280;
-  cursor: pointer;
-  padding: 0;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  transition: all 0.3s ease;
-}
-
-.closeButton:hover {
-  background: #f1f5f9;
-  color: #1e293b;
-}
-
-.modalBody {
-  padding: 1rem 2rem 2rem;
-}
-
-.modalDescription {
-  font-size: 1.1rem;
-  color: #64748b;
-  line-height: 1.6;
-  margin-bottom: 2rem;
-}
-
-.modalBody h4 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #1e293b;
+  line-height: 1.55;
   margin-bottom: 1rem;
 }
 
-.featuresList {
-  list-style: none;
-  padding: 0;
-  margin-bottom: 2rem;
-}
-
-.featuresList li {
-  padding: 0.75rem;
-  background: #f8f9fa;
-  border-radius: 8px;
-  margin-bottom: 0.5rem;
-  color: #1e293b;
-  border-left: 4px solid var(--primary-color);
-}
-
-.modalMeta {
+.cardFooter {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding-top: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.75rem;
   border-top: 1px solid #f1f5f9;
 }
 
-.modalMetaItem {
+.cardDate {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.cardFeatures {
   display: flex;
-  justify-content: space-between;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.featureDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #cbd5e1;
+}
+
+.featureDotActive {
+  background: #009688;
+}
+
+/* ---- Expanded card detail ---- */
+.cardDetail {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cardDetailOpen {
+  grid-template-rows: 1fr;
+}
+
+.cardDetailInner {
+  overflow: hidden;
+}
+
+.featureList {
+  list-style: none;
+  padding: 1rem 0 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.featureItem {
+  font-size: 0.82rem;
+  color: #475569;
+  display: flex;
   align-items: center;
+  gap: 0.5rem;
 }
 
-.modalMetaItem strong {
-  color: #1e293b;
+.featureCheck {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-/* Vision Section */
-.visionSection {
-  padding: 4rem 0;
-  background: linear-gradient(135deg, var(--primary-color) 0%, #4DB6AC 100%);
-  color: white;
+.featureCheckCompleted {
+  background: #ecfdf5;
+  color: #10b981;
 }
 
-.visionContent {
-  max-width: 1000px;
-  margin: 0 auto;
+.featureCheckPending {
+  background: #f8fafc;
+  color: #cbd5e1;
+}
+
+/* ---- Expansion thesis banner ---- */
+.thesisBanner {
+  max-width: 1100px;
+  margin: 0 auto 4rem;
+  padding: 0 1.5rem;
+}
+
+.thesisCard {
+  background: linear-gradient(135deg, #f0fdfa 0%, #e0f2f1 50%, #f0fdfa 100%);
+  border: 1px solid #ccfbf1;
+  border-radius: 20px;
+  padding: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2.5rem;
   text-align: center;
 }
 
-.visionContent h2 {
+.thesisStat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.thesisNumber {
   font-size: 2.5rem;
-  font-weight: 600;
-  margin-bottom: 2rem;
-  line-height: 1.2;
+  font-weight: 800;
+  color: #009688;
+  line-height: 1;
+  letter-spacing: -0.03em;
 }
 
-.visionContent > p {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  margin-bottom: 3rem;
-  opacity: 0.95;
+.thesisLabel {
+  font-size: 0.9rem;
+  color: #475569;
+  line-height: 1.4;
 }
 
-.visionPoints {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
+.thesisSublabel {
+  font-size: 0.8rem;
+  color: #94a3b8;
 }
 
-.visionPoint {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 2rem;
-  border-radius: 16px;
-  text-align: left;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: all 0.3s ease;
-}
-
-.visionPoint:hover {
-  transform: translateY(-4px);
-  background: rgba(255, 255, 255, 0.15);
-}
-
-.visionPoint h4 {
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: white;
-}
-
-.visionPoint p {
-  color: rgba(255, 255, 255, 0.9);
-  line-height: 1.6;
-  margin: 0;
-}
-
-/* Responsive Design */
+/* ---- Responsive ---- */
 @media (max-width: 768px) {
-  .headerContent h1 {
-    font-size: 2.5rem;
+  .header {
+    padding: 5rem 0 3rem;
   }
 
-  .subtitle {
-    font-size: 1.1rem;
+  .coverageBar {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
   }
 
-  .progressStats {
+  .coverageTrack {
+    width: 100%;
+  }
+
+  .phaseNav {
+    flex-wrap: wrap;
+  }
+
+  .cardGrid {
     grid-template-columns: 1fr;
-    gap: 1rem;
   }
 
-  .itemsGrid {
+  .featureList {
+    grid-template-columns: 1fr;
+  }
+
+  .thesisCard {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+    padding: 2rem;
   }
 
-  .itemHeader {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-
-  .itemMeta {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-
-  .visionPoints {
-    grid-template-columns: 1fr;
-  }
-
-  .visionContent h2 {
-    font-size: 2rem;
-  }
-
-  .backButton {
-    top: 1rem;
-    left: 1rem;
-    padding: 0.5rem 1rem;
-    font-size: 0.8rem;
-  }
-
-  .modal {
-    padding: 1rem;
-  }
-
-  .modalHeader {
-    padding: 1.5rem 1.5rem 1rem;
-  }
-
-  .modalBody {
-    padding: 1rem 1.5rem 1.5rem;
+  .timelineSection {
+    padding: 2rem 0 4rem;
   }
 }
 
 @media (max-width: 480px) {
-  .roadmapSection {
-    padding: 2rem 0;
+  .title {
+    font-size: 1.75rem;
   }
-
-  .roadmapItem {
-    padding: 1.5rem;
-  }
-
-  .itemName {
-    font-size: 1.2rem;
-  }
-
-  .itemDescription {
-    font-size: 0.9rem;
-  }
-} 
+}

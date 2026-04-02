@@ -28,12 +28,21 @@ export const metadata = {
     url: 'https://haem.io',
     siteName: 'Haem.io',
     title: 'Haem.io | Leukemia Diagnostic Tool and AML Classifier',
-    description: 'Haem.io (Haemio) provides explainable leukemia and myeloid disease classification using WHO 2022, ICC 2022, and ELN-guided logic.'
+    description: 'Haem.io (Haemio) provides explainable leukemia and myeloid disease classification using WHO 2022, ICC 2022, and ELN-guided logic.',
+    images: [
+      {
+        url: '/new-screenshots-for-landing/classification-result.png',
+        width: 1200,
+        height: 630,
+        alt: 'Haem.io — WHO 2022 and ICC 2022 AML classification with clinical reasoning',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Haem.io | Leukemia Diagnostic Tool and AML Classifier',
-    description: 'Haem.io (Haemio) provides explainable leukemia and myeloid disease classification using WHO 2022, ICC 2022, and ELN-guided logic.'
+    description: 'Haem.io (Haemio) provides explainable leukemia and myeloid disease classification using WHO 2022, ICC 2022, and ELN-guided logic.',
+    images: ['/new-screenshots-for-landing/classification-result.png'],
   },
   robots: {
     index: true,

@@ -3,7 +3,7 @@ import Link from 'next/link';
 export const metadata = {
   title: 'Haem.io Demo — AML Diagnostic Walkthrough',
   description: 'Watch Haem.io classify a real AML case in minutes using WHO 2022 and ICC 2022 logic.',
-  robots: { index: false, follow: false },
+  robots: { index: true, follow: true },
 };
 
 export default function DemoPage() {

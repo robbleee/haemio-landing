@@ -7,16 +7,16 @@ import Link from 'next/link';
 const teamMembers = [
   {
     name: 'Robert Lee',
-    title: 'Project Lead',
+    title: 'CEO & Co-Founder',
     image: '/profile-pics/robbie.png',
     bio: [
-      "Robert graduated from the University of Manchester with a BSc in Computer Science. After being diagnosed with Burkitt's Lymphoma at 19, he built his career in FinTech at the London Stock Exchange Group and FlexTrade, where he worked on managing and integrating algorithmic trading systems.",
+      "Robert graduated from the University of Manchester with a BSc in Computer Science. After being diagnosed with Burkitt's Lymphoma at 19, he built his career in FinTech at the London Stock Exchange Group, FlexTrade, and most recently Coinbase — leaving a senior role (and a >70% pay cut) to build Haem.io full-time.",
       "Drawing on this technical background, Robert developed the initial concept for Haem.io's hybrid AI framework that combines AI-driven data extraction with a deterministic logic engine. He co-developed the platform with Dr. John Burthem and leads the project's software development, regulatory pathway, and research coordination."
     ]
   },
   {
     name: 'Dr. Daniel Clarke',
-    title: 'Technical Lead',
+    title: 'CTO & Co-Founder',
     image: '/profile-pics/danny.png',
     bio: [
       "Dr. Clarke leads the technical architecture and data science strategy for Haem.io. He holds both a Master's degree and a PhD in Physics from the University of Manchester, where his research at CERN focused on analysing complex data from large-scale international experiments.",
@@ -25,7 +25,7 @@ const teamMembers = [
   },
   {
     name: 'Dr. John Burthem',
-    title: 'Principal Clinical Investigator',
+    title: 'Chief Medical Officer & Co-Founder',
     image: '/profile-pics/john.png',
     bio: [
       "Dr. Burthem is a Fellow of the Royal College of Pathologists (UK) and a Fellow of the Royal College of Physicians (UK), bringing decades of clinical leadership as a senior NHS consultant at Manchester Foundation Trust (MFT). He leads the Regional Diagnostic Service for Haematological Malignancies in Manchester, one of the UK's foremost specialist centres.",
@@ -34,7 +34,7 @@ const teamMembers = [
   },
   {
     name: 'Dr. Luke Carter-Brzezinski',
-    title: 'Clinical Co-Investigator',
+    title: 'Clinical Director & Co-Founder',
     image: '/profile-pics/luke.png',
     bio: [
       "Dr. Carter-Brzezinski is a Consultant Haematologist at MFT's Regional Diagnostic Service and a Fellow of the Royal College of Pathologists. His experience spans a Diagnostic Fellowship in Haematology at Manchester and clinical roles across the UK, giving him a deep, practical understanding of the day-to-day challenges of patient care and diagnostics.",

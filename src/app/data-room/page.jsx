@@ -7,7 +7,7 @@ const NDAContent = () => (
   <div className={styles.ndaFormatted}>
     <div className={styles.ndaHeader}>
       <h3>Non-Disclosure Agreement</h3>
-      <p className={styles.ndaDate}>This agreement is dated 21 October 2025</p>
+      <p className={styles.ndaDate}>This agreement is dated 1 April 2026</p>
       <p className={styles.ndaTo}>To: Investor/Partner</p>
     </div>
 

@@ -35,7 +35,8 @@ export default function ComplianceFooter() {
     { title: 'Validation', href: '/validation-evidence' },
     { title: 'LLM Index', href: '/llms.txt' },
     { title: 'Testing Suite', href: '/testing-stats' },
-    { title: 'App Login', href: 'https://app.haem.io/', external: true }
+    { title: 'App Login', href: 'https://app.haem.io/', external: true },
+    { title: 'Investors', href: '/investors' }
   ];
 
   return (
@@ -130,7 +131,7 @@ export default function ComplianceFooter() {
             </p>
           </div>
           <div className={styles.lastUpdated}>
-            <p>Documentation last updated: December 2024</p>
+            <p>Documentation last updated: March 2026</p>
           </div>
         </div>
       </div>

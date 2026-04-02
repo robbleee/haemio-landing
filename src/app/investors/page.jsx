@@ -227,7 +227,7 @@ const pitchSlides = [
     )
   },
   {
-    id: 4,
+    id: 'how-it-works',
     title: "How It Works",
     subtitle: "Not a black box: transparent, explainable, auditable",
     content: (
@@ -319,7 +319,7 @@ const pitchSlides = [
     )
   },
   {
-    id: 5,
+    id: 'why-we-win',
     title: "Why We Win",
     subtitle: "What makes us hard to replicate",
     content: (
@@ -922,7 +922,7 @@ const pitchSlides = [
             Raising £750,000 to transform haematology diagnosis
           </div>
           <div className={styles.ctaContact}>
-            <span>robert@haem.io</span>
+            <span>robert.lee@haem.io</span>
             <span>haem.io</span>
           </div>
         </div>
