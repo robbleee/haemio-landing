@@ -51,9 +51,10 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <HeroSection />
-      <DemoSection />
       <HowItWorksSection />
       <ProductWalkthrough />
+      <DemoSection />
+
       <FeaturesSection />
       <StatsSection />
       <StandardsSection />
