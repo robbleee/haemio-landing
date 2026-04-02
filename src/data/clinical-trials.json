@@ -3,21 +3,31 @@
     "id": "victor",
     "category": "Newly Diagnosed",
     "name": "VICTOR",
-    "description": "International phase 2 randomised controlled trial comparing venetoclax-low dose cytarabine with standard intensive chemotherapy in newly diagnosed AML",
-    "weblink": "",
+    "description": "International phase 2 randomised controlled trial comparing venetoclax-low dose cytarabine with standard intensive chemotherapy (daunorubicin, cytarabine and gemtuzumab ozogamicin) in newly diagnosed AML. Adaptive design allowing staged expansion to younger patients. CRUK/19/013.",
+    "weblink": "https://www.cancerresearchuk.org/about-cancer/find-a-clinical-trial/a-trial-of-venetoclax-with-low-dose-cytarabine-for-acute-myeloid-leukaemia-victor",
     "weblinkText": "A trial of venetoclax with low dose cytarabine for acute myeloid leukaemia (VICTOR)",
     "inclusionCriteria": [
-      "Age \u226550",
-      "Fit for intensive therapy",
-      "NPM1 mutated FLT3-ITD negative",
-      "CD33 positive acute myeloid leukemia"
+      "Age \u226560 years (adaptive expansion to \u226550 years subject to interim analysis)",
+      "Diagnosis of CD33 positive AML",
+      "Genotype NPM1 mutated, FLT3-ITD negative",
+      "Fit for intensive chemotherapy with anthracyclines per treating physician",
+      "ECOG performance status 0\u20132",
+      "Serum creatinine \u22641.5\u00d7 ULN",
+      "ALT and AST \u22642.5\u00d7 ULN, bilirubin \u22642\u00d7 ULN",
+      "Able to provide written informed consent"
     ],
     "exclusionCriteria": [
-      "Receipt of any previous therapy for AML or any antecedent haematological condition (the use of oral hydroxycarbamide to control white blood cell count is permitted)",
-      "Other active malignancy requiring treatment"
+      "Previous chemotherapy for AML or antecedent haematological condition (hydroxycarbamide excepted)",
+      "Other active malignancy requiring treatment",
+      "Newly diagnosed or uncontrolled HIV, hepatitis B, or hepatitis C",
+      "Pregnancy or lactation",
+      "Females of childbearing potential (and partners) not willing to use adequate contraception during and up to 7 months after treatment",
+      "Unable to swallow tablets whole",
+      "Known hypersensitivity to investigational medicinal products",
+      "Requirement for live vaccines during treatment period"
     ],
-    "contact": "",
-    "sites": "Multiple",
+    "contact": "VICTOR@trials.bham.ac.uk",
+    "sites": "Multiple (UK coordinating centre: University of Birmingham; international hubs: Aarhus, Auckland)",
     "genetics": {
       "required": ["NPM1"],
       "excluded": ["FLT3-ITD"],
@@ -124,15 +134,30 @@
     "id": "aztound",
     "category": "Newly Diagnosed",
     "name": "AZTOUND",
-    "description": "Phase 2 trial assessing oral azacitidine and venetoclax in newly diagnosed AML unfit for intensive therapy",
-    "weblink": "",
+    "description": "Multi-phase study of ASTX030 (oral azacitidine + cedazuridine) in combination with venetoclax in newly diagnosed AML patients ineligible for intensive chemotherapy. NCT04256317.",
+    "weblink": "https://clinicaltrials.gov/study/NCT04256317",
     "weblinkText": "",
     "inclusionCriteria": [
-      "Age >75 or <75 with comorbidity/ECOG 2"
+      "Histological confirmation of newly diagnosed AML by WHO 2022 criteria",
+      "Projected life expectancy of at least 12 weeks",
+      "Ineligible for intensive induction chemotherapy: aged \u226575 years, OR aged 18\u201374 with \u22651 comorbidity:",
+      "Severe cardiac disorder (e.g. CHF requiring treatment, ejection fraction \u226450%, chronic stable angina)",
+      "Severe pulmonary disorder (DLCO \u226465% or FEV1 \u226465%)",
+      "Creatinine clearance \u226530 mL/min to <45 mL/min",
+      "Moderate hepatic impairment (total bilirubin >1.5 to \u22643.0\u00d7 ULN)",
+      "ECOG PS 2 or 3",
+      "ECOG PS 0\u20132 for participants \u226575 years; ECOG PS 0\u20133 for 18\u201374 years",
+      "Able to swallow required number of tablets within 10 minutes and tolerate 4 hours fasting"
     ],
-    "exclusionCriteria": [],
+    "exclusionCriteria": [
+      "Active uncontrolled gastric or duodenal ulcer",
+      "Poor medical risk because of other conditions",
+      "Known HIV infection",
+      "Known hepatitis B or C positivity",
+      "Life-threatening illness unrelated to AML"
+    ],
     "contact": "",
-    "sites": "King's College Hospital",
+    "sites": "King's College Hospital London, The Christie Manchester, University Hospital Southampton",
     "genetics": {
       "required": [],
       "excluded": [],
@@ -440,8 +465,8 @@
     "id": "propel",
     "category": "Supportive Care",
     "name": "PROPEL",
-    "description": "PROPEL is a multicentre randomised controlled trial comparing best practice usual care (BPUC) with a personalised prehabilitation care package (PPCP) incorporating a 12-month internal pilot, parallel process evaluation and economic evaluation.",
-    "weblink": "",
+    "description": "PROPEL is a multicentre randomised controlled trial comparing best practice usual care (BPUC) with a personalised prehabilitation care package (PPCP) incorporating a 12-month internal pilot, parallel process evaluation and economic evaluation. NIHR134257. Chief Investigators: Prof Janet Dunn, Prof Simon Stanworth.",
+    "weblink": "https://www.cancerresearchuk.org/about-cancer/find-a-clinical-trial/a-study-looking-at-personalised-prehabilitation-for-myeloid-leukaemia-and-myelodysplastic-syndrome",
     "weblinkText": "",
     "inclusionCriteria": [
       "Age \u2265 16 years, treated on adult AML pathway",
