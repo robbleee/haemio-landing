@@ -218,6 +218,7 @@ export default function ClinicalTrialsPage() {
       <section className={styles.hero}>
         <h1>Clinical Trials</h1>
         <p>Browse open clinical trials in AML, MDS, and related haematological malignancies across the UK.</p>
+        <a href="/clinical-trials/admin" className={styles.submitTrialBtn}>Submit a Trial</a>
       </section>
 
       <section className={styles.controls}>

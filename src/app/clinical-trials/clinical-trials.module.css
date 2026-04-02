@@ -24,6 +24,25 @@
   margin: 0 auto;
 }
 
+.submitTrialBtn {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.5rem;
+  background: var(--primary-color);
+  color: white;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.submitTrialBtn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  color: white;
+}
+
 /* Controls */
 .controls {
   position: sticky;
