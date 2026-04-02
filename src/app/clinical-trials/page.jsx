@@ -13,6 +13,7 @@ const GENETIC_MARKERS = [
   { key: 'IDH1', label: 'IDH1 mutation' },
 ];
 
+// --- Haversine distance (km) ---
 function haversine(lat1, lon1, lat2, lon2) {
   const R = 6371;
   const dLat = (lat2 - lat1) * Math.PI / 180;
@@ -24,12 +25,15 @@ function haversine(lat1, lon1, lat2, lon2) {
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
 
+// Parse trial sites string into individual site names
 function parseSites(sitesStr) {
   if (!sitesStr) return [];
+  // Skip descriptive strings like "~80 UK centres..." or "Multiple UK centres..."
   if (/^[~\d]/.test(sitesStr) || /^Multiple/.test(sitesStr)) return [];
   return sitesStr.split(',').map(s => s.trim()).filter(Boolean);
 }
 
+// Calculate nearest site distance for a trial given user coordinates
 function getNearestSite(trial, userLat, userLng) {
   const sites = parseSites(trial.sites);
   let nearest = null;
@@ -46,7 +50,9 @@ function getNearestSite(trial, userLat, userLng) {
 
 function extractLocations(trials) {
   const locs = new Set();
-  trials.forEach(t => { parseSites(t.sites).forEach(s => locs.add(s)); });
+  trials.forEach(t => {
+    parseSites(t.sites).forEach(s => locs.add(s));
+  });
   return Array.from(locs).sort();
 }
 
@@ -72,13 +78,15 @@ export default function ClinicalTrialsPage() {
   const [categoryFilter, setCategoryFilter] = useState('All');
   const [expandedTrial, setExpandedTrial] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  // Enhanced filters
   const [selectedMarkers, setSelectedMarkers] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState('');
-  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const [showFilters, setShowFilters] = useState(false);
 
   // Postcode distance
   const [postcode, setPostcode] = useState('');
-  const [userCoords, setUserCoords] = useState(null);
+  const [userCoords, setUserCoords] = useState(null); // { lat, lng }
   const [postcodeError, setPostcodeError] = useState('');
   const [postcodeLoading, setPostcodeLoading] = useState(false);
   const [sortByDistance, setSortByDistance] = useState(false);
@@ -87,7 +95,9 @@ export default function ClinicalTrialsPage() {
     fetch('/api/clinical-trials')
       .then(res => res.json())
       .then(data => {
-        if (data.trials && data.trials.length > 0) setTrials(data.trials);
+        if (data.trials && data.trials.length > 0) {
+          setTrials(data.trials);
+        }
       })
       .catch(() => {})
       .finally(() => setLoading(false));
@@ -95,7 +105,12 @@ export default function ClinicalTrialsPage() {
 
   const lookupPostcode = useCallback(async () => {
     const clean = postcode.replace(/\s+/g, '').toUpperCase();
-    if (!clean) { setUserCoords(null); setPostcodeError(''); setSortByDistance(false); return; }
+    if (!clean) {
+      setUserCoords(null);
+      setPostcodeError('');
+      setSortByDistance(false);
+      return;
+    }
     setPostcodeLoading(true);
     setPostcodeError('');
     try {
@@ -106,22 +121,33 @@ export default function ClinicalTrialsPage() {
         setSortByDistance(true);
         setPostcodeError('');
       } else {
-        setUserCoords(null); setSortByDistance(false);
-        setPostcodeError('Postcode not found.');
+        setUserCoords(null);
+        setSortByDistance(false);
+        setPostcodeError('Postcode not found. Please enter a valid UK postcode.');
       }
     } catch {
-      setUserCoords(null); setSortByDistance(false);
-      setPostcodeError('Lookup failed. Try again.');
-    } finally { setPostcodeLoading(false); }
+      setUserCoords(null);
+      setSortByDistance(false);
+      setPostcodeError('Could not look up postcode. Please try again.');
+    } finally {
+      setPostcodeLoading(false);
+    }
   }, [postcode]);
 
   const clearPostcode = () => {
-    setPostcode(''); setUserCoords(null); setPostcodeError(''); setSortByDistance(false);
+    setPostcode('');
+    setUserCoords(null);
+    setPostcodeError('');
+    setSortByDistance(false);
   };
 
-  const categories = useMemo(() => ['All', ...new Set(trials.map(t => t.category))], [trials]);
+  const categories = useMemo(() => {
+    return ['All', ...new Set(trials.map(t => t.category))];
+  }, [trials]);
+
   const locations = useMemo(() => extractLocations(trials), [trials]);
 
+  // Pre-compute distances for all trials
   const trialDistances = useMemo(() => {
     if (!userCoords) return {};
     const map = {};
@@ -137,18 +163,23 @@ export default function ClinicalTrialsPage() {
       if (categoryFilter !== 'All' && trial.category !== categoryFilter) return false;
       if (!matchesGenetics(trial, selectedMarkers)) return false;
       if (!matchesLocation(trial, selectedLocation)) return false;
+
       if (search) {
         const q = search.toLowerCase();
-        if (!(
+        const inText = (
           trial.name.toLowerCase().includes(q) ||
           (trial.description || '').toLowerCase().includes(q) ||
           (trial.sites || '').toLowerCase().includes(q) ||
           (trial.inclusionCriteria || []).some(c => c.toLowerCase().includes(q)) ||
           (trial.exclusionCriteria || []).some(c => c.toLowerCase().includes(q))
-        )) return false;
+        );
+        if (!inText) return false;
       }
+
       return true;
     });
+
+    // Sort by distance if postcode is active
     if (sortByDistance && userCoords) {
       result = [...result].sort((a, b) => {
         const da = trialDistances[a.id]?.distance ?? Infinity;
@@ -156,6 +187,7 @@ export default function ClinicalTrialsPage() {
         return da - db;
       });
     }
+
     return result;
   }, [trials, search, categoryFilter, selectedMarkers, selectedLocation, sortByDistance, userCoords, trialDistances]);
 
@@ -166,29 +198,38 @@ export default function ClinicalTrialsPage() {
   }, [trials]);
 
   const toggleMarker = (marker) => {
-    setSelectedMarkers(prev => prev.includes(marker) ? prev.filter(m => m !== marker) : [...prev, marker]);
+    setSelectedMarkers(prev =>
+      prev.includes(marker) ? prev.filter(m => m !== marker) : [...prev, marker]
+    );
   };
 
   const activeFilterCount = selectedMarkers.length + (selectedLocation ? 1 : 0) + (userCoords ? 1 : 0);
 
   const clearAllFilters = () => {
-    setSelectedMarkers([]); setSelectedLocation(''); setCategoryFilter('All'); setSearch(''); clearPostcode();
+    setSelectedMarkers([]);
+    setSelectedLocation('');
+    setCategoryFilter('All');
+    setSearch('');
+    clearPostcode();
   };
 
-  // Sidebar content (shared between desktop and mobile)
-  const sidebarContent = (
-    <>
-      {/* Search */}
-      <div className={styles.filterSection}>
-        <h3 className={styles.filterTitle}>Search</h3>
+  return (
+    <div className={styles.page}>
+      <section className={styles.hero}>
+        <h1>Clinical Trials</h1>
+        <p>Browse open clinical trials in AML, MDS, and related haematological malignancies across the UK.</p>
+      </section>
+
+      <section className={styles.controls}>
+        {/* Search */}
         <div className={styles.searchWrapper}>
-          <svg className={styles.searchIcon} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg className={styles.searchIcon} width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <circle cx="11" cy="11" r="8" />
             <line x1="21" y1="21" x2="16.65" y2="16.65" />
           </svg>
           <input
             type="text"
-            placeholder="Trial name, site, criteria..."
+            placeholder="Search by trial name, description, site, or criteria..."
             value={search}
             onChange={e => setSearch(e.target.value)}
             className={styles.searchInput}
@@ -197,15 +238,12 @@ export default function ClinicalTrialsPage() {
             <button className={styles.clearBtn} onClick={() => setSearch('')} aria-label="Clear search">&times;</button>
           )}
         </div>
-      </div>
 
-      {/* Postcode */}
-      <div className={styles.filterSection}>
-        <h3 className={styles.filterTitle}>Distance</h3>
+        {/* Postcode + Search row */}
         <div className={styles.postcodeRow}>
           <input
             type="text"
-            placeholder="UK postcode"
+            placeholder="Enter UK postcode"
             value={postcode}
             onChange={e => setPostcode(e.target.value)}
             onKeyDown={e => e.key === 'Enter' && lookupPostcode()}
@@ -216,213 +254,199 @@ export default function ClinicalTrialsPage() {
             disabled={postcodeLoading || !postcode.trim()}
             className={styles.postcodeBtn}
           >
-            {postcodeLoading ? '...' : 'Go'}
+            {postcodeLoading ? '...' : 'Find nearest'}
           </button>
           {userCoords && (
-            <button onClick={clearPostcode} className={styles.postcodeClear}>&times;</button>
+            <button onClick={clearPostcode} className={styles.postcodeClear} aria-label="Clear postcode">&times;</button>
           )}
+          {postcodeError && <span className={styles.postcodeError}>{postcodeError}</span>}
+          {userCoords && <span className={styles.postcodeSuccess}>Sorted by approximate distance</span>}
         </div>
-        {postcodeError && <p className={styles.postcodeError}>{postcodeError}</p>}
-        {userCoords && <p className={styles.postcodeSuccess}>Sorted by nearest site</p>}
-      </div>
 
-      {/* Category */}
-      <div className={styles.filterSection}>
-        <h3 className={styles.filterTitle}>Category</h3>
-        <div className={styles.categoryList}>
+        {/* Category pills */}
+        <div className={styles.filters}>
           {categories.map(cat => (
             <button
               key={cat}
-              className={`${styles.categoryBtn} ${categoryFilter === cat ? styles.categoryBtnActive : ''}`}
+              className={`${styles.filterBtn} ${categoryFilter === cat ? styles.filterBtnActive : ''}`}
               onClick={() => setCategoryFilter(cat)}
             >
-              <span>{cat}</span>
-              <span className={styles.categoryCount}>{counts[cat] || 0}</span>
+              {cat}
+              <span className={styles.count}>{counts[cat] || 0}</span>
             </button>
           ))}
         </div>
-      </div>
 
-      {/* Genetic Markers */}
-      <div className={styles.filterSection}>
-        <h3 className={styles.filterTitle}>Genetic Markers</h3>
-        <p className={styles.filterHint}>Patient's markers</p>
-        <div className={styles.checkboxList}>
-          {GENETIC_MARKERS.map(({ key, label }) => (
-            <label key={key} className={styles.checkboxLabel}>
-              <input
-                type="checkbox"
-                checked={selectedMarkers.includes(key)}
-                onChange={() => toggleMarker(key)}
-                className={styles.checkbox}
-              />
-              <span className={styles.checkboxText}>{label}</span>
-            </label>
-          ))}
-        </div>
-      </div>
-
-      {/* Location */}
-      <div className={styles.filterSection}>
-        <h3 className={styles.filterTitle}>Site</h3>
-        <select
-          value={selectedLocation}
-          onChange={e => setSelectedLocation(e.target.value)}
-          className={styles.selectInput}
+        {/* Toggle advanced filters */}
+        <button
+          className={styles.advancedToggle}
+          onClick={() => setShowFilters(!showFilters)}
         >
-          <option value="">Any site</option>
-          {locations.map(loc => (
-            <option key={loc} value={loc}>{loc}</option>
-          ))}
-        </select>
-      </div>
-
-      {activeFilterCount > 0 && (
-        <button className={styles.clearAllBtn} onClick={clearAllFilters}>
-          Clear all filters
+          {showFilters ? 'Hide' : 'Show'} patient filters
+          {activeFilterCount > 0 && (
+            <span className={styles.activeCount}>{activeFilterCount}</span>
+          )}
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={showFilters ? styles.chevronOpen : ''}>
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
         </button>
-      )}
-    </>
-  );
 
-  return (
-    <div className={styles.page}>
-      <section className={styles.hero}>
-        <h1>Clinical Trials</h1>
-        <p>Browse open clinical trials in AML, MDS, and related haematological malignancies across the UK.</p>
+        {/* Advanced filter panel */}
+        {showFilters && (
+          <div className={styles.advancedPanel}>
+            {/* Genetic markers */}
+            <div className={styles.filterGroup}>
+              <h3 className={styles.filterGroupTitle}>Genetic Markers</h3>
+              <p className={styles.filterGroupHint}>Select markers present in the patient to find eligible trials</p>
+              <div className={styles.checkboxGrid}>
+                {GENETIC_MARKERS.map(({ key, label }) => (
+                  <label key={key} className={styles.checkboxLabel}>
+                    <input
+                      type="checkbox"
+                      checked={selectedMarkers.includes(key)}
+                      onChange={() => toggleMarker(key)}
+                      className={styles.checkbox}
+                    />
+                    <span className={styles.checkboxText}>{label}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            {/* Location */}
+            <div className={styles.filterGroup}>
+              <h3 className={styles.filterGroupTitle}>Location</h3>
+              <select
+                value={selectedLocation}
+                onChange={e => setSelectedLocation(e.target.value)}
+                className={styles.selectInput}
+              >
+                <option value="">Any location</option>
+                {locations.map(loc => (
+                  <option key={loc} value={loc}>{loc}</option>
+                ))}
+              </select>
+            </div>
+
+            {activeFilterCount > 0 && (
+              <button className={styles.clearAllBtn} onClick={clearAllFilters}>
+                Clear all filters
+              </button>
+            )}
+          </div>
+        )}
       </section>
 
-      {/* Mobile filter toggle */}
-      <button
-        className={styles.mobileFilterToggle}
-        onClick={() => setMobileFiltersOpen(!mobileFiltersOpen)}
-      >
-        Filters
-        {activeFilterCount > 0 && <span className={styles.activeCount}>{activeFilterCount}</span>}
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={mobileFiltersOpen ? styles.chevronOpen : ''}>
-          <polyline points="6 9 12 15 18 9" />
-        </svg>
-      </button>
+      <section className={styles.results}>
+        <p className={styles.resultCount}>
+          {loading ? 'Loading...' : `${filtered.length} trial${filtered.length !== 1 ? 's' : ''} found`}
+          {activeFilterCount > 0 && !loading && (
+            <span className={styles.filterNote}> (filtered by {activeFilterCount} patient criteria)</span>
+          )}
+          {sortByDistance && !loading && (
+            <span className={styles.filterNote}> — sorted by distance</span>
+          )}
+        </p>
 
-      {/* Mobile filters drawer */}
-      {mobileFiltersOpen && (
-        <div className={styles.mobileFilters}>
-          {sidebarContent}
-        </div>
-      )}
-
-      <div className={styles.layout}>
-        {/* Desktop sidebar */}
-        <aside className={styles.sidebar}>
-          {sidebarContent}
-        </aside>
-
-        {/* Trial list */}
-        <section className={styles.results}>
-          <p className={styles.resultCount}>
-            {loading ? 'Loading...' : `${filtered.length} trial${filtered.length !== 1 ? 's' : ''} found`}
-            {sortByDistance && !loading && (
-              <span className={styles.filterNote}> — sorted by distance</span>
-            )}
-          </p>
-
-          <div className={styles.trialList}>
-            {filtered.map(trial => {
-              const isExpanded = expandedTrial === trial.id;
-              const genetics = trial.genetics || { required: [], excluded: [] };
-              const nearest = trialDistances[trial.id];
-              return (
-                <div key={trial.id} className={styles.trialCard}>
-                  <div className={styles.trialHeader} onClick={() => setExpandedTrial(isExpanded ? null : trial.id)}>
-                    <div className={styles.trialMeta}>
-                      <span className={`${styles.categoryBadge} ${styles[`cat${trial.category.replace(/[^a-zA-Z]/g, '')}`]}`}>
-                        {trial.category}
+        <div className={styles.trialList}>
+          {filtered.map(trial => {
+            const isExpanded = expandedTrial === trial.id;
+            const genetics = trial.genetics || { required: [], excluded: [] };
+            const nearest = trialDistances[trial.id];
+            return (
+              <div key={trial.id} className={styles.trialCard}>
+                <div className={styles.trialHeader} onClick={() => setExpandedTrial(isExpanded ? null : trial.id)}>
+                  <div className={styles.trialMeta}>
+                    <span className={`${styles.categoryBadge} ${styles[`cat${trial.category.replace(/[^a-zA-Z]/g, '')}`]}`}>
+                      {trial.category}
+                    </span>
+                    {trial.phase && (
+                      <span className={styles.phaseBadge}>{trial.phase}</span>
+                    )}
+                    {nearest && (
+                      <span className={styles.distanceBadge}>
+                        ~{Math.round(nearest.distance * 0.621371)} miles — {nearest.city}
                       </span>
-                      {trial.phase && (
-                        <span className={styles.phaseBadge}>{trial.phase}</span>
-                      )}
-                      {nearest && (
-                        <span className={styles.distanceBadge}>
-                          ~{Math.round(nearest.distance * 0.621371)} miles — {nearest.city}
-                        </span>
-                      )}
-                      {!nearest && userCoords && (
-                        <span className={styles.distanceBadgeUnknown}>Distance N/A</span>
-                      )}
-                    </div>
-                    <div className={styles.trialTitleRow}>
-                      <h2 className={styles.trialName}>{trial.name}</h2>
-                      <svg
-                        className={`${styles.chevron} ${isExpanded ? styles.chevronOpen : ''}`}
-                        width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-                      >
-                        <polyline points="6 9 12 15 18 9" />
-                      </svg>
-                    </div>
-                    <p className={styles.trialDescription}>{trial.description}</p>
-
-                    <div className={styles.trialMetaBottom}>
-                      <span className={styles.siteBadge}>{trial.sites}</span>
-                    </div>
-
-                    {(genetics.required.length > 0 || genetics.excluded.length > 0) && (
-                      <div className={styles.markerTags}>
-                        {genetics.required.map(m => (
-                          <span key={m} className={`${styles.markerTag} ${styles.markerRequired}`}>{m}</span>
-                        ))}
-                        {genetics.excluded.map(m => (
-                          <span key={m} className={`${styles.markerTag} ${styles.markerExcluded}`}>{m} excluded</span>
-                        ))}
-                      </div>
+                    )}
+                    {!nearest && userCoords && (
+                      <span className={styles.distanceBadgeUnknown}>Distance N/A</span>
                     )}
                   </div>
+                  <div className={styles.trialTitleRow}>
+                    <h2 className={styles.trialName}>{trial.name}</h2>
+                    <svg
+                      className={`${styles.chevron} ${isExpanded ? styles.chevronOpen : ''}`}
+                      width="20" height="20" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                    >
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                  </div>
+                  <p className={styles.trialDescription}>{trial.description}</p>
 
-                  {isExpanded && (
-                    <div className={styles.trialDetails}>
-                      {(trial.inclusionCriteria || []).length > 0 && (
-                        <div className={styles.criteriaSection}>
-                          <h3>Key Inclusion Criteria</h3>
-                          <ul>
-                            {trial.inclusionCriteria.map((c, i) => <li key={i}>{c}</li>)}
-                          </ul>
-                        </div>
-                      )}
-                      {(trial.exclusionCriteria || []).length > 0 && (
-                        <div className={styles.criteriaSection}>
-                          <h3>Key Exclusion Criteria</h3>
-                          <ul>
-                            {trial.exclusionCriteria.map((c, i) => <li key={i}>{c}</li>)}
-                          </ul>
-                        </div>
-                      )}
-                      <div className={styles.trialFooter}>
-                        {trial.weblink && (
-                          <a href={trial.weblink} target="_blank" rel="noopener noreferrer" className={styles.trialLink}>
-                            View on {trial.weblink.includes('clinicaltrials.gov') ? 'ClinicalTrials.gov' : 'study website'} &rarr;
-                          </a>
-                        )}
-                        {trial.contact && (
-                          <a href={`mailto:${trial.contact}`} className={styles.contactLink}>
-                            {trial.contact}
-                          </a>
-                        )}
-                      </div>
+                  <div className={styles.trialMetaBottom}>
+                    <span className={styles.siteBadge}>{trial.sites}</span>
+                  </div>
+
+                  {/* Genetic marker tags */}
+                  {(genetics.required.length > 0 || genetics.excluded.length > 0) && (
+                    <div className={styles.markerTags}>
+                      {genetics.required.map(m => (
+                        <span key={m} className={`${styles.markerTag} ${styles.markerRequired}`}>{m}</span>
+                      ))}
+                      {genetics.excluded.map(m => (
+                        <span key={m} className={`${styles.markerTag} ${styles.markerExcluded}`}>{m} excluded</span>
+                      ))}
                     </div>
                   )}
                 </div>
-              );
-            })}
 
-            {filtered.length === 0 && !loading && (
-              <div className={styles.empty}>
-                <p>No trials match your current filters.</p>
-                <button className={styles.clearAllBtn} onClick={clearAllFilters}>Clear all filters</button>
+                {isExpanded && (
+                  <div className={styles.trialDetails}>
+                    {(trial.inclusionCriteria || []).length > 0 && (
+                      <div className={styles.criteriaSection}>
+                        <h3>Key Inclusion Criteria</h3>
+                        <ul>
+                          {trial.inclusionCriteria.map((c, i) => <li key={i}>{c}</li>)}
+                        </ul>
+                      </div>
+                    )}
+
+                    {(trial.exclusionCriteria || []).length > 0 && (
+                      <div className={styles.criteriaSection}>
+                        <h3>Key Exclusion Criteria</h3>
+                        <ul>
+                          {trial.exclusionCriteria.map((c, i) => <li key={i}>{c}</li>)}
+                        </ul>
+                      </div>
+                    )}
+
+                    <div className={styles.trialFooter}>
+                      {trial.weblink && (
+                        <a href={trial.weblink} target="_blank" rel="noopener noreferrer" className={styles.trialLink}>
+                          View on {trial.weblink.includes('clinicaltrials.gov') ? 'ClinicalTrials.gov' : 'study website'} &rarr;
+                        </a>
+                      )}
+                      {trial.contact && (
+                        <a href={`mailto:${trial.contact}`} className={styles.contactLink}>
+                          {trial.contact}
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                )}
               </div>
-            )}
-          </div>
-        </section>
-      </div>
+            );
+          })}
+
+          {filtered.length === 0 && !loading && (
+            <div className={styles.empty}>
+              <p>No trials match your current filters.</p>
+              <button className={styles.clearAllBtn} onClick={clearAllFilters}>Clear all filters</button>
+            </div>
+          )}
+        </div>
+      </section>
     </div>
   );
 }
