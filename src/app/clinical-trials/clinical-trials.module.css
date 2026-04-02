@@ -45,14 +45,14 @@
   left: 14px;
   top: 50%;
   transform: translateY(-50%);
-  color: #90a4ae;
+  color: #607d8b;
   pointer-events: none;
 }
 
 .searchInput {
   width: 100%;
   padding: 0.85rem 2.5rem 0.85rem 2.8rem;
-  border: 1px solid #cfd8dc;
+  border: 1px solid #b0bec5;
   border-radius: var(--border-radius);
   font-size: 1rem;
   color: var(--text-color);
@@ -67,7 +67,7 @@
 }
 
 .searchInput::placeholder {
-  color: #b0bec5;
+  color: #78909c;
 }
 
 .clearBtn {
@@ -78,7 +78,7 @@
   background: none;
   border: none;
   font-size: 1.4rem;
-  color: #90a4ae;
+  color: #607d8b;
   cursor: pointer;
   padding: 0 6px;
   line-height: 1;
@@ -101,7 +101,7 @@
 .filterBtn {
   padding: 0.45rem 1rem;
   border-radius: 20px;
-  border: 1px solid #cfd8dc;
+  border: 1px solid #b0bec5;
   background: var(--background-color);
   color: #546e7a;
   font-size: 0.875rem;
@@ -205,7 +205,7 @@
 
 .filterGroupHint {
   font-size: 0.78rem;
-  color: #90a4ae;
+  color: #607d8b;
   margin-bottom: 0.6rem;
 }
 
@@ -239,7 +239,7 @@
 .selectInput {
   width: 100%;
   padding: 0.6rem 0.75rem;
-  border: 1px solid #cfd8dc;
+  border: 1px solid #b0bec5;
   border-radius: var(--border-radius);
   font-size: 0.9rem;
   color: var(--text-color);
@@ -264,7 +264,7 @@
 
 .postcodeInput {
   padding: 0.6rem 0.75rem;
-  border: 1px solid #cfd8dc;
+  border: 1px solid #b0bec5;
   border-radius: var(--border-radius);
   font-size: 0.9rem;
   color: var(--text-color);
@@ -304,7 +304,7 @@
   background: none;
   border: none;
   font-size: 1.3rem;
-  color: #90a4ae;
+  color: #607d8b;
   cursor: pointer;
   padding: 0 4px;
   line-height: 1;
@@ -355,7 +355,7 @@
 .clearAllBtn {
   padding: 0.5rem 1rem;
   background: none;
-  border: 1px solid #cfd8dc;
+  border: 1px solid #b0bec5;
   border-radius: var(--border-radius);
   color: #78909c;
   font-size: 0.85rem;
@@ -378,7 +378,7 @@
 
 .resultCount {
   font-size: 0.9rem;
-  color: #90a4ae;
+  color: #607d8b;
   margin-bottom: 1rem;
 }
 
@@ -465,7 +465,7 @@
 
 .chevron {
   flex-shrink: 0;
-  color: #90a4ae;
+  color: #607d8b;
   transition: transform 0.2s;
 }
 
@@ -589,7 +589,7 @@
 .empty {
   text-align: center;
   padding: 4rem 1rem;
-  color: #90a4ae;
+  color: #607d8b;
   display: flex;
   flex-direction: column;
   align-items: center;
