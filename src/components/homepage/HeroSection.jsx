@@ -1,9 +1,20 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import styles from './HeroSection.module.css';
 
+const SCREENSHOTS = [
+  { src: '/new-screenshots-for-landing/diagnostic-path.png', label: 'Diagnostic Pathway', alt: 'ICC 2022 AML Execution Path showing the full diagnostic decision tree' },
+  { src: '/new-screenshots-for-landing/data-entry.png', label: 'Report Upload', alt: 'Patient report upload with AI-powered analysis and data extraction' },
+  { src: '/new-screenshots-for-landing/data-inspector.png', label: 'Data Inspector', alt: 'Input data summary showing parsed mutations, cytogenetics, and clinical parameters' },
+  { src: '/new-screenshots-for-landing/Risk-calculator.png', label: 'Risk Stratification', alt: 'ELN 2022 and 2024 risk stratification with median survival estimates' },
+];
+
 export default function HeroSection() {
+  const [activeShot, setActiveShot] = useState(0);
+
   return (
     <section className={styles.hero}>
       {/* Background layers */}
@@ -65,69 +76,30 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Right — diagnostic card visual */}
+          {/* Right — real screenshot */}
           <div className={styles.visualColumn}>
-            <div className={styles.diagnosticCard}>
-              <div className={styles.cardHeader}>
-                <div className={styles.cardDots}>
-                  <span /><span /><span />
-                </div>
-                <span className={styles.cardLabel}>Haem.io Classifier</span>
-              </div>
-
-              <div className={styles.cardBody}>
-                {/* Input section */}
-                <div className={styles.cardSection}>
-                  <span className={styles.cardSectionLabel}>Input</span>
-                  <div className={styles.inputRow}>
-                    <span className={styles.inputKey}>Blast %</span>
-                    <span className={styles.inputVal}>42%</span>
-                  </div>
-                  <div className={styles.inputRow}>
-                    <span className={styles.inputKey}>Cytogenetics</span>
-                    <span className={styles.inputVal}>t(8;21)(q22;q22)</span>
-                  </div>
-                  <div className={styles.inputRow}>
-                    <span className={styles.inputKey}>Mutations</span>
-                    <span className={styles.inputVal}>KIT D816V</span>
-                  </div>
-                </div>
-
-                {/* Divider with animation */}
-                <div className={styles.processingBar}>
-                  <div className={styles.processingFill} />
-                </div>
-
-                {/* Output section */}
-                <div className={styles.cardSection}>
-                  <span className={styles.cardSectionLabel}>Classification</span>
-                  <div className={styles.resultRow}>
-                    <span className={styles.resultIcon}>
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" />
-                      </svg>
-                    </span>
-                    <div>
-                      <div className={styles.resultLabel}>WHO 2022</div>
-                      <div className={styles.resultValue}>AML with t(8;21)(q22;q22.1)</div>
-                    </div>
-                  </div>
-                  <div className={styles.resultRow}>
-                    <span className={styles.resultIcon}>
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" />
-                      </svg>
-                    </span>
-                    <div>
-                      <div className={styles.resultLabel}>ELN 2022 Risk</div>
-                      <div className={styles.resultRisk}>Favourable</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div className={styles.screenshotCard}>
+              <Image
+                src={SCREENSHOTS[activeShot].src}
+                alt={SCREENSHOTS[activeShot].alt}
+                width={640}
+                height={400}
+                className={styles.screenshotImg}
+                priority
+              />
             </div>
-
-            {/* Glow behind card */}
+            {/* Screenshot selector tabs */}
+            <div className={styles.shotTabs}>
+              {SCREENSHOTS.map((s, i) => (
+                <button
+                  key={s.label}
+                  className={`${styles.shotTab} ${i === activeShot ? styles.shotTabActive : ''}`}
+                  onClick={() => setActiveShot(i)}
+                >
+                  {s.label}
+                </button>
+              ))}
+            </div>
             <div className={styles.cardGlow} />
           </div>
         </div>
