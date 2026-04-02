@@ -24,22 +24,27 @@
   margin: 0 auto;
 }
 
+.resultsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
 .submitTrialBtn {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.6rem 1.5rem;
-  background: var(--primary-color);
-  color: white;
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--primary-color);
   border-radius: var(--border-radius);
+  color: var(--primary-color);
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.82rem;
   text-decoration: none;
   transition: var(--transition);
+  white-space: nowrap;
 }
 
 .submitTrialBtn:hover {
-  opacity: 0.9;
-  transform: translateY(-2px);
+  background: var(--primary-color);
   color: white;
 }
 
@@ -398,7 +403,6 @@
 .resultCount {
   font-size: 0.9rem;
   color: #607d8b;
-  margin-bottom: 1rem;
 }
 
 .filterNote {

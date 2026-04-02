@@ -218,7 +218,6 @@ export default function ClinicalTrialsPage() {
       <section className={styles.hero}>
         <h1>Clinical Trials</h1>
         <p>Browse open clinical trials in AML, MDS, and related haematological malignancies across the UK.</p>
-        <a href="/clinical-trials/admin" className={styles.submitTrialBtn}>Submit a Trial</a>
       </section>
 
       <section className={styles.controls}>
@@ -339,15 +338,18 @@ export default function ClinicalTrialsPage() {
       </section>
 
       <section className={styles.results}>
-        <p className={styles.resultCount}>
-          {loading ? 'Loading...' : `${filtered.length} trial${filtered.length !== 1 ? 's' : ''} found`}
-          {activeFilterCount > 0 && !loading && (
-            <span className={styles.filterNote}> (filtered by {activeFilterCount} patient criteria)</span>
-          )}
-          {sortByDistance && !loading && (
-            <span className={styles.filterNote}> — sorted by distance</span>
-          )}
-        </p>
+        <div className={styles.resultsHeader}>
+          <p className={styles.resultCount}>
+            {loading ? 'Loading...' : `${filtered.length} trial${filtered.length !== 1 ? 's' : ''} found`}
+            {activeFilterCount > 0 && !loading && (
+              <span className={styles.filterNote}> (filtered by {activeFilterCount} patient criteria)</span>
+            )}
+            {sortByDistance && !loading && (
+              <span className={styles.filterNote}> — sorted by distance</span>
+            )}
+          </p>
+          <a href="/clinical-trials/admin" className={styles.submitTrialBtn}>Submit a Trial</a>
+        </div>
 
         <div className={styles.trialList}>
           {filtered.map(trial => {
