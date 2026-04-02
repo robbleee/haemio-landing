@@ -6,25 +6,23 @@ import styles from './admin.module.css';
 const CATEGORIES = ['Newly Diagnosed', 'Relapsed/Refractory', 'Supportive Care', 'Transplant'];
 
 const EMPTY_FORM = {
-  trial_id: '',
-  category: 'Newly Diagnosed',
-  name: '',
-  description: '',
-  weblink: '',
-  inclusion_criteria: '',
-  exclusion_criteria: '',
-  contact: '',
-  sites: '',
+  trial_id: '', category: 'Newly Diagnosed', name: '', description: '',
+  weblink: '', inclusion_criteria: '', exclusion_criteria: '', contact: '', sites: '',
 };
 
 export default function ClinicalTrialsAdmin() {
-  const [apiKey, setApiKey] = useState('');
-  const [authenticated, setAuthenticated] = useState(false);
+  const [key, setKey] = useState('');
+  const [authMode, setAuthMode] = useState(null); // 'access' | 'admin'
+  const [orgInfo, setOrgInfo] = useState(null); // { organisation, issuedTo }
   const [trials, setTrials] = useState([]);
   const [form, setForm] = useState(EMPTY_FORM);
-  const [editing, setEditing] = useState(null); // trial_id being edited
+  const [editing, setEditing] = useState(null);
   const [message, setMessage] = useState({ text: '', type: '' });
   const [loading, setLoading] = useState(false);
+
+  // Admin: access key management
+  const [accessKeys, setAccessKeys] = useState([]);
+  const [newKeyForm, setNewKeyForm] = useState({ issued_to: '', organisation: '', email: '' });
 
   const showMessage = (text, type = 'success') => {
     setMessage({ text, type });
@@ -36,26 +34,53 @@ export default function ClinicalTrialsAdmin() {
       const res = await fetch('/api/clinical-trials');
       const data = await res.json();
       setTrials(data.trials || []);
-    } catch {
-      showMessage('Failed to load trials', 'error');
-    }
+    } catch { showMessage('Failed to load trials', 'error'); }
+  };
+
+  const fetchAccessKeys = async () => {
+    try {
+      const res = await fetch('/api/clinical-trials/keys', { headers: { 'X-API-Key': key } });
+      const data = await res.json();
+      setAccessKeys(data.keys || []);
+    } catch { /* admin-only, ignore if not admin */ }
   };
 
   const handleAuth = async () => {
-    if (!apiKey.trim()) return;
-    // Verify key works by trying to fetch — the GET is public, so we just store the key
-    // The actual validation happens on POST/PUT/DELETE
-    setAuthenticated(true);
-    fetchTrials();
+    if (!key.trim()) return;
+    setLoading(true);
+
+    // Try as trial access key first
+    try {
+      const res = await fetch('/api/clinical-trials/verify-key', {
+        headers: { 'X-Trial-Access-Key': key },
+      });
+      const data = await res.json();
+      if (data.valid) {
+        setAuthMode('access');
+        setOrgInfo({ organisation: data.organisation, issuedTo: data.issuedTo });
+        fetchTrials();
+        setLoading(false);
+        return;
+      }
+    } catch {}
+
+    // Try as admin API key — attempt to list access keys (admin-only endpoint)
+    try {
+      const res = await fetch('/api/clinical-trials/keys', { headers: { 'X-API-Key': key } });
+      if (res.ok) {
+        setAuthMode('admin');
+        fetchTrials();
+        fetchAccessKeys();
+        setLoading(false);
+        return;
+      }
+    } catch {}
+
+    showMessage('Invalid key. Please check and try again.', 'error');
+    setLoading(false);
   };
 
-  useEffect(() => {
-    if (authenticated) fetchTrials();
-  }, [authenticated]);
-
-  const setField = (field, value) => {
-    setForm(prev => ({ ...prev, [field]: value }));
-  };
+  const setField = (field, value) => setForm(prev => ({ ...prev, [field]: value }));
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -67,115 +92,122 @@ export default function ClinicalTrialsAdmin() {
     setLoading(true);
     const payload = {
       trial_id: form.trial_id.toLowerCase().replace(/\s+/g, '-'),
-      category: form.category,
-      name: form.name,
-      description: form.description,
+      category: form.category, name: form.name, description: form.description,
       weblink: form.weblink,
-      inclusion_criteria: form.inclusion_criteria
-        .split('\n')
-        .map(s => s.trim())
-        .filter(Boolean),
-      exclusion_criteria: form.exclusion_criteria
-        .split('\n')
-        .map(s => s.trim())
-        .filter(Boolean),
-      contact: form.contact,
-      sites: form.sites,
+      inclusion_criteria: form.inclusion_criteria.split('\n').map(s => s.trim()).filter(Boolean),
+      exclusion_criteria: form.exclusion_criteria.split('\n').map(s => s.trim()).filter(Boolean),
+      contact: form.contact, sites: form.sites,
     };
 
     try {
       let res;
-      if (editing) {
+      if (editing && authMode === 'admin') {
         res = await fetch(`/api/clinical-trials?id=${editing}`, {
           method: 'PUT',
-          headers: { 'Content-Type': 'application/json', 'X-API-Key': apiKey },
+          headers: { 'Content-Type': 'application/json', 'X-API-Key': key },
           body: JSON.stringify(payload),
         });
       } else {
+        const headers = { 'Content-Type': 'application/json' };
+        if (authMode === 'access') {
+          headers['X-Trial-Access-Key'] = key;
+        } else {
+          headers['X-API-Key'] = key;
+        }
         res = await fetch('/api/clinical-trials', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'X-API-Key': apiKey },
-          body: JSON.stringify(payload),
+          method: 'POST', headers, body: JSON.stringify(payload),
         });
       }
 
       const data = await res.json();
-
       if (res.ok) {
-        showMessage(editing ? 'Trial updated' : 'Trial created');
+        showMessage(editing ? 'Trial updated' : 'Trial submitted');
         setForm(EMPTY_FORM);
         setEditing(null);
         fetchTrials();
       } else {
         showMessage(data.detail || data.error || 'Failed', 'error');
       }
-    } catch {
-      showMessage('Request failed', 'error');
-    } finally {
-      setLoading(false);
-    }
+    } catch { showMessage('Request failed', 'error'); }
+    finally { setLoading(false); }
   };
 
   const handleEdit = (trial) => {
     setEditing(trial.id);
     setForm({
-      trial_id: trial.id,
-      category: trial.category,
-      name: trial.name,
-      description: trial.description || '',
-      weblink: trial.weblink || '',
+      trial_id: trial.id, category: trial.category, name: trial.name,
+      description: trial.description || '', weblink: trial.weblink || '',
       inclusion_criteria: (trial.inclusionCriteria || []).join('\n'),
       exclusion_criteria: (trial.exclusionCriteria || []).join('\n'),
-      contact: trial.contact || '',
-      sites: trial.sites || '',
+      contact: trial.contact || '', sites: trial.sites || '',
     });
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleDelete = async (trialId) => {
-    if (!confirm(`Delete trial "${trialId}"? This cannot be undone.`)) return;
-
+    if (!confirm(`Delete trial "${trialId}"?`)) return;
     try {
       const res = await fetch(`/api/clinical-trials?id=${trialId}`, {
-        method: 'DELETE',
-        headers: { 'X-API-Key': apiKey },
+        method: 'DELETE', headers: { 'X-API-Key': key },
       });
-
-      if (res.ok) {
-        showMessage('Trial deleted');
-        fetchTrials();
-      } else {
-        const data = await res.json();
-        showMessage(data.detail || 'Failed to delete', 'error');
-      }
-    } catch {
-      showMessage('Delete request failed', 'error');
-    }
+      if (res.ok) { showMessage('Trial deleted'); fetchTrials(); }
+      else { const data = await res.json(); showMessage(data.detail || 'Failed', 'error'); }
+    } catch { showMessage('Delete failed', 'error'); }
   };
 
-  const cancelEdit = () => {
-    setEditing(null);
-    setForm(EMPTY_FORM);
+  const handleCreateKey = async (e) => {
+    e.preventDefault();
+    if (!newKeyForm.issued_to || !newKeyForm.organisation) {
+      showMessage('Name and organisation required', 'error'); return;
+    }
+    try {
+      const res = await fetch('/api/clinical-trials/keys', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-API-Key': key },
+        body: JSON.stringify(newKeyForm),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        showMessage(`Key created: ${data.accessKey.key}`);
+        setNewKeyForm({ issued_to: '', organisation: '', email: '' });
+        fetchAccessKeys();
+      } else { showMessage(data.detail || 'Failed', 'error'); }
+    } catch { showMessage('Failed to create key', 'error'); }
+  };
+
+  const handleRevokeKey = async (keyValue) => {
+    if (!confirm(`Revoke access key ${keyValue}?`)) return;
+    try {
+      const res = await fetch(`/api/clinical-trials/keys?key=${keyValue}`, {
+        method: 'DELETE', headers: { 'X-API-Key': key },
+      });
+      if (res.ok) { showMessage('Key revoked'); fetchAccessKeys(); }
+      else { showMessage('Failed to revoke', 'error'); }
+    } catch { showMessage('Revoke failed', 'error'); }
   };
 
   // Auth gate
-  if (!authenticated) {
+  if (!authMode) {
     return (
       <div className={styles.page}>
         <div className={styles.authCard}>
-          <h1>Clinical Trials Admin</h1>
-          <p>Enter your access key to manage trials.</p>
+          <h1>Clinical Trials Portal</h1>
+          <p>Enter your access key to submit or manage trials.</p>
           <div className={styles.authRow}>
             <input
               type="password"
               placeholder="Access key"
-              value={apiKey}
-              onChange={e => setApiKey(e.target.value)}
+              value={key}
+              onChange={e => setKey(e.target.value)}
               onKeyDown={e => e.key === 'Enter' && handleAuth()}
               className={styles.authInput}
+              disabled={loading}
             />
-            <button onClick={handleAuth} className={styles.authBtn}>Enter</button>
+            <button onClick={handleAuth} className={styles.authBtn} disabled={loading}>
+              {loading ? '...' : 'Enter'}
+            </button>
           </div>
+          {message.text && <p className={`${styles.authMessage} ${styles[message.type]}`}>{message.text}</p>}
         </div>
       </div>
     );
@@ -184,159 +216,156 @@ export default function ClinicalTrialsAdmin() {
   return (
     <div className={styles.page}>
       <div className={styles.header}>
-        <h1>Clinical Trials Admin</h1>
-        <p>{trials.length} trials in database</p>
+        <h1>Clinical Trials {authMode === 'admin' ? 'Admin' : 'Submission'}</h1>
+        {orgInfo && <p>Submitting as <strong>{orgInfo.issuedTo}</strong> — {orgInfo.organisation}</p>}
+        {authMode === 'admin' && <p>{trials.length} trials in database</p>}
       </div>
 
       {message.text && (
-        <div className={`${styles.message} ${styles[message.type]}`}>
-          {message.text}
-        </div>
+        <div className={`${styles.message} ${styles[message.type]}`}>{message.text}</div>
       )}
 
-      {/* Add / Edit form */}
+      {/* Trial form */}
       <form onSubmit={handleSubmit} className={styles.form}>
-        <h2>{editing ? `Editing: ${editing}` : 'Add New Trial'}</h2>
+        <h2>{editing ? `Editing: ${editing}` : 'Submit a Trial'}</h2>
 
         <div className={styles.formGrid}>
           <div className={styles.field}>
             <label>Trial ID</label>
-            <input
-              type="text"
-              value={form.trial_id}
-              onChange={e => setField('trial_id', e.target.value)}
-              placeholder="e.g. my-trial-name"
-              disabled={!!editing}
-              required
-            />
+            <input type="text" value={form.trial_id} onChange={e => setField('trial_id', e.target.value)}
+              placeholder="e.g. my-trial-name" disabled={!!editing} required />
           </div>
-
           <div className={styles.field}>
             <label>Name</label>
-            <input
-              type="text"
-              value={form.name}
-              onChange={e => setField('name', e.target.value)}
-              placeholder="e.g. MY-TRIAL"
-              required
-            />
+            <input type="text" value={form.name} onChange={e => setField('name', e.target.value)}
+              placeholder="e.g. MY-TRIAL" required />
           </div>
-
           <div className={styles.field}>
             <label>Category</label>
             <select value={form.category} onChange={e => setField('category', e.target.value)}>
               {CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}
             </select>
           </div>
-
           <div className={styles.field}>
             <label>Weblink</label>
-            <input
-              type="url"
-              value={form.weblink}
-              onChange={e => setField('weblink', e.target.value)}
-              placeholder="https://clinicaltrials.gov/study/NCT..."
-            />
+            <input type="url" value={form.weblink} onChange={e => setField('weblink', e.target.value)}
+              placeholder="https://clinicaltrials.gov/study/NCT..." />
           </div>
-
           <div className={styles.field}>
             <label>Contact</label>
-            <input
-              type="text"
-              value={form.contact}
-              onChange={e => setField('contact', e.target.value)}
-              placeholder="email@example.com"
-            />
+            <input type="text" value={form.contact} onChange={e => setField('contact', e.target.value)}
+              placeholder="email@example.com" />
           </div>
-
           <div className={styles.field}>
             <label>Sites</label>
-            <input
-              type="text"
-              value={form.sites}
-              onChange={e => setField('sites', e.target.value)}
-              placeholder="Hospital A, Hospital B, Hospital C"
-            />
+            <input type="text" value={form.sites} onChange={e => setField('sites', e.target.value)}
+              placeholder="Hospital A, Hospital B" />
           </div>
         </div>
 
         <div className={styles.field}>
           <label>Description</label>
-          <textarea
-            value={form.description}
-            onChange={e => setField('description', e.target.value)}
-            rows={3}
-            placeholder="Brief description of the trial..."
-          />
+          <textarea value={form.description} onChange={e => setField('description', e.target.value)}
+            rows={3} placeholder="Brief description of the trial..." />
         </div>
 
         <div className={styles.fieldRow}>
           <div className={styles.field}>
             <label>Inclusion Criteria (one per line)</label>
-            <textarea
-              value={form.inclusion_criteria}
-              onChange={e => setField('inclusion_criteria', e.target.value)}
-              rows={6}
-              placeholder={"Age \u226518\nECOG 0-2\nNPM1 mutated"}
-            />
+            <textarea value={form.inclusion_criteria} onChange={e => setField('inclusion_criteria', e.target.value)}
+              rows={6} placeholder={"Age \u226518\nECOG 0-2\nNPM1 mutated"} />
           </div>
-
           <div className={styles.field}>
             <label>Exclusion Criteria (one per line)</label>
-            <textarea
-              value={form.exclusion_criteria}
-              onChange={e => setField('exclusion_criteria', e.target.value)}
-              rows={6}
-              placeholder={"Prior therapy for AML\nActive CNS involvement"}
-            />
+            <textarea value={form.exclusion_criteria} onChange={e => setField('exclusion_criteria', e.target.value)}
+              rows={6} placeholder={"Prior therapy for AML\nActive CNS involvement"} />
           </div>
         </div>
 
         <div className={styles.formActions}>
           <button type="submit" disabled={loading} className={styles.submitBtn}>
-            {loading ? 'Saving...' : editing ? 'Update Trial' : 'Add Trial'}
+            {loading ? 'Saving...' : editing ? 'Update Trial' : 'Submit Trial'}
           </button>
-          {editing && (
-            <button type="button" onClick={cancelEdit} className={styles.cancelBtn}>
-              Cancel
-            </button>
-          )}
+          {editing && <button type="button" onClick={() => { setEditing(null); setForm(EMPTY_FORM); }} className={styles.cancelBtn}>Cancel</button>}
         </div>
       </form>
 
-      {/* Existing trials table */}
-      <div className={styles.tableWrapper}>
-        <h2>Existing Trials</h2>
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Category</th>
-              <th>Sites</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {trials.map(trial => (
-              <tr key={trial.id}>
-                <td>
-                  <strong>{trial.name}</strong>
-                  <br />
-                  <span className={styles.trialId}>{trial.id}</span>
-                </td>
-                <td>{trial.category}</td>
-                <td className={styles.sitesCell}>{(trial.sites || '').substring(0, 60)}{(trial.sites || '').length > 60 ? '...' : ''}</td>
-                <td>
-                  <div className={styles.actionBtns}>
-                    <button onClick={() => handleEdit(trial)} className={styles.editBtn}>Edit</button>
-                    <button onClick={() => handleDelete(trial.id)} className={styles.deleteBtn}>Delete</button>
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      {/* Admin-only sections */}
+      {authMode === 'admin' && (
+        <>
+          {/* Access key management */}
+          <div className={styles.section}>
+            <h2>Access Keys</h2>
+            <p className={styles.sectionHint}>Generate keys to give to hospitals and specialists so they can submit trials.</p>
+
+            <form onSubmit={handleCreateKey} className={styles.keyForm}>
+              <input type="text" placeholder="Person name" value={newKeyForm.issued_to}
+                onChange={e => setNewKeyForm(prev => ({ ...prev, issued_to: e.target.value }))} required />
+              <input type="text" placeholder="Organisation" value={newKeyForm.organisation}
+                onChange={e => setNewKeyForm(prev => ({ ...prev, organisation: e.target.value }))} required />
+              <input type="email" placeholder="Email (optional)" value={newKeyForm.email}
+                onChange={e => setNewKeyForm(prev => ({ ...prev, email: e.target.value }))} />
+              <button type="submit" className={styles.submitBtn}>Generate Key</button>
+            </form>
+
+            {accessKeys.length > 0 && (
+              <table className={styles.table}>
+                <thead>
+                  <tr>
+                    <th>Key</th>
+                    <th>Issued To</th>
+                    <th>Organisation</th>
+                    <th>Uses</th>
+                    <th>Status</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {accessKeys.map(ak => (
+                    <tr key={ak.key} className={!ak.isActive ? styles.revokedRow : ''}>
+                      <td><code className={styles.keyCode}>{ak.key}</code></td>
+                      <td>{ak.issuedTo}</td>
+                      <td>{ak.organisation}</td>
+                      <td>{ak.uses}</td>
+                      <td>{ak.isActive ? 'Active' : 'Revoked'}</td>
+                      <td>
+                        {ak.isActive && (
+                          <button onClick={() => handleRevokeKey(ak.key)} className={styles.deleteBtn}>Revoke</button>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
+          </div>
+
+          {/* Existing trials table */}
+          <div className={styles.section}>
+            <h2>Existing Trials</h2>
+            <table className={styles.table}>
+              <thead>
+                <tr><th>Name</th><th>Category</th><th>Sites</th><th>Actions</th></tr>
+              </thead>
+              <tbody>
+                {trials.map(trial => (
+                  <tr key={trial.id}>
+                    <td><strong>{trial.name}</strong><br /><span className={styles.trialId}>{trial.id}</span></td>
+                    <td>{trial.category}</td>
+                    <td className={styles.sitesCell}>{(trial.sites || '').substring(0, 60)}{(trial.sites || '').length > 60 ? '...' : ''}</td>
+                    <td>
+                      <div className={styles.actionBtns}>
+                        <button onClick={() => handleEdit(trial)} className={styles.editBtn}>Edit</button>
+                        <button onClick={() => handleDelete(trial.id)} className={styles.deleteBtn}>Delete</button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )}
     </div>
   );
 }

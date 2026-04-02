@@ -71,6 +71,11 @@
   opacity: 0.9;
 }
 
+.authMessage {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+}
+
 /* Messages */
 .message {
   padding: 0.75rem 1rem;
@@ -293,6 +298,60 @@
   color: white;
   transform: none;
   opacity: 1;
+}
+
+/* Sections */
+.section {
+  margin-top: 2rem;
+}
+
+.section h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.sectionHint {
+  font-size: 0.88rem;
+  color: #607d8b;
+  margin-bottom: 1rem;
+}
+
+/* Key form */
+.keyForm {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.keyForm input {
+  padding: 0.55rem 0.75rem;
+  border: 1px solid #b0bec5;
+  border-radius: var(--border-radius);
+  font-size: 0.9rem;
+  flex: 1;
+  min-width: 140px;
+}
+
+.keyForm input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 150, 136, 0.1);
+}
+
+.keyCode {
+  font-family: monospace;
+  font-size: 0.85rem;
+  background: #eceff1;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  letter-spacing: 0.05em;
+}
+
+.revokedRow {
+  opacity: 0.5;
 }
 
 /* Mobile */
