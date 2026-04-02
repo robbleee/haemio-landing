@@ -17,7 +17,14 @@
       "Other active malignancy requiring treatment"
     ],
     "contact": "",
-    "sites": "Multiple"
+    "sites": "Multiple",
+    "genetics": {
+      "required": ["NPM1"],
+      "excluded": ["FLT3-ITD"],
+      "iccMatch": ["AML with mutated NPM1"]
+    },
+    "fitness": "intensive",
+    "phase": "Phase 2"
   },
   {
     "id": "optimise-flt3",
@@ -38,7 +45,14 @@
       "Blast transformation of chronic myeloid leukaemia (CML)"
     ],
     "contact": "optimise-flt3@cardiff.ac.uk",
-    "sites": "Multiple"
+    "sites": "Multiple",
+    "genetics": {
+      "required": ["FLT3-ITD"],
+      "excluded": [],
+      "iccMatch": ["AML with mutated NPM1", "AML, NOS", "AML with myelodysplasia related gene mutation", "AML with myelodysplasia related cytogenetic abnormality"]
+    },
+    "fitness": "intensive",
+    "phase": "Phase 3"
   },
   {
     "id": "evolve-1",
@@ -64,7 +78,14 @@
       "AML with BCR-ABL1; or myeloid blast crisis of CML"
     ],
     "contact": "",
-    "sites": "Multiple"
+    "sites": "Multiple",
+    "genetics": {
+      "required": ["IDH1"],
+      "excluded": [],
+      "iccMatch": []
+    },
+    "fitness": "non-intensive",
+    "phase": "Phase 3"
   },
   {
     "id": "evolve-2",
@@ -90,7 +111,14 @@
       "AML with BCR-ABL1; or myeloid blast crisis of CML"
     ],
     "contact": "",
-    "sites": "Multiple"
+    "sites": "Multiple",
+    "genetics": {
+      "required": ["NPM1", "KMT2A"],
+      "excluded": [],
+      "iccMatch": ["AML with mutated NPM1", "AML with KMT2A rearrangement"]
+    },
+    "fitness": "non-intensive",
+    "phase": "Phase 3"
   },
   {
     "id": "aztound",
@@ -104,7 +132,14 @@
     ],
     "exclusionCriteria": [],
     "contact": "",
-    "sites": "King's College Hospital"
+    "sites": "King's College Hospital",
+    "genetics": {
+      "required": [],
+      "excluded": [],
+      "iccMatch": []
+    },
+    "fitness": "non-intensive",
+    "phase": "Phase 2"
   },
   {
     "id": "komen-017",
@@ -120,7 +155,14 @@
     ],
     "exclusionCriteria": [],
     "contact": "",
-    "sites": "Barts, Guys & St Thomas', Leeds, St George's, Wolverhampton"
+    "sites": "Barts, Guys & St Thomas', Leeds, St George's, Wolverhampton",
+    "genetics": {
+      "required": ["NPM1", "KMT2A"],
+      "excluded": [],
+      "iccMatch": ["AML with mutated NPM1", "AML with KMT2A rearrangement"]
+    },
+    "fitness": "both",
+    "phase": "Phase 3"
   },
   {
     "id": "camelot-2",
@@ -134,7 +176,14 @@
     ],
     "exclusionCriteria": [],
     "contact": "",
-    "sites": "Brighton, Cambridge, Canterbury, Colchester, Edinburgh, Liverpool, Guys & St Thomas', Plymouth, Worthing"
+    "sites": "Brighton, Cambridge, Canterbury, Colchester, Edinburgh, Liverpool, Guys & St Thomas', Plymouth, Worthing",
+    "genetics": {
+      "required": ["NPM1", "KMT2A"],
+      "excluded": [],
+      "iccMatch": ["AML with mutated NPM1", "AML with KMT2A rearrangement"]
+    },
+    "fitness": "non-intensive",
+    "phase": "Phase 3"
   },
   {
     "id": "quantum-wild",
@@ -156,7 +205,14 @@
       "Newly diagnosed AML with FLT3-ITD mutations \u22655% VAF (or \u22650.05 SR) based on a validated FLT3 mutation assay"
     ],
     "contact": "",
-    "sites": "Queen Elizabeth Hospital Birmingham, King's College Hospital, Hammersmith Hospital, Maidstone, Manchester Royal Infirmary, Oxford, Torquay"
+    "sites": "Queen Elizabeth Hospital Birmingham, King's College Hospital, Hammersmith Hospital, Maidstone, Manchester Royal Infirmary, Oxford, Torquay",
+    "genetics": {
+      "required": [],
+      "excluded": ["FLT3-ITD"],
+      "iccMatch": ["AML with mutated NPM1", "AML with in-frame bZIP mutated CEBPA", "AML, NOS"]
+    },
+    "fitness": "intensive",
+    "phase": "Phase 3"
   },
   {
     "id": "camelot-1",
@@ -170,7 +226,14 @@
     ],
     "exclusionCriteria": [],
     "contact": "",
-    "sites": "Cardiff, The Christie, Liverpool, Guys & St Thomas', Leeds, Oxford, Plymouth, UCLH"
+    "sites": "Cardiff, The Christie, Liverpool, Guys & St Thomas', Leeds, Oxford, Plymouth, UCLH",
+    "genetics": {
+      "required": ["NPM1", "KMT2A"],
+      "excluded": [],
+      "iccMatch": ["AML with mutated NPM1", "AML with KMT2A rearrangement"]
+    },
+    "fitness": null,
+    "phase": "Phase 1/2"
   },
   {
     "id": "dsp-5336",
@@ -184,7 +247,14 @@
     ],
     "exclusionCriteria": [],
     "contact": "",
-    "sites": "Queen Elizabeth Hospital Birmingham, The Christie, Oxford, Kings' College Hospital, Guys & St Thomas' Hospital"
+    "sites": "Queen Elizabeth Hospital Birmingham, The Christie, Oxford, Kings' College Hospital, Guys & St Thomas' Hospital",
+    "genetics": {
+      "required": ["NPM1", "KMT2A", "TP53"],
+      "excluded": [],
+      "iccMatch": ["AML with mutated NPM1", "AML with KMT2A rearrangement", "AML with mutated TP53"]
+    },
+    "fitness": null,
+    "phase": "Phase 1/2"
   },
   {
     "id": "apl0498",
@@ -203,7 +273,14 @@
       "Allogeneic transplant within 6 months of screening"
     ],
     "contact": "",
-    "sites": "Cardiff, The Royal Marsden, Guys & St Thomas'"
+    "sites": "Cardiff, The Royal Marsden, Guys & St Thomas'",
+    "genetics": {
+      "required": [],
+      "excluded": [],
+      "iccMatch": []
+    },
+    "fitness": null,
+    "phase": "Phase 1"
   },
   {
     "id": "jnj-89853413",
@@ -224,7 +301,14 @@
       "Active CNS involvement"
     ],
     "contact": "",
-    "sites": "Cambridge, UCLH, The Christie"
+    "sites": "Cambridge, UCLH, The Christie",
+    "genetics": {
+      "required": [],
+      "excluded": [],
+      "iccMatch": []
+    },
+    "fitness": null,
+    "phase": "Phase 1/2"
   },
   {
     "id": "momentum",
@@ -240,7 +324,14 @@
       "Active CNS involvement"
     ],
     "contact": "",
-    "sites": "The Christie"
+    "sites": "The Christie",
+    "genetics": {
+      "required": ["NPM1", "KMT2A"],
+      "excluded": [],
+      "iccMatch": ["AML with mutated NPM1", "AML with KMT2A rearrangement"]
+    },
+    "fitness": null,
+    "phase": "Phase 1/2"
   },
   {
     "id": "biodrive-afs",
@@ -260,7 +351,14 @@
       "Planned chemotherapy using any regimen that mandates the use of systemic antifungal medication"
     ],
     "contact": "biodrive-group@york.ac.uk",
-    "sites": "Multiple"
+    "sites": "Multiple",
+    "genetics": {
+      "required": [],
+      "excluded": [],
+      "iccMatch": []
+    },
+    "fitness": null,
+    "phase": "Randomised Controlled Trial"
   },
   {
     "id": "propel",
@@ -285,7 +383,14 @@
       "Undergoing single agent Azacitidine, single agent low dose Cytarabine, Menin inhibitors or FLT3 inhibitor treatment without planned HSCT"
     ],
     "contact": "propel@warwick.ac.uk",
-    "sites": "Multiple"
+    "sites": "Multiple",
+    "genetics": {
+      "required": [],
+      "excluded": [],
+      "iccMatch": []
+    },
+    "fitness": null,
+    "phase": "Randomised Controlled Trial"
   },
   {
     "id": "mo-trans",
@@ -307,7 +412,14 @@
       "Macular oedema"
     ],
     "contact": "",
-    "sites": "Queen Elizabeth Hospital Birmingham, Cardiff, Glasgow, Imperial College London, Newcastle, Oxford, Sheffield"
+    "sites": "Queen Elizabeth Hospital Birmingham, Cardiff, Glasgow, Imperial College London, Newcastle, Oxford, Sheffield",
+    "genetics": {
+      "required": [],
+      "excluded": [],
+      "iccMatch": []
+    },
+    "fitness": null,
+    "phase": "Phase 3"
   },
   {
     "id": "grace",
@@ -335,6 +447,13 @@
       "Prior allogeneic stem cell transplant"
     ],
     "contact": "kch-tr.gracestudy@nhs.net",
-    "sites": "Kings' College Hospital, The Christie, The Royal Marsden"
+    "sites": "Kings' College Hospital, The Christie, The Royal Marsden",
+    "genetics": {
+      "required": ["TP53"],
+      "excluded": [],
+      "iccMatch": ["AML with mutated TP53"]
+    },
+    "fitness": "intensive",
+    "phase": "Phase 1/2"
   }
 ]
