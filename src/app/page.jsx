@@ -53,11 +53,7 @@ export default function Home() {
       <HeroSection />
       <HowItWorksSection />
       <ProductWalkthrough />
-      <DemoSection />
-
-      <FeaturesSection />
       <StatsSection />
-      <StandardsSection />
       <LearnSection />
       <CtaSection />
     </>
