@@ -266,6 +266,30 @@ export default function ClinicalTrialsPage() {
           )}
         </div>
 
+        {/* Postcode + Search row */}
+        <div className={styles.postcodeRow}>
+          <input
+            type="text"
+            placeholder="Enter UK postcode"
+            value={postcode}
+            onChange={e => setPostcode(e.target.value)}
+            onKeyDown={e => e.key === 'Enter' && lookupPostcode()}
+            className={styles.postcodeInput}
+          />
+          <button
+            onClick={lookupPostcode}
+            disabled={postcodeLoading || !postcode.trim()}
+            className={styles.postcodeBtn}
+          >
+            {postcodeLoading ? '...' : 'Find nearest'}
+          </button>
+          {userCoords && (
+            <button onClick={clearPostcode} className={styles.postcodeClear} aria-label="Clear postcode">&times;</button>
+          )}
+          {postcodeError && <span className={styles.postcodeError}>{postcodeError}</span>}
+          {userCoords && <span className={styles.postcodeSuccess}>Sorted by approximate distance</span>}
+        </div>
+
         {/* Category pills */}
         <div className={styles.filters}>
           {categories.map(cat => (
@@ -297,34 +321,6 @@ export default function ClinicalTrialsPage() {
         {/* Advanced filter panel */}
         {showFilters && (
           <div className={styles.advancedPanel}>
-            {/* Postcode distance */}
-            <div className={`${styles.filterGroup} ${styles.postcodeGroup}`}>
-              <h3 className={styles.filterGroupTitle}>Distance from postcode</h3>
-              <p className={styles.filterGroupHint}>Enter a UK postcode to see distance to nearest trial site</p>
-              <div className={styles.postcodeRow}>
-                <input
-                  type="text"
-                  placeholder="e.g. SW1A 1AA"
-                  value={postcode}
-                  onChange={e => setPostcode(e.target.value)}
-                  onKeyDown={e => e.key === 'Enter' && lookupPostcode()}
-                  className={styles.postcodeInput}
-                />
-                <button
-                  onClick={lookupPostcode}
-                  disabled={postcodeLoading || !postcode.trim()}
-                  className={styles.postcodeBtn}
-                >
-                  {postcodeLoading ? '...' : 'Find'}
-                </button>
-                {userCoords && (
-                  <button onClick={clearPostcode} className={styles.postcodeClear}>&times;</button>
-                )}
-              </div>
-              {postcodeError && <p className={styles.postcodeError}>{postcodeError}</p>}
-              {userCoords && <p className={styles.postcodeSuccess}>Showing approximate straight-line distances. Trials sorted by nearest site.</p>}
-            </div>
-
             {/* Genetic markers */}
             <div className={styles.filterGroup}>
               <h3 className={styles.filterGroupTitle}>Genetic Markers</h3>

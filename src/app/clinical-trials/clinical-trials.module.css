@@ -254,14 +254,12 @@
 }
 
 /* Postcode distance */
-.postcodeGroup {
-  grid-column: 1 / -1;
-}
-
 .postcodeRow {
   display: flex;
   gap: 0.5rem;
   align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
 }
 
 .postcodeInput {
