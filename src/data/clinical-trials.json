@@ -1,0 +1,340 @@
+[
+  {
+    "id": "victor",
+    "category": "Newly Diagnosed",
+    "name": "VICTOR",
+    "description": "International phase 2 randomised controlled trial comparing venetoclax-low dose cytarabine with standard intensive chemotherapy in newly diagnosed AML",
+    "weblink": "",
+    "weblinkText": "A trial of venetoclax with low dose cytarabine for acute myeloid leukaemia (VICTOR)",
+    "inclusionCriteria": [
+      "Age \u226550",
+      "Fit for intensive therapy",
+      "NPM1 mutated FLT3-ITD negative",
+      "CD33 positive acute myeloid leukemia"
+    ],
+    "exclusionCriteria": [
+      "Receipt of any previous therapy for AML or any antecedent haematological condition (the use of oral hydroxycarbamide to control white blood cell count is permitted)",
+      "Other active malignancy requiring treatment"
+    ],
+    "contact": "",
+    "sites": "Multiple"
+  },
+  {
+    "id": "optimise-flt3",
+    "category": "Newly Diagnosed",
+    "name": "OPTIMISE-FLT3",
+    "description": "International phase 3 randomised controlled trial comparing intensive treatment strategies for newly diagnosed FLT3-mutated AML",
+    "weblink": "https://www.cardiff.ac.uk/centre-for-trials-research/research/studies-and-trials/view/optimise-flt3",
+    "weblinkText": "",
+    "inclusionCriteria": [
+      "Age \u226516",
+      "Fit for intensive therapy",
+      "FLT3-ITD or FLT3-TKD mutated",
+      "New presentations requiring emergency treatment can be enrolled prior to FLT3 result"
+    ],
+    "exclusionCriteria": [
+      "Receipt of any previous therapy for AML or any antecedent haematological condition (the use of oral hydroxycarbamide to control white blood cell count is permitted)",
+      "Other active malignancy requiring treatment",
+      "Blast transformation of chronic myeloid leukaemia (CML)"
+    ],
+    "contact": "optimise-flt3@cardiff.ac.uk",
+    "sites": "Multiple"
+  },
+  {
+    "id": "evolve-1",
+    "category": "Newly Diagnosed",
+    "name": "EVOLVE-1",
+    "description": "International phase 3 randomised trial of newly diagnosed patients ineligible for intensive chemotherapy with IDH1m AML using ivosidenib plus azacitidine \u00b1 venetoclax.",
+    "weblink": "https://clinicaltrials.gov/study/NCT07075016",
+    "weblinkText": "",
+    "inclusionCriteria": [
+      "Patients with newly diagnosed IDH1-mutated AML or MDS/AML according to the 2022 International Consensus Classification",
+      "Age \u2265 18 years, no upper age limit",
+      "Ineligible for intensive induction chemotherapy by meeting at least 1 of the following criteria:",
+      "\u2265 75 years of age ineligible for intensive chemotherapy per physician\u2019s discretion (ECOG PS 0-2)",
+      "18-74 years: not eligible for standard chemotherapy with any of the following co-morbidities:",
+      "ECOG PS 2 or 3",
+      "Cardiac history of chronic heart failure requiring treatment; or with an ejection fraction \u226450%; or chronic stable angina",
+      "DLCO \u2264 65% or FEV1 \u2264 65%",
+      "Creatinine clearance \u2265 30 mL/min to <45 ml/min calculated by the Cockcroft Gault formula",
+      "Moderate hepatic impairment with total bilirubin > 1.5 to < 3.0 x upper limit of normal (ULN)"
+    ],
+    "exclusionCriteria": [
+      "Previous AML treatment except hydroxyurea to control WBC counts. ESA or luspatercept for MDS is allowed. Prior hypomethylating agent for MDS-EB is not allowed.",
+      "AML with BCR-ABL1; or myeloid blast crisis of CML"
+    ],
+    "contact": "",
+    "sites": "Multiple"
+  },
+  {
+    "id": "evolve-2",
+    "category": "Newly Diagnosed",
+    "name": "EVOLVE-2",
+    "description": "International phase 3 randomised trial of newly diagnosed patients ineligible for intensive chemotherapy with either NPM1m or KMT2Ar AML 1:1 to venetoclax plus-azacitidine \u00b1 revumenib (menin inhibitor).",
+    "weblink": "https://clinicaltrials.gov/study/NCT06652438",
+    "weblinkText": "",
+    "inclusionCriteria": [
+      "Patients with newly diagnosed NPM1-mutated or KMT2A-rearranged AML or MDS/AML according to the 2022 International Consensus Classification",
+      "Age \u2265 18 years, no upper age limit",
+      "Ineligible for intensive induction chemotherapy by meeting at least 1 of the following criteria:",
+      "\u2265 75 years of age ineligible for intensive chemotherapy per physician\u2019s discretion (ECOG PS 0-2)",
+      "18-74 years: not eligible for standard chemotherapy with any of the following co-morbidities:",
+      "ECOG PS 2 or 3",
+      "Cardiac history of chronic heart failure requiring treatment; or with an ejection fraction \u226450%; or chronic stable angina",
+      "DLCO \u2264 65% or FEV1 \u2264 65%",
+      "Creatinine clearance \u2265 30 mL/min to <45 ml/min calculated by the Cockcroft Gault formula",
+      "Moderate hepatic impairment with total bilirubin > 1.5 to < 3.0 x upper limit of normal (ULN)"
+    ],
+    "exclusionCriteria": [
+      "Previous AML treatment except hydroxyurea to control WBC counts. ESA or luspatercept for MDS is allowed. Prior hypomethylating agent for MDS-EB is not allowed.",
+      "AML with BCR-ABL1; or myeloid blast crisis of CML"
+    ],
+    "contact": "",
+    "sites": "Multiple"
+  },
+  {
+    "id": "aztound",
+    "category": "Newly Diagnosed",
+    "name": "AZTOUND",
+    "description": "Phase 2 trial assessing oral azacitidine and venetoclax in newly diagnosed AML unfit for intensive therapy",
+    "weblink": "",
+    "weblinkText": "",
+    "inclusionCriteria": [
+      "Age >75 or <75 with comorbidity/ECOG 2"
+    ],
+    "exclusionCriteria": [],
+    "contact": "",
+    "sites": "King's College Hospital"
+  },
+  {
+    "id": "komen-017",
+    "category": "Newly Diagnosed",
+    "name": "KOMEN-017",
+    "description": "International phase 3 randomised placebo-controlled trial assessing ziftomenib in combination with intensive therapy or Venetoclax-Azacitidine in patients with untreated NPM1 mutated or KMT2A-rearranged acute myeloid leukaemia",
+    "weblink": "https://clinicaltrials.gov/study/NCT07007312",
+    "weblinkText": "",
+    "inclusionCriteria": [
+      "Patients with newly diagnosed NPM1-mutated or KMT2A-rearranged AML",
+      "Intensive arm: Newly diagnosed NPM1-mutated or KMT2A-rearranged AML",
+      "Non-intensive arm: Newly diagnosed NPM1-mutated AML"
+    ],
+    "exclusionCriteria": [],
+    "contact": "",
+    "sites": "Barts, Guys & St Thomas', Leeds, St George's, Wolverhampton"
+  },
+  {
+    "id": "camelot-2",
+    "category": "Newly Diagnosed",
+    "name": "CAMELOT-2",
+    "description": "Phase 3 Randomised, Double-blind, Placebo-controlled, Study of Bleximenib, Venetoclax and Azacitidine for with untreated NPM1 mutated or KMT2A-rearranged acute myeloid leukaemia ineligible for Intensive Chemotherapy",
+    "weblink": "https://clinicaltrials.gov/study/NCT06852222",
+    "weblinkText": "",
+    "inclusionCriteria": [
+      "Patients with newly diagnosed NPM1-mutated or KMT2A-rearranged AML Ineligible for Intensive Chemotherapy"
+    ],
+    "exclusionCriteria": [],
+    "contact": "",
+    "sites": "Brighton, Cambridge, Canterbury, Colchester, Edinburgh, Liverpool, Guys & St Thomas', Plymouth, Worthing"
+  },
+  {
+    "id": "quantum-wild",
+    "category": "Newly Diagnosed",
+    "name": "QUANTUM-WILD",
+    "description": "Phase 3, Double-Blind, Randomised, Placebo-Controlled Trial Of Quizartinib or Placebo Plus Chemotherapy in Newly Diagnosed Patients With FLT3-ITD Negative AML",
+    "weblink": "https://clinicaltrials.gov/study/NCT06578247",
+    "weblinkText": "",
+    "inclusionCriteria": [
+      "Age \u2265 18 years and \u226470",
+      "Newly diagnosed, morphologically documented primary AML based on World Health Organization (WHO) 2016 classification",
+      "ECOG performance status 0-2",
+      "Patient fit for standard \u201c7+3\u201d induction chemotherapy regimen"
+    ],
+    "exclusionCriteria": [
+      "Acute promyelocytic leukemia (APL), or BCR-ABL positive leukaemia",
+      "AML secondary to prior chemotherapy or radiotherapy",
+      "AML with known antecedent MDS, MPN or MDS/MPNs including chronic myelomonocytic leukemia (CMML), atypical chronic myeloid leukemia (aCML), juvenile myelomonocytic leukemia (JMML) and others",
+      "Newly diagnosed AML with FLT3-ITD mutations \u22655% VAF (or \u22650.05 SR) based on a validated FLT3 mutation assay"
+    ],
+    "contact": "",
+    "sites": "Queen Elizabeth Hospital Birmingham, King's College Hospital, Hammersmith Hospital, Maidstone, Manchester Royal Infirmary, Oxford, Torquay"
+  },
+  {
+    "id": "camelot-1",
+    "category": "Relapsed/Refractory",
+    "name": "CAMELOT-1",
+    "description": "Phase 1/2 study of the menin inhibitor bleximenib in relapsed/refractory (R/R) NPM1 mutated or KMT2A rearranged AML",
+    "weblink": "https://clinicaltrials.gov/study/NCT04811560",
+    "weblinkText": "",
+    "inclusionCriteria": [
+      "R/R AML with either NPM1-mutation or KMT2A-rearrangement"
+    ],
+    "exclusionCriteria": [],
+    "contact": "",
+    "sites": "Cardiff, The Christie, Liverpool, Guys & St Thomas', Leeds, Oxford, Plymouth, UCLH"
+  },
+  {
+    "id": "dsp-5336",
+    "category": "Relapsed/Refractory",
+    "name": "DSP-5336",
+    "description": "Phase 1/2 study of the menin inhibitor enzomenib in relapsed/refractory (R/R) NPM1 mutated or KMT2A rearranged AML",
+    "weblink": "https://clinicaltrials.gov/study/NCT04988555",
+    "weblinkText": "",
+    "inclusionCriteria": [
+      "R/R AML blasts >5% with NPM1m, KMT2Ar, TP53m, NUP98, UBTF-TD"
+    ],
+    "exclusionCriteria": [],
+    "contact": "",
+    "sites": "Queen Elizabeth Hospital Birmingham, The Christie, Oxford, Kings' College Hospital, Guys & St Thomas' Hospital"
+  },
+  {
+    "id": "apl0498",
+    "category": "Relapsed/Refractory",
+    "name": "APL0498",
+    "description": "Phase 1 study to investigate the safety and efficacy of APL-4098 alone, and in combination with azacitidine or azacitidine and venetoclax in AML and MDS/AML",
+    "weblink": "https://clinicaltrials.gov/study/NCT06372717",
+    "weblinkText": "",
+    "inclusionCriteria": [
+      "Age \u226518",
+      "R/R AML (primary or secondary, including treatment-related), participant is intolerant to, or considered ineligible for available therapies known to provide clinical benefit. Must have \u22655% blasts in BM or \u22651% blasts in the peripheral blood.",
+      "MDS/AML defined as diagnosis of MDS with 10-19% BM blasts who have not had a response after at least four cycles of treatment with a monotherapy hypomethylating agent (HMA)",
+      "MDS with 5%-9% bone marrow blasts who are not benefiting with monotherapy hypomethylating agents (Phase 1 only; MDS-EB patients will not be enrolled in the Phase 2 part of the study)"
+    ],
+    "exclusionCriteria": [
+      "Allogeneic transplant within 6 months of screening"
+    ],
+    "contact": "",
+    "sites": "Cardiff, The Royal Marsden, Guys & St Thomas'"
+  },
+  {
+    "id": "jnj-89853413",
+    "category": "Relapsed/Refractory",
+    "name": "JNJ-89853413",
+    "description": "Phase 1/2 study of a CD33xV\u03b42 T-Cell Engager for Relapsed or Refractory Acute Myeloid Leukemia or Myelodysplastic Neoplasms",
+    "weblink": "https://clinicaltrials.gov/study/NCT06618001",
+    "weblinkText": "",
+    "inclusionCriteria": [
+      "Age \u226518",
+      "Relapsed/refractory acute myeloid leukemia (AML) or relapsed/refractory moderate high, high, or very high risk IPSS-M myelodysplastic neoplasms (MDS)",
+      "eGFR \u226540 mL/min, ECOG 0-2"
+    ],
+    "exclusionCriteria": [
+      "Corticosteroids >10 mg daily prednisone equivalents, autoimmune disease that requires systemic immunosuppressive medications",
+      "AlloHSCT within 3 months",
+      "Uncontrolled systemic viral, bacterial, or fungal infection",
+      "Active CNS involvement"
+    ],
+    "contact": "",
+    "sites": "Cambridge, UCLH, The Christie"
+  },
+  {
+    "id": "momentum",
+    "category": "Relapsed/Refractory",
+    "name": "MOMENTUM",
+    "description": "Phase 1/2 study of AZD3632 Monotherapy or in Combination With Anticancer Agents in Participants With Advanced Haematologic Malignancies With KMT2Ar, NPM1m, or Other Genotypes Associated With HOX Overexpression",
+    "weblink": "https://clinicaltrials.gov/study/NCT07155226",
+    "weblinkText": "",
+    "inclusionCriteria": [
+      "R/R AML blasts >5% with NPM1m, KMT2Ar, KMT2A-PTD, other menin-dependent mutations/translocations"
+    ],
+    "exclusionCriteria": [
+      "Active CNS involvement"
+    ],
+    "contact": "",
+    "sites": "The Christie"
+  },
+  {
+    "id": "biodrive-afs",
+    "category": "Supportive Care",
+    "name": "BioDriveAFS",
+    "description": "BioDrive seeks to identify the most effective way to prevent and detect fungal infection in patients with acute leukaemia (acute myeloid leukaemia, acute lymphoblastic leukaemia, high-risk myelodysplastic syndromes and transformed myeloproliferative neoplasms); assessing if monitoring the risk of fungal infection by regular blood tests is safe and reduces the need to use antifungal drugs.",
+    "weblink": "https://biodrive-rct.com/",
+    "weblinkText": "",
+    "inclusionCriteria": [
+      "Age \u226516 years",
+      "Diagnosis of new, or relapsed, acute leukaemia or haematological disorder judged to need chemotherapy by the patient\u2019s clinical care team, including AML, ALL, HRMDS, or AML transformation of a myeloproliferative neoplasm (tMPN)",
+      "Patient expected to have prolonged neutropenia related to chemotherapy which would mandate either antifungal prophylaxis and/or systematic invasive fungal infection biomarker monitoring (at least weekly)"
+    ],
+    "exclusionCriteria": [
+      "Previous proven or probable invasive fungal infection (IFI) (according to the EORTC/MSG criteria)",
+      "Contraindication to all potential prophylactic antifungal agents",
+      "Planned chemotherapy using any regimen that mandates the use of systemic antifungal medication"
+    ],
+    "contact": "biodrive-group@york.ac.uk",
+    "sites": "Multiple"
+  },
+  {
+    "id": "propel",
+    "category": "Supportive Care",
+    "name": "PROPEL",
+    "description": "PROPEL is a multicentre randomised controlled trial comparing best practice usual care (BPUC) with a personalised prehabilitation care package (PPCP) incorporating a 12-month internal pilot, parallel process evaluation and economic evaluation.",
+    "weblink": "",
+    "weblinkText": "",
+    "inclusionCriteria": [
+      "Age \u2265 16 years, treated on adult AML pathway",
+      "Diagnosis of either AML or MDS-EB2 (MDS with \u226510% blasts in the bone marrow) following first diagnosis or disease relapse",
+      "In complete morphological remission (defined <5% blasts in bone marrow)",
+      "Planned to receive either: Intensive treatment (e.g. anthracycline/cytarabine based chemotherapy and/or HSCT), or lower intensity treatment (i.e. Venetoclax based treatment) with HSCT \u2013 Pathway 1",
+      "Or: Planned to receive lower intensity treatment without HSCT (e.g. Venetoclax or Ivosidenib based treatment) - Pathway 2",
+      "Prior to, or within the 1st course of treatment following remission",
+      "Planned to receive at least one further full cycle of treatment (chemotherapy or HSCT) post randomisation",
+      "Access to the internet and an email address",
+      "Willing to use videoconferencing to undertake the appointments and sessions"
+    ],
+    "exclusionCriteria": [
+      "Diagnosis of Acute Promyelocytic Leukaemia",
+      "Undergoing single agent Azacitidine, single agent low dose Cytarabine, Menin inhibitors or FLT3 inhibitor treatment without planned HSCT"
+    ],
+    "contact": "propel@warwick.ac.uk",
+    "sites": "Multiple"
+  },
+  {
+    "id": "mo-trans",
+    "category": "Transplant",
+    "name": "MO-TRANS",
+    "description": "MO-TRANS is a randomised multi-centre phase 3 trial of mocravimod maintenance treatment post allogeneic stem cell transplant",
+    "weblink": "https://clinicaltrials.gov/study/NCT05429632",
+    "weblinkText": "",
+    "inclusionCriteria": [
+      "AML according to WHO 2022 classification",
+      "ELN high-risk or intermediate-risk in CR1, any risk AML in CR2",
+      "Planned allogeneic transplant from 9/10-10/10 HLA-matched donor or haploidentical donor with use of PBSC graft",
+      "Any conditioning regime with a Transplant conditioning Score (TCI) \u2265 1.5",
+      "Use of Tacrolimus-based GVHD prophylaxis",
+      "Age \u226518 and \u226475"
+    ],
+    "exclusionCriteria": [
+      "Use of ciclosporin, anti-thymocyte globulin (ATG), alemtuzumab or abatacept for GVHD prophylaxis",
+      "Macular oedema"
+    ],
+    "contact": "",
+    "sites": "Queen Elizabeth Hospital Birmingham, Cardiff, Glasgow, Imperial College London, Newcastle, Oxford, Sheffield"
+  },
+  {
+    "id": "grace",
+    "category": "Transplant",
+    "name": "GRACE",
+    "description": "Phase 1/2 study assessing granulocyte augmentation to single-cord blood transplantation for high risk AML",
+    "weblink": "https://clinicaltrials.gov/study/NCT07372885",
+    "weblinkText": "",
+    "inclusionCriteria": [
+      "Fit, transplant-eligible patients, aged <55",
+      "High risk AML or MDS/AML (as defined by ICC 2022) fitting one or more of the following criteria:",
+      "TP53 mutation (single- or multi-hit)",
+      "Presence of inv(3)(q21.3q26.2) or t(3;3)(q21.3;q26.2)",
+      "Adverse risk (as per ICC 2022) and >0.1% MRD by flow cytometry after 2 cycles of induction",
+      "AML (any risk) with partial remission (<10% blasts) after 2 cycles induction",
+      "Early relapse (<6 months) after chemotherapy alone (excluding t(16;16), inv(16) or t(8;21))",
+      "Bone marrow performed within 28 days of starting conditioning chemotherapy demonstrates either: <10% blasts; or >10% blasts with a hypocellular background",
+      "FEV1 >65% without dyspnoea on mild activity",
+      "AST/ALT <3 x ULN, Bilirubin <1.5 x ULN (excluding Gilbert\u2019s syndrome)",
+      "Performance Status (ECOG) of 0 or 1"
+    ],
+    "exclusionCriteria": [
+      "AML secondary to a myeloproliferative neoplasm",
+      "Active CNS disease",
+      "Prior allogeneic stem cell transplant"
+    ],
+    "contact": "kch-tr.gracestudy@nhs.net",
+    "sites": "Kings' College Hospital, The Christie, The Royal Marsden"
+  }
+]
