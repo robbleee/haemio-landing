@@ -145,15 +145,28 @@
     "id": "komen-017",
     "category": "Newly Diagnosed",
     "name": "KOMEN-017",
-    "description": "International phase 3 randomised placebo-controlled trial assessing ziftomenib in combination with intensive therapy or Venetoclax-Azacitidine in patients with untreated NPM1 mutated or KMT2A-rearranged acute myeloid leukaemia",
+    "description": "Phase 3 randomised, double-blind, placebo-controlled studies assessing ziftomenib in combination with either Venetoclax+Azacitidine or intensive (7+3) therapy in patients with untreated NPM1 mutated or KMT2A-rearranged AML",
     "weblink": "https://clinicaltrials.gov/study/NCT07007312",
     "weblinkText": "",
     "inclusionCriteria": [
-      "Patients with newly diagnosed NPM1-mutated or KMT2A-rearranged AML",
-      "Intensive arm: Newly diagnosed NPM1-mutated or KMT2A-rearranged AML",
-      "Non-intensive arm: Newly diagnosed NPM1-mutated AML"
+      "Age \u226518 years",
+      "Diagnosis of AML per the 2022 WHO Classification (5th Edition)",
+      "ECOG performance status 0, 1, or 2",
+      "Adequate liver and kidney function per protocol",
+      "Non-intensive arm (Ven+Aza): Documented NPM1 mutation; ineligible for intensive therapy (\u226575 years, or <75 with ECOG 2 or cardiac/renal/hepatic impairment)",
+      "Intensive arm (7+3): Documented NPM1 mutation or KMT2A rearrangement (KMT2A-PTD not eligible); FLT3 wild-type or ITD ratio <0.05 or ineligible for FLT3-targeted therapy; ejection fraction \u226550%; fit for intensive therapy"
     ],
-    "exclusionCriteria": [],
+    "exclusionCriteria": [
+      "Prior therapy for AML (except hydroxyurea or leukapheresis for WBC control)",
+      "Diagnosis of acute promyelocytic leukemia (APL), blast phase CML, or isolated myeloid sarcoma",
+      "Known BCR-ABL mutation",
+      "Active concurrent malignancies (exceptions: basal/squamous cell skin cancer, previously treated localised cancer, adjuvant hormonal therapy for prostate/breast cancer)",
+      "Active CNS involvement by AML",
+      "Clinical signs of leukostasis or WBC >25\u00d710\u2079/L prior to start of ziftomenib/placebo",
+      "Known uncontrolled HIV, active hepatitis B/C, or other uncontrolled infection",
+      "Uncontrolled intercurrent illness including cardiac illness per protocol",
+      "Women who are pregnant or lactating"
+    ],
     "contact": "",
     "sites": "Barts, Guys & St Thomas', Leeds, St George's, Wolverhampton",
     "genetics": {
@@ -168,13 +181,25 @@
     "id": "camelot-2",
     "category": "Newly Diagnosed",
     "name": "CAMELOT-2",
-    "description": "Phase 3 Randomised, Double-blind, Placebo-controlled, Study of Bleximenib, Venetoclax and Azacitidine for with untreated NPM1 mutated or KMT2A-rearranged acute myeloid leukaemia ineligible for Intensive Chemotherapy",
+    "description": "Phase 3 randomised, double-blind, placebo-controlled study of bleximenib, venetoclax and azacitidine for untreated NPM1 mutated or KMT2A-rearranged AML ineligible for intensive chemotherapy",
     "weblink": "https://clinicaltrials.gov/study/NCT06852222",
     "weblinkText": "",
     "inclusionCriteria": [
-      "Patients with newly diagnosed NPM1-mutated or KMT2A-rearranged AML Ineligible for Intensive Chemotherapy"
+      "Age \u226518 years",
+      "Previously untreated KMT2A-rearranged or NPM1-mutated AML with \u226510% bone marrow blasts per 2022 ICC criteria",
+      "Ineligible for intensive chemotherapy: \u226575 years and ineligible per physician\u2019s discretion (ECOG PS 0-2), OR \u226518 to <75 years with \u22651 comorbidity (ECOG PS 2, severe cardiac disorder, severe pulmonary disorder, renal impairment, moderate hepatic impairment, or other comorbidity per investigator)",
+      "Adequate hepatic and renal function",
+      "Ineligibility for intensive chemotherapy should be explicitly approved by a multidisciplinary team where this is standard of care"
     ],
-    "exclusionCriteria": [],
+    "exclusionCriteria": [
+      "Diagnosis of acute promyelocytic leukemia (APL)",
+      "Known active leukemic involvement of the CNS",
+      "Recipient of solid organ transplant",
+      "Cardiac disorders: heart attack, uncontrolled/unstable chest pain, congestive heart failure, uncontrolled arrhythmia, stroke or TIA within 6 months of randomization",
+      "Active infectious hepatitis",
+      "Live attenuated vaccine within 4 weeks of randomization",
+      "Known allergies or intolerance to bleximenib, azacitidine, or venetoclax excipients"
+    ],
     "contact": "",
     "sites": "Brighton, Cambridge, Canterbury, Colchester, Edinburgh, Liverpool, Guys & St Thomas', Plymouth, Worthing",
     "genetics": {
@@ -222,9 +247,24 @@
     "weblink": "https://clinicaltrials.gov/study/NCT04811560",
     "weblinkText": "",
     "inclusionCriteria": [
-      "R/R AML with either NPM1-mutation or KMT2A-rearrangement"
+      "Phase 1: Age \u22652 years (paediatric cohort), \u226518 years (all other cohorts)",
+      "Phase 2: Age \u226518 years",
+      "Relapsed or refractory acute leukemia harboring KMT2A, NPM1 or NUP98/NUP214 alterations (Phase 1)",
+      "Phase 2: R/R AML per WHO 2022 with KMT2A rearrangement or NPM1 mutation only",
+      "ECOG performance status 0, 1, or 2",
+      "WBC \u226420\u00d710\u2079/L (Phase 1) or adequate per protocol (Phase 2)",
+      "eGFR \u226530 mL/min (adults), >50 mL/min (paediatric)",
+      "Adequate contraception required per protocol"
     ],
-    "exclusionCriteria": [],
+    "exclusionCriteria": [
+      "Acute promyelocytic leukemia, Down syndrome-associated leukemia, or juvenile myelomonocytic leukemia",
+      "Active CNS disease",
+      "Prior solid organ transplantation",
+      "QTcF \u2265450 ms (males) or \u2265470 ms (females); family history of Long QT syndrome",
+      "Allogeneic stem cell transplant \u22643 months before first dose, or evidence of GVHD, or requiring immunosuppressant therapy post-HSCT",
+      "Donor lymphocyte infusion \u226428 days before first dose",
+      "Prior cancer immunotherapy within 4 weeks (blinatumomab within 2 weeks)"
+    ],
     "contact": "",
     "sites": "Cardiff, The Christie, Liverpool, Guys & St Thomas', Leeds, Oxford, Plymouth, UCLH",
     "genetics": {
@@ -239,15 +279,35 @@
     "id": "dsp-5336",
     "category": "Relapsed/Refractory",
     "name": "DSP-5336",
-    "description": "Phase 1/2 study of the menin inhibitor enzomenib in relapsed/refractory (R/R) NPM1 mutated or KMT2A rearranged AML",
+    "description": "Phase 1/2 study of the menin inhibitor enzomenib in relapsed/refractory (R/R) AML, ALL, MDS, and MM with KMT2A, NPM1, or other qualifying alterations",
     "weblink": "https://clinicaltrials.gov/study/NCT04988555",
     "weblinkText": "",
     "inclusionCriteria": [
-      "R/R AML blasts >5% with NPM1m, KMT2Ar, TP53m, NUP98, UBTF-TD"
+      "Phase 1: R/R AML, ALL, acute leukemia of ambiguous lineage (WHO 2022), or MDS/MM at selected sites; documented KMT2A fusion or NPM1 mutation (in regions where required)",
+      "Phase 2: R/R AML or ALL with \u22655% bone marrow blasts and documented KMT2A fusion; must not have had prior menin inhibitor exposure",
+      "Age \u226518 years (or \u226512 years at selected sites for monotherapy)",
+      "ECOG performance status \u22642",
+      "WBC <30,000/\u00b5L (monotherapy) or <25,000/\u00b5L (combinations)",
+      "Creatinine clearance \u226550 mL/min (CKD-EPI formula)",
+      "Total bilirubin \u22641.5\u00d7 ULN (\u22642.0\u00d7 for Gilbert\u2019s syndrome)",
+      "AST and ALT \u22643.0\u00d7 ULN",
+      "Estimated life expectancy \u22653 months"
     ],
-    "exclusionCriteria": [],
+    "exclusionCriteria": [
+      "Left ventricular ejection fraction <50%",
+      "Acute promyelocytic leukemia",
+      "Systemic calcineurin inhibitors within 2 weeks prior to first dose",
+      "QTc >480 ms (or \u2265470 ms females / \u2265450 ms males at UK sites); history of prolonged QT syndrome",
+      "Active uncontrolled bacterial, viral, or fungal infection requiring parenteral therapy; must be afebrile with negative blood cultures \u226572 hours prior to Cycle 1 Day 1",
+      "Concurrent sensitive substrates or strong inhibitors/inducers of CYP3A4/5 (ketoconazole, isavuconazole, itraconazole excluded; other standard antifungals permitted)",
+      "Major surgery within 28 days prior to first dose",
+      "Active CNS leukemia (prophylactic intrathecal chemotherapy allowed)",
+      "HSCT or CAR-T therapy within 60 days (UK sites: CAR-T within 6 months); active GVHD or post-HSCT immunosuppression",
+      "Known detectable viral load for HIV or hepatitis C, or evidence of active hepatitis B",
+      "Severe dysphagia, short-gut syndrome, gastroparesis, or conditions limiting oral drug absorption"
+    ],
     "contact": "",
-    "sites": "Queen Elizabeth Hospital Birmingham, The Christie, Oxford, Kings' College Hospital, Guys & St Thomas' Hospital",
+    "sites": "Queen Elizabeth Hospital Birmingham, Bristol, Edinburgh, King's College Hospital, Sarah Cannon Research Institute London, UCLH, The Christie Manchester, Oxford, Stoke-on-Trent, The Royal Marsden Sutton",
     "genetics": {
       "required": ["NPM1", "KMT2A", "TP53"],
       "excluded": [],
@@ -290,18 +350,22 @@
     "weblink": "https://clinicaltrials.gov/study/NCT06618001",
     "weblinkText": "",
     "inclusionCriteria": [
-      "Age \u226518",
-      "Relapsed/refractory acute myeloid leukemia (AML) or relapsed/refractory moderate high, high, or very high risk IPSS-M myelodysplastic neoplasms (MDS)",
-      "eGFR \u226540 mL/min, ECOG 0-2"
+      "Diagnosis per WHO 2022: R/R AML or R/R moderate-high, high, or very-high risk MDS per IPSS-M",
+      "Age \u226518 years",
+      "Body weight \u226540 kg",
+      "ECOG performance status 0-2",
+      "eGFR \u226540 mL/min (CKD-EPI)",
+      "Laboratory parameters within required range per protocol"
     ],
     "exclusionCriteria": [
-      "Corticosteroids >10 mg daily prednisone equivalents, autoimmune disease that requires systemic immunosuppressive medications",
-      "AlloHSCT within 3 months",
+      "Clinically significant pulmonary compromise or current supplemental oxygen use",
       "Uncontrolled systemic viral, bacterial, or fungal infection",
+      "Known allergies or intolerance to JNJ-89853413 excipients",
+      "Major surgery or significant traumatic injury within 14 days of first dose",
       "Active CNS involvement"
     ],
     "contact": "",
-    "sites": "Cambridge, UCLH, The Christie",
+    "sites": "Addenbrooke's Hospital Cambridge, UCLH London, The Christie Manchester",
     "genetics": {
       "required": [],
       "excluded": [],
@@ -314,17 +378,29 @@
     "id": "momentum",
     "category": "Relapsed/Refractory",
     "name": "MOMENTUM",
-    "description": "Phase 1/2 study of AZD3632 Monotherapy or in Combination With Anticancer Agents in Participants With Advanced Haematologic Malignancies With KMT2Ar, NPM1m, or Other Genotypes Associated With HOX Overexpression",
+    "description": "Phase 1/2 study of AZD3632 monotherapy or in combination with anticancer agents in participants with advanced haematologic malignancies with KMT2Ar, NPM1m, or other genotypes associated with HOX overexpression",
     "weblink": "https://clinicaltrials.gov/study/NCT07155226",
     "weblinkText": "",
     "inclusionCriteria": [
-      "R/R AML blasts >5% with NPM1m, KMT2Ar, KMT2A-PTD, other menin-dependent mutations/translocations"
+      "Age \u226516 years",
+      "Adequate organ function",
+      "Module 1 (dose escalation): Diagnosis of acute leukemia or MDS harbouring genetic alterations associated with upregulation of HOX; backfill requires KMT2A rearrangement or NPM1 mutation",
+      "R/R after standard of care therapy including \u22652 cycles of intensive chemotherapy, HMA monotherapy, or HMA/venetoclax combinations",
+      "R/R MDS: \u22655% bone marrow blasts and/or persistence of peripheral blasts after \u22652 cycles of HMA",
+      "WBC <25,000/\u00b5L (cytoreduction permitted per protocol)",
+      "ECOG performance status \u22642",
+      "Life expectancy \u22658 weeks"
     ],
     "exclusionCriteria": [
-      "Active CNS involvement"
+      "Burkitt lymphoma/leukaemia or acute promyelocytic leukemia",
+      "Active testicular or active CNS involvement (>CNS1 or radiographic) by leukaemia",
+      "Unresolved treatment-related toxicities Grade \u22652 from prior therapy",
+      "Abnormal levels of potassium or magnesium prior to first dose",
+      "Module 1: Non-CNS radiation within 2 weeks, CNS radiation within 8 weeks of first dose; prior menin inhibitor exposure (backfill only)",
+      "Module 2: Posaconazole contraindicated per local prescribing information"
     ],
     "contact": "",
-    "sites": "The Christie",
+    "sites": "Edinburgh, London, The Christie Manchester, Newcastle",
     "genetics": {
       "required": ["NPM1", "KMT2A"],
       "excluded": [],
