@@ -13,23 +13,6 @@ const GENETIC_MARKERS = [
   { key: 'IDH1', label: 'IDH1 mutation' },
 ];
 
-const ICC_CLASSIFICATIONS = [
-  'AML with mutated NPM1',
-  'AML with KMT2A rearrangement',
-  'AML with mutated TP53',
-  'AML with t(8;21)(q22;q22.1)/RUNX1::RUNX1T1',
-  'AML with inv(16)(p13.1q22) or t(16;16)(p13.1;q22)/CBFB::MYH11',
-  'AML with in-frame bZIP mutated CEBPA',
-  'AML with t(9;22)(q34.1;q11.2)/BCR::ABL1',
-  'AML with t(6;9)(p22.3;q34.1)/DEK::NUP214',
-  'AML with inv(3)(q21.3q26.2) or t(3;3)(q21.3;q26.2)/GATA2, MECOM(EVI1)',
-  'AML with myelodysplasia related gene mutation',
-  'AML with myelodysplasia related cytogenetic abnormality',
-  'MDS/AML with mutated TP53',
-  'MDS/AML, NOS',
-  'AML, NOS',
-];
-
 // --- Haversine distance (km) ---
 function haversine(lat1, lon1, lat2, lon2) {
   const R = 6371;
@@ -83,13 +66,6 @@ function matchesGenetics(trial, selectedMarkers) {
   return genetics.required.some(r => selectedMarkers.includes(r));
 }
 
-function matchesIcc(trial, selectedIcc) {
-  if (!selectedIcc) return true;
-  const genetics = trial.genetics || { iccMatch: [] };
-  if (!genetics.iccMatch || genetics.iccMatch.length === 0) return true;
-  return genetics.iccMatch.includes(selectedIcc);
-}
-
 function matchesLocation(trial, selectedLocation) {
   if (!selectedLocation) return true;
   if (/^[~\d]/.test(trial.sites) || /^Multiple/.test(trial.sites)) return true;
@@ -105,7 +81,6 @@ export default function ClinicalTrialsPage() {
 
   // Enhanced filters
   const [selectedMarkers, setSelectedMarkers] = useState([]);
-  const [selectedIcc, setSelectedIcc] = useState('');
   const [selectedLocation, setSelectedLocation] = useState('');
   const [showFilters, setShowFilters] = useState(false);
 
@@ -187,7 +162,6 @@ export default function ClinicalTrialsPage() {
     let result = trials.filter(trial => {
       if (categoryFilter !== 'All' && trial.category !== categoryFilter) return false;
       if (!matchesGenetics(trial, selectedMarkers)) return false;
-      if (!matchesIcc(trial, selectedIcc)) return false;
       if (!matchesLocation(trial, selectedLocation)) return false;
 
       if (search) {
@@ -215,7 +189,7 @@ export default function ClinicalTrialsPage() {
     }
 
     return result;
-  }, [trials, search, categoryFilter, selectedMarkers, selectedIcc, selectedLocation, sortByDistance, userCoords, trialDistances]);
+  }, [trials, search, categoryFilter, selectedMarkers, selectedLocation, sortByDistance, userCoords, trialDistances]);
 
   const counts = useMemo(() => {
     const map = { All: trials.length };
@@ -229,11 +203,10 @@ export default function ClinicalTrialsPage() {
     );
   };
 
-  const activeFilterCount = selectedMarkers.length + (selectedIcc ? 1 : 0) + (selectedLocation ? 1 : 0) + (userCoords ? 1 : 0);
+  const activeFilterCount = selectedMarkers.length + (selectedLocation ? 1 : 0) + (userCoords ? 1 : 0);
 
   const clearAllFilters = () => {
     setSelectedMarkers([]);
-    setSelectedIcc('');
     setSelectedLocation('');
     setCategoryFilter('All');
     setSearch('');
@@ -338,21 +311,6 @@ export default function ClinicalTrialsPage() {
                   </label>
                 ))}
               </div>
-            </div>
-
-            {/* ICC Classification */}
-            <div className={styles.filterGroup}>
-              <h3 className={styles.filterGroupTitle}>ICC Classification</h3>
-              <select
-                value={selectedIcc}
-                onChange={e => setSelectedIcc(e.target.value)}
-                className={styles.selectInput}
-              >
-                <option value="">Any classification</option>
-                {ICC_CLASSIFICATIONS.map(icc => (
-                  <option key={icc} value={icc}>{icc}</option>
-                ))}
-              </select>
             </div>
 
             {/* Location */}
