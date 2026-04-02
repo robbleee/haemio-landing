@@ -82,8 +82,8 @@ export default function HeroSection() {
               <Image
                 src={SCREENSHOTS[activeShot].src}
                 alt={SCREENSHOTS[activeShot].alt}
-                width={640}
-                height={400}
+                width={900}
+                height={560}
                 className={styles.screenshotImg}
                 priority
               />

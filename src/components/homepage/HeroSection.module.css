@@ -101,8 +101,8 @@
 
 .splitLayout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  grid-template-columns: 5fr 7fr;
+  gap: 3rem;
   align-items: center;
 }
 
@@ -255,27 +255,15 @@
 }
 
 .cardGlow {
-  position: absolute;
-  width: 80%;
-  height: 80%;
-  top: 10%;
-  left: 10%;
-  background: radial-gradient(ellipse at center, rgba(0, 150, 136, 0.12) 0%, transparent 70%);
-  filter: blur(40px);
-  z-index: 0;
-  pointer-events: none;
+  display: none;
 }
 
 .screenshotCard {
   position: relative;
   z-index: 1;
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.1),
-    0 1px 3px rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(0, 150, 136, 0.1);
-  background: white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 .screenshotImg {
