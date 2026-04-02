@@ -51,7 +51,7 @@ export default function HeroSection() {
                   <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
                 </svg>
               </Link>
-              <Link href="#demo" className={styles.ctaSecondary}>
+              <Link href="/demo" className={styles.ctaSecondary}>
                 Watch demo
               </Link>
             </div>
