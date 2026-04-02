@@ -27,7 +27,7 @@
       "Requirement for live vaccines during treatment period"
     ],
     "contact": "VICTOR@trials.bham.ac.uk",
-    "sites": "Multiple (UK coordinating centre: University of Birmingham; international hubs: Aarhus, Auckland)",
+    "sites": "41 UK sites + Denmark, New Zealand (UK lead: University of Birmingham). Contact VICTOR@trials.bham.ac.uk for site list",
     "genetics": {
       "required": ["NPM1"],
       "excluded": ["FLT3-ITD"],
@@ -40,8 +40,8 @@
     "id": "optimise-flt3",
     "category": "Newly Diagnosed",
     "name": "OPTIMISE-FLT3",
-    "description": "International phase 3 randomised controlled trial comparing intensive treatment strategies for newly diagnosed FLT3-mutated AML",
-    "weblink": "https://www.cardiff.ac.uk/centre-for-trials-research/research/studies-and-trials/view/optimise-flt3",
+    "description": "International phase 3 randomised controlled trial comparing intensive treatment strategies for newly diagnosed FLT3-mutated AML. ISRCTN34016918.",
+    "weblink": "https://www.cancerresearchuk.org/about-cancer/find-a-clinical-trial/a-trial-looking-at-the-best-treatment-for-acute-myeloid-leukaemia-optimise-flt3",
     "weblinkText": "",
     "inclusionCriteria": [
       "Age \u226516",
@@ -55,7 +55,7 @@
       "Blast transformation of chronic myeloid leukaemia (CML)"
     ],
     "contact": "optimise-flt3@cardiff.ac.uk",
-    "sites": "Multiple",
+    "sites": "~80 UK centres + international sites (led by Cardiff University). Contact optimise-flt3@cardiff.ac.uk for site list",
     "genetics": {
       "required": ["FLT3-ITD"],
       "excluded": [],
@@ -88,7 +88,7 @@
       "AML with BCR-ABL1; or myeloid blast crisis of CML"
     ],
     "contact": "",
-    "sites": "Multiple",
+    "sites": "Birmingham, Blackpool, Bristol, Cardiff, Glasgow, Leeds, Leicester, King's College Hospital London, Royal Marsden London, UCLH London, The Christie Manchester, Manchester Royal Infirmary, Freeman Hospital Newcastle, Nottingham, Churchill Hospital Oxford, Portsmouth, Southampton, Wolverhampton",
     "genetics": {
       "required": ["IDH1"],
       "excluded": [],
@@ -121,7 +121,7 @@
       "AML with BCR-ABL1; or myeloid blast crisis of CML"
     ],
     "contact": "",
-    "sites": "Multiple",
+    "sites": "Belfast, Birmingham, Blackpool, Bristol, Cardiff, Glasgow, Leeds, Leicester, Liverpool, King's College Hospital London, St Bartholomew's Hospital London, The Christie Manchester, Newcastle, Nottingham, Churchill Hospital Oxford, Southampton, The Royal Marsden Sutton, Wolverhampton",
     "genetics": {
       "required": ["NPM1", "KMT2A"],
       "excluded": [],
@@ -358,7 +358,7 @@
       "Allogeneic transplant within 6 months of screening"
     ],
     "contact": "",
-    "sites": "Cardiff, The Royal Marsden, Guys & St Thomas'",
+    "sites": "The Royal Marsden London, Sarah Cannon Research Institute London",
     "genetics": {
       "required": [],
       "excluded": [],
@@ -452,7 +452,7 @@
       "Planned chemotherapy using any regimen that mandates the use of systemic antifungal medication"
     ],
     "contact": "biodrive-group@york.ac.uk",
-    "sites": "Multiple",
+    "sites": "~40 UK NHS haematology departments (ISRCTN11633399). Contact biodrive-group@york.ac.uk for site list",
     "genetics": {
       "required": [],
       "excluded": [],
@@ -484,7 +484,7 @@
       "Undergoing single agent Azacitidine, single agent low dose Cytarabine, Menin inhibitors or FLT3 inhibitor treatment without planned HSCT"
     ],
     "contact": "propel@warwick.ac.uk",
-    "sites": "Multiple",
+    "sites": "Multiple UK centres (NIHR134257). Contact propel@warwick.ac.uk for site list",
     "genetics": {
       "required": [],
       "excluded": [],
@@ -513,7 +513,7 @@
       "Macular oedema"
     ],
     "contact": "",
-    "sites": "Queen Elizabeth Hospital Birmingham, Cardiff, Glasgow, Imperial College London, Newcastle, Oxford, Sheffield",
+    "sites": "Queen Elizabeth Hospital Birmingham, University Hospital of Wales Cardiff, Queen Elizabeth University Hospital Glasgow, University College Hospital London, Imperial College London, Manchester Royal Infirmary, Freeman Hospital Newcastle, Nottingham University Hospitals, Oxford University Hospitals, Royal Hallamshire Hospital Sheffield",
     "genetics": {
       "required": [],
       "excluded": [],
@@ -548,7 +548,7 @@
       "Prior allogeneic stem cell transplant"
     ],
     "contact": "kch-tr.gracestudy@nhs.net",
-    "sites": "Kings' College Hospital, The Christie, The Royal Marsden",
+    "sites": "King's College Hospital London, The Royal Marsden London, The Christie Manchester",
     "genetics": {
       "required": ["TP53"],
       "excluded": [],
