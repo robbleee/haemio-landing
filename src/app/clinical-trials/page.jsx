@@ -322,7 +322,7 @@ export default function ClinicalTrialsPage() {
                 )}
               </div>
               {postcodeError && <p className={styles.postcodeError}>{postcodeError}</p>}
-              {userCoords && <p className={styles.postcodeSuccess}>Showing distances from your location. Trials sorted by nearest site.</p>}
+              {userCoords && <p className={styles.postcodeSuccess}>Showing approximate straight-line distances. Trials sorted by nearest site.</p>}
             </div>
 
             {/* Genetic markers */}
@@ -411,7 +411,7 @@ export default function ClinicalTrialsPage() {
                     )}
                     {nearest && (
                       <span className={styles.distanceBadge}>
-                        {Math.round(nearest.distance * 0.621371)} miles — {nearest.city}
+                        ~{Math.round(nearest.distance * 0.621371)} miles — {nearest.city}
                       </span>
                     )}
                     {!nearest && userCoords && (
