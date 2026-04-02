@@ -19,7 +19,7 @@ export async function GET(request) {
       `${API_BASE_URL}/api/v1/clinical-trials/?${params.toString()}`,
       {
         headers: { 'Content-Type': 'application/json' },
-        next: { revalidate: 300 }, // cache for 5 minutes
+        next: { revalidate: 300 },
       }
     );
 
@@ -32,7 +32,6 @@ export async function GET(request) {
   } catch (error) {
     console.error('Error fetching clinical trials from API:', error);
 
-    // Fallback: serve from local JSON file if API is unreachable
     try {
       const trials = (await import('../../../data/clinical-trials.json')).default;
 
@@ -53,5 +52,92 @@ export async function GET(request) {
     } catch {
       return NextResponse.json({ total: 0, trials: [] }, { status: 500 });
     }
+  }
+}
+
+export async function POST(request) {
+  try {
+    const apiKey = request.headers.get('x-api-key');
+    if (!apiKey) {
+      return NextResponse.json({ error: 'API key required' }, { status: 401 });
+    }
+
+    const body = await request.json();
+
+    const res = await fetch(`${API_BASE_URL}/api/v1/clinical-trials/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-API-Key': apiKey,
+      },
+      body: JSON.stringify(body),
+    });
+
+    const data = await res.json();
+    return NextResponse.json(data, { status: res.status });
+  } catch (error) {
+    console.error('Error creating clinical trial:', error);
+    return NextResponse.json({ error: 'Failed to create trial' }, { status: 500 });
+  }
+}
+
+export async function PUT(request) {
+  try {
+    const apiKey = request.headers.get('x-api-key');
+    if (!apiKey) {
+      return NextResponse.json({ error: 'API key required' }, { status: 401 });
+    }
+
+    const { searchParams } = new URL(request.url);
+    const trialId = searchParams.get('id');
+    if (!trialId) {
+      return NextResponse.json({ error: 'Trial id required as ?id= param' }, { status: 400 });
+    }
+
+    const body = await request.json();
+
+    const res = await fetch(`${API_BASE_URL}/api/v1/clinical-trials/${trialId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-API-Key': apiKey,
+      },
+      body: JSON.stringify(body),
+    });
+
+    const data = await res.json();
+    return NextResponse.json(data, { status: res.status });
+  } catch (error) {
+    console.error('Error updating clinical trial:', error);
+    return NextResponse.json({ error: 'Failed to update trial' }, { status: 500 });
+  }
+}
+
+export async function DELETE(request) {
+  try {
+    const apiKey = request.headers.get('x-api-key');
+    if (!apiKey) {
+      return NextResponse.json({ error: 'API key required' }, { status: 401 });
+    }
+
+    const { searchParams } = new URL(request.url);
+    const trialId = searchParams.get('id');
+    if (!trialId) {
+      return NextResponse.json({ error: 'Trial id required as ?id= param' }, { status: 400 });
+    }
+
+    const res = await fetch(`${API_BASE_URL}/api/v1/clinical-trials/${trialId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-API-Key': apiKey,
+      },
+    });
+
+    const data = await res.json();
+    return NextResponse.json(data, { status: res.status });
+  } catch (error) {
+    console.error('Error deleting clinical trial:', error);
+    return NextResponse.json({ error: 'Failed to delete trial' }, { status: 500 });
   }
 }

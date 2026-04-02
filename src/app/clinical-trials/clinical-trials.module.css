@@ -585,6 +585,33 @@
   color: var(--primary-color);
 }
 
+/* Submit a trial */
+.submitTrial {
+  margin-top: 2.5rem;
+  padding: 1.5rem;
+  text-align: center;
+  border: 1px dashed #b0bec5;
+  border-radius: var(--border-radius);
+  background: #f8fafb;
+}
+
+.submitTrial p {
+  font-size: 0.95rem;
+  color: #607d8b;
+  margin-bottom: 0.5rem;
+}
+
+.submitTrialLink {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.submitTrialLink:hover {
+  text-decoration: underline;
+}
+
 /* Empty State */
 .empty {
   text-align: center;

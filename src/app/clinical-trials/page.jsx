@@ -446,6 +446,16 @@ export default function ClinicalTrialsPage() {
             </div>
           )}
         </div>
+
+        <div className={styles.submitTrial}>
+          <p>Know of a trial that should be listed here?</p>
+          <a
+            href="mailto:robert.lee@haem.io?subject=Clinical%20Trial%20Submission&body=Trial%20name%3A%0A%0ATrial%20link%20(ClinicalTrials.gov%20or%20other)%3A%0A%0AKey%20details%20we%20should%20know%3A%0A"
+            className={styles.submitTrialLink}
+          >
+            Email us the details &rarr;
+          </a>
+        </div>
       </section>
     </div>
   );
