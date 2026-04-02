@@ -51,19 +51,48 @@ const sections = [
     align: 'right',
   },
   {
-    id: 'risk',
+    id: 'result',
     step: '04',
+    title: 'Dual-framework classification with full reasoning',
+    description: 'Haem.io produces both WHO 2022 and ICC 2022 classifications side by side. Each result includes the complete clinical reasoning chain — every rule evaluated, every decision explained. Click "Trace" to see the exact derivation path.',
+    points: [
+      'WHO 2022 5th Edition and ICC 2022 results side by side',
+      'Clinical reasoning steps numbered and explained',
+      'Final pathway derivation from blast percentage to genetic findings',
+      'TP53 multi-hit evaluation with allelic status logic',
+    ],
+    image: '/new-screenshots-for-landing/classification-result.png',
+    alt: 'Classification results showing WHO 2022 and ICC 2022 with clinical reasoning traces',
+    align: 'left',
+  },
+  {
+    id: 'risk',
+    step: '05',
     title: 'Risk stratification and clinical decision support',
     description: 'Once classified, Haem.io calculates risk using ELN 2022 (intensive) and ELN 2024 (non-intensive) frameworks. Each risk category includes median survival estimates and the full calculation chain so clinicians can verify every step.',
     points: [
       'ELN 2022 intensive and ELN 2024 non-intensive risk',
       'Median overall survival estimates',
       'Calculation steps visible and auditable',
-      'Supports clinical trial eligibility assessment',
     ],
     image: '/new-screenshots-for-landing/Risk-calculator.png',
     alt: 'Risk stratification showing ELN 2022 Adverse and ELN 2024 Adverse with median survival',
     align: 'left',
+  },
+  {
+    id: 'trials',
+    step: '06',
+    title: 'Automatic clinical trial matching',
+    description: 'Based on the classification, genetics, and patient profile, Haem.io automatically identifies eligible clinical trials. Each match includes a confidence score, eligibility status, and what additional data is needed to confirm suitability.',
+    points: [
+      'Matches against curated UK trial database',
+      'Confidence scoring (high, needs data, ineligible)',
+      'Shows what extra information would refine the match',
+      'Direct links to trial registries and contact details',
+    ],
+    image: '/new-screenshots-for-landing/clinical-trials.png',
+    alt: 'Clinical trial matching showing eligible trials with confidence scores',
+    align: 'right',
   },
 ];
 
@@ -74,7 +103,7 @@ export default function ProductWalkthrough() {
         <div className={styles.header}>
           <h2 className={styles.sectionTitle}>See Inside the Platform</h2>
           <p className={styles.sectionSubtitle}>
-            From report upload to risk stratification — every step is transparent, traceable, and clinician-verifiable.
+            From report upload to trial matching — every step is transparent, traceable, and clinician-verifiable.
           </p>
         </div>
 

@@ -101,8 +101,8 @@
 
 .splitLayout {
   display: grid;
-  grid-template-columns: 5fr 7fr;
-  gap: 3rem;
+  grid-template-columns: 2fr 3fr;
+  gap: 2.5rem;
   align-items: center;
 }
 
