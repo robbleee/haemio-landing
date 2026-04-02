@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import fallbackTrials from '../../data/clinical-trials.json';
+import siteCoords from '../../data/site-coordinates.json';
 import styles from './clinical-trials.module.css';
 
 const GENETIC_MARKERS = [
@@ -29,53 +30,69 @@ const ICC_CLASSIFICATIONS = [
   'AML, NOS',
 ];
 
-// Extract unique locations from all trials
+// --- Haversine distance (km) ---
+function haversine(lat1, lon1, lat2, lon2) {
+  const R = 6371;
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+    Math.sin(dLon / 2) ** 2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+// Parse trial sites string into individual site names
+function parseSites(sitesStr) {
+  if (!sitesStr) return [];
+  // Skip descriptive strings like "~80 UK centres..." or "Multiple UK centres..."
+  if (/^[~\d]/.test(sitesStr) || /^Multiple/.test(sitesStr)) return [];
+  return sitesStr.split(',').map(s => s.trim()).filter(Boolean);
+}
+
+// Calculate nearest site distance for a trial given user coordinates
+function getNearestSite(trial, userLat, userLng) {
+  const sites = parseSites(trial.sites);
+  let nearest = null;
+  for (const site of sites) {
+    const coords = siteCoords[site];
+    if (!coords) continue;
+    const dist = haversine(userLat, userLng, coords.lat, coords.lng);
+    if (!nearest || dist < nearest.distance) {
+      nearest = { site, city: coords.city, distance: dist };
+    }
+  }
+  return nearest;
+}
+
 function extractLocations(trials) {
   const locs = new Set();
   trials.forEach(t => {
-    if (t.sites && t.sites !== 'Multiple') {
-      t.sites.split(',').forEach(s => {
-        const trimmed = s.trim();
-        if (trimmed) locs.add(trimmed);
-      });
-    }
+    parseSites(t.sites).forEach(s => locs.add(s));
   });
   return Array.from(locs).sort();
 }
 
-// Determine if a trial matches the selected genetic markers
-// Logic: if a marker is checked and the trial REQUIRES that marker, it's a match.
-// If a marker is checked and the trial EXCLUDES that marker, it's excluded.
-// Trials with no genetic requirements (supportive care etc) always pass unless excluded.
 function matchesGenetics(trial, selectedMarkers) {
   if (selectedMarkers.length === 0) return true;
   const genetics = trial.genetics || { required: [], excluded: [] };
-
-  // If trial excludes any of the patient's markers, exclude it
   for (const marker of selectedMarkers) {
     if (genetics.excluded.includes(marker)) return false;
   }
-
-  // If trial has no genetic requirements, it's open to all genotypes
   if (genetics.required.length === 0) return true;
-
-  // If trial requires specific markers, at least one must match
   return genetics.required.some(r => selectedMarkers.includes(r));
 }
 
 function matchesIcc(trial, selectedIcc) {
   if (!selectedIcc) return true;
   const genetics = trial.genetics || { iccMatch: [] };
-
-  // Trials with no ICC restrictions are open to all
   if (!genetics.iccMatch || genetics.iccMatch.length === 0) return true;
-
   return genetics.iccMatch.includes(selectedIcc);
 }
 
 function matchesLocation(trial, selectedLocation) {
   if (!selectedLocation) return true;
-  if (trial.sites === 'Multiple') return true; // "Multiple" means many sites
+  if (/^[~\d]/.test(trial.sites) || /^Multiple/.test(trial.sites)) return true;
   return trial.sites.toLowerCase().includes(selectedLocation.toLowerCase());
 }
 
@@ -92,6 +109,13 @@ export default function ClinicalTrialsPage() {
   const [selectedLocation, setSelectedLocation] = useState('');
   const [showFilters, setShowFilters] = useState(false);
 
+  // Postcode distance
+  const [postcode, setPostcode] = useState('');
+  const [userCoords, setUserCoords] = useState(null); // { lat, lng }
+  const [postcodeError, setPostcodeError] = useState('');
+  const [postcodeLoading, setPostcodeLoading] = useState(false);
+  const [sortByDistance, setSortByDistance] = useState(false);
+
   useEffect(() => {
     fetch('/api/clinical-trials')
       .then(res => res.json())
@@ -104,14 +128,63 @@ export default function ClinicalTrialsPage() {
       .finally(() => setLoading(false));
   }, []);
 
+  const lookupPostcode = useCallback(async () => {
+    const clean = postcode.replace(/\s+/g, '').toUpperCase();
+    if (!clean) {
+      setUserCoords(null);
+      setPostcodeError('');
+      setSortByDistance(false);
+      return;
+    }
+    setPostcodeLoading(true);
+    setPostcodeError('');
+    try {
+      const res = await fetch(`https://api.postcodes.io/postcodes/${clean}`);
+      const data = await res.json();
+      if (data.status === 200 && data.result) {
+        setUserCoords({ lat: data.result.latitude, lng: data.result.longitude });
+        setSortByDistance(true);
+        setPostcodeError('');
+      } else {
+        setUserCoords(null);
+        setSortByDistance(false);
+        setPostcodeError('Postcode not found. Please enter a valid UK postcode.');
+      }
+    } catch {
+      setUserCoords(null);
+      setSortByDistance(false);
+      setPostcodeError('Could not look up postcode. Please try again.');
+    } finally {
+      setPostcodeLoading(false);
+    }
+  }, [postcode]);
+
+  const clearPostcode = () => {
+    setPostcode('');
+    setUserCoords(null);
+    setPostcodeError('');
+    setSortByDistance(false);
+  };
+
   const categories = useMemo(() => {
     return ['All', ...new Set(trials.map(t => t.category))];
   }, [trials]);
 
   const locations = useMemo(() => extractLocations(trials), [trials]);
 
+  // Pre-compute distances for all trials
+  const trialDistances = useMemo(() => {
+    if (!userCoords) return {};
+    const map = {};
+    trials.forEach(trial => {
+      const nearest = getNearestSite(trial, userCoords.lat, userCoords.lng);
+      if (nearest) map[trial.id] = nearest;
+    });
+    return map;
+  }, [trials, userCoords]);
+
   const filtered = useMemo(() => {
-    return trials.filter(trial => {
+    let result = trials.filter(trial => {
       if (categoryFilter !== 'All' && trial.category !== categoryFilter) return false;
       if (!matchesGenetics(trial, selectedMarkers)) return false;
       if (!matchesIcc(trial, selectedIcc)) return false;
@@ -131,7 +204,18 @@ export default function ClinicalTrialsPage() {
 
       return true;
     });
-  }, [trials, search, categoryFilter, selectedMarkers, selectedIcc, selectedLocation]);
+
+    // Sort by distance if postcode is active
+    if (sortByDistance && userCoords) {
+      result = [...result].sort((a, b) => {
+        const da = trialDistances[a.id]?.distance ?? Infinity;
+        const db = trialDistances[b.id]?.distance ?? Infinity;
+        return da - db;
+      });
+    }
+
+    return result;
+  }, [trials, search, categoryFilter, selectedMarkers, selectedIcc, selectedLocation, sortByDistance, userCoords, trialDistances]);
 
   const counts = useMemo(() => {
     const map = { All: trials.length };
@@ -145,7 +229,7 @@ export default function ClinicalTrialsPage() {
     );
   };
 
-  const activeFilterCount = selectedMarkers.length + (selectedIcc ? 1 : 0) + (selectedLocation ? 1 : 0);
+  const activeFilterCount = selectedMarkers.length + (selectedIcc ? 1 : 0) + (selectedLocation ? 1 : 0) + (userCoords ? 1 : 0);
 
   const clearAllFilters = () => {
     setSelectedMarkers([]);
@@ -153,6 +237,7 @@ export default function ClinicalTrialsPage() {
     setSelectedLocation('');
     setCategoryFilter('All');
     setSearch('');
+    clearPostcode();
   };
 
   return (
@@ -212,6 +297,34 @@ export default function ClinicalTrialsPage() {
         {/* Advanced filter panel */}
         {showFilters && (
           <div className={styles.advancedPanel}>
+            {/* Postcode distance */}
+            <div className={`${styles.filterGroup} ${styles.postcodeGroup}`}>
+              <h3 className={styles.filterGroupTitle}>Distance from postcode</h3>
+              <p className={styles.filterGroupHint}>Enter a UK postcode to see distance to nearest trial site</p>
+              <div className={styles.postcodeRow}>
+                <input
+                  type="text"
+                  placeholder="e.g. SW1A 1AA"
+                  value={postcode}
+                  onChange={e => setPostcode(e.target.value)}
+                  onKeyDown={e => e.key === 'Enter' && lookupPostcode()}
+                  className={styles.postcodeInput}
+                />
+                <button
+                  onClick={lookupPostcode}
+                  disabled={postcodeLoading || !postcode.trim()}
+                  className={styles.postcodeBtn}
+                >
+                  {postcodeLoading ? '...' : 'Find'}
+                </button>
+                {userCoords && (
+                  <button onClick={clearPostcode} className={styles.postcodeClear}>&times;</button>
+                )}
+              </div>
+              {postcodeError && <p className={styles.postcodeError}>{postcodeError}</p>}
+              {userCoords && <p className={styles.postcodeSuccess}>Showing distances from your location. Trials sorted by nearest site.</p>}
+            </div>
+
             {/* Genetic markers */}
             <div className={styles.filterGroup}>
               <h3 className={styles.filterGroupTitle}>Genetic Markers</h3>
@@ -276,12 +389,16 @@ export default function ClinicalTrialsPage() {
           {activeFilterCount > 0 && !loading && (
             <span className={styles.filterNote}> (filtered by {activeFilterCount} patient criteria)</span>
           )}
+          {sortByDistance && !loading && (
+            <span className={styles.filterNote}> — sorted by distance</span>
+          )}
         </p>
 
         <div className={styles.trialList}>
           {filtered.map(trial => {
             const isExpanded = expandedTrial === trial.id;
             const genetics = trial.genetics || { required: [], excluded: [] };
+            const nearest = trialDistances[trial.id];
             return (
               <div key={trial.id} className={styles.trialCard}>
                 <div className={styles.trialHeader} onClick={() => setExpandedTrial(isExpanded ? null : trial.id)}>
@@ -292,7 +409,14 @@ export default function ClinicalTrialsPage() {
                     {trial.phase && (
                       <span className={styles.phaseBadge}>{trial.phase}</span>
                     )}
-                    <span className={styles.siteBadge}>{trial.sites}</span>
+                    {nearest && (
+                      <span className={styles.distanceBadge}>
+                        {Math.round(nearest.distance * 0.621371)} miles — {nearest.city}
+                      </span>
+                    )}
+                    {!nearest && userCoords && (
+                      <span className={styles.distanceBadgeUnknown}>Distance N/A</span>
+                    )}
                   </div>
                   <div className={styles.trialTitleRow}>
                     <h2 className={styles.trialName}>{trial.name}</h2>
@@ -305,6 +429,10 @@ export default function ClinicalTrialsPage() {
                     </svg>
                   </div>
                   <p className={styles.trialDescription}>{trial.description}</p>
+
+                  <div className={styles.trialMetaBottom}>
+                    <span className={styles.siteBadge}>{trial.sites}</span>
+                  </div>
 
                   {/* Genetic marker tags */}
                   {(genetics.required.length > 0 || genetics.excluded.length > 0) && (
