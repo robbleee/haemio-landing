@@ -300,6 +300,49 @@
   opacity: 1;
 }
 
+/* Structured eligibility section */
+.structuredSection {
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  border: 1px solid #b2dfdb;
+  border-radius: var(--border-radius);
+  background: #e0f2f1;
+}
+
+.structuredTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 0.2rem;
+}
+
+.structuredHint {
+  font-size: 0.82rem;
+  color: #607d8b;
+  margin-bottom: 1rem;
+}
+
+.markerGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.8rem;
+}
+
+.markerLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  cursor: pointer;
+  padding: 0.25rem 0;
+  font-size: 0.88rem;
+}
+
+.markerLabel input {
+  accent-color: var(--primary-color);
+  width: 15px;
+  height: 15px;
+}
+
 /* Sections */
 .section {
   margin-top: 2rem;

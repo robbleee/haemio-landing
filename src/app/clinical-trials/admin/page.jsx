@@ -4,10 +4,20 @@ import { useState, useEffect } from 'react';
 import styles from './admin.module.css';
 
 const CATEGORIES = ['Newly Diagnosed', 'Relapsed/Refractory', 'Supportive Care', 'Transplant'];
+const PHASES = ['Phase 1', 'Phase 1/2', 'Phase 2', 'Phase 2/3', 'Phase 3', 'Randomised Controlled Trial'];
+const FITNESS_OPTIONS = [
+  { value: '', label: 'Any / not specified' },
+  { value: 'intensive', label: 'Intensive' },
+  { value: 'non-intensive', label: 'Non-intensive' },
+  { value: 'both', label: 'Both (intensive & non-intensive arms)' },
+];
+const GENETIC_MARKERS = ['NPM1', 'FLT3-ITD', 'KMT2A', 'TP53', 'IDH1', 'IDH2', 'CEBPA', 'NUP98', 'RUNX1', 'BCR-ABL1'];
 
 const EMPTY_FORM = {
   trial_id: '', category: 'Newly Diagnosed', name: '', description: '',
   weblink: '', inclusion_criteria: '', exclusion_criteria: '', contact: '', sites: '',
+  phase: '', fitness: '', age_min: '', age_max: '', ecog_max: '',
+  genetics_required: [], genetics_excluded: [],
 };
 
 export default function ClinicalTrialsAdmin() {
@@ -97,6 +107,13 @@ export default function ClinicalTrialsAdmin() {
       inclusion_criteria: form.inclusion_criteria.split('\n').map(s => s.trim()).filter(Boolean),
       exclusion_criteria: form.exclusion_criteria.split('\n').map(s => s.trim()).filter(Boolean),
       contact: form.contact, sites: form.sites,
+      phase: form.phase || null,
+      fitness: form.fitness || null,
+      age_min: form.age_min ? parseInt(form.age_min) : null,
+      age_max: form.age_max ? parseInt(form.age_max) : null,
+      ecog_max: form.ecog_max !== '' ? parseInt(form.ecog_max) : null,
+      genetics_required: form.genetics_required,
+      genetics_excluded: form.genetics_excluded,
     };
 
     try {
@@ -134,12 +151,19 @@ export default function ClinicalTrialsAdmin() {
 
   const handleEdit = (trial) => {
     setEditing(trial.id);
+    const genetics = trial.genetics || { required: [], excluded: [] };
     setForm({
       trial_id: trial.id, category: trial.category, name: trial.name,
       description: trial.description || '', weblink: trial.weblink || '',
       inclusion_criteria: (trial.inclusionCriteria || []).join('\n'),
       exclusion_criteria: (trial.exclusionCriteria || []).join('\n'),
       contact: trial.contact || '', sites: trial.sites || '',
+      phase: trial.phase || '', fitness: trial.fitness || '',
+      age_min: trial.ageMin != null ? String(trial.ageMin) : '',
+      age_max: trial.ageMax != null ? String(trial.ageMax) : '',
+      ecog_max: trial.ecogMax != null ? String(trial.ecogMax) : '',
+      genetics_required: genetics.required || [],
+      genetics_excluded: genetics.excluded || [],
     });
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -269,9 +293,94 @@ export default function ClinicalTrialsAdmin() {
             rows={3} placeholder="Brief description of the trial..." />
         </div>
 
+        {/* Structured eligibility fields */}
+        <div className={styles.structuredSection}>
+          <h3 className={styles.structuredTitle}>Eligibility Criteria (structured)</h3>
+          <p className={styles.structuredHint}>These fields power the search filters on the public page.</p>
+
+          <div className={styles.formGrid}>
+            <div className={styles.field}>
+              <label>Phase</label>
+              <select value={form.phase} onChange={e => setField('phase', e.target.value)}>
+                <option value="">Not specified</option>
+                {PHASES.map(p => <option key={p} value={p}>{p}</option>)}
+              </select>
+            </div>
+            <div className={styles.field}>
+              <label>Fitness Requirement</label>
+              <select value={form.fitness} onChange={e => setField('fitness', e.target.value)}>
+                {FITNESS_OPTIONS.map(f => <option key={f.value} value={f.value}>{f.label}</option>)}
+              </select>
+            </div>
+            <div className={styles.field}>
+              <label>Age Min</label>
+              <input type="number" value={form.age_min} onChange={e => setField('age_min', e.target.value)}
+                placeholder="e.g. 18" min="0" max="120" />
+            </div>
+            <div className={styles.field}>
+              <label>Age Max</label>
+              <input type="number" value={form.age_max} onChange={e => setField('age_max', e.target.value)}
+                placeholder="e.g. 75 (leave blank if no upper limit)" min="0" max="120" />
+            </div>
+            <div className={styles.field}>
+              <label>Max ECOG PS</label>
+              <select value={form.ecog_max} onChange={e => setField('ecog_max', e.target.value)}>
+                <option value="">Not specified</option>
+                {[0, 1, 2, 3, 4].map(n => <option key={n} value={n}>{n}</option>)}
+              </select>
+            </div>
+          </div>
+
+          <div className={styles.fieldRow}>
+            <div className={styles.field}>
+              <label>Required Genetics (any of these)</label>
+              <div className={styles.markerGrid}>
+                {GENETIC_MARKERS.map(m => (
+                  <label key={m} className={styles.markerLabel}>
+                    <input type="checkbox"
+                      checked={form.genetics_required.includes(m)}
+                      onChange={() => {
+                        setForm(prev => ({
+                          ...prev,
+                          genetics_required: prev.genetics_required.includes(m)
+                            ? prev.genetics_required.filter(x => x !== m)
+                            : [...prev.genetics_required, m]
+                        }));
+                      }}
+                    />
+                    <span>{m}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+            <div className={styles.field}>
+              <label>Excluded Genetics (patient must NOT have)</label>
+              <div className={styles.markerGrid}>
+                {GENETIC_MARKERS.map(m => (
+                  <label key={m} className={styles.markerLabel}>
+                    <input type="checkbox"
+                      checked={form.genetics_excluded.includes(m)}
+                      onChange={() => {
+                        setForm(prev => ({
+                          ...prev,
+                          genetics_excluded: prev.genetics_excluded.includes(m)
+                            ? prev.genetics_excluded.filter(x => x !== m)
+                            : [...prev.genetics_excluded, m]
+                        }));
+                      }}
+                    />
+                    <span>{m}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Free text criteria (kept for display) */}
         <div className={styles.fieldRow}>
           <div className={styles.field}>
-            <label>Inclusion Criteria (one per line)</label>
+            <label>Additional Inclusion Details (free text, one per line)</label>
             <textarea value={form.inclusion_criteria} onChange={e => setField('inclusion_criteria', e.target.value)}
               rows={6} placeholder={"Age \u226518\nECOG 0-2\nNPM1 mutated"} />
           </div>
