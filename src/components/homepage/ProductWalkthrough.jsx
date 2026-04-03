@@ -142,8 +142,8 @@ function WalkthroughRow({ step, title, description, points, image, alt, align })
         <Image
           src={image}
           alt={alt}
-          width={700}
-          height={440}
+          width={1000}
+          height={630}
           className={styles.screenshot}
         />
       </div>

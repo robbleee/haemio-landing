@@ -92,7 +92,7 @@
 /* ---- Layout ---- */
 
 .container {
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 0 2rem;
   position: relative;
@@ -101,8 +101,8 @@
 
 .splitLayout {
   display: grid;
-  grid-template-columns: 2fr 3fr;
-  gap: 2.5rem;
+  grid-template-columns: 1fr 2fr;
+  gap: 3rem;
   align-items: center;
 }
 
