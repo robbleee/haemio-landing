@@ -39,7 +39,7 @@ body:has(.pitchDeck) main {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(135deg, #fafbfc 0%, #f1f3f6 100%);
+  background: #ffffff;
   position: relative;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
 }
@@ -581,7 +581,7 @@ body:has(.pitchDeck) main {
 }
 
 .slide h1 {
-  font-size: 4rem;
+  font-size: 5rem;
   font-weight: 300;
   margin-bottom: 1rem;
   line-height: 1.1;
@@ -589,9 +589,9 @@ body:has(.pitchDeck) main {
 }
 
 .slideSubtitle {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   color: #64748b;
-  max-width: 700px;
+  max-width: 900px;
   margin: 0 auto;
   line-height: 1.4;
   font-weight: 300;
@@ -599,15 +599,15 @@ body:has(.pitchDeck) main {
 
 /* Content - No animation ever */
 .slideContent {
-  max-width: 1000px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 3rem;
   opacity: 1;
   transform: none;
 }
 
 .slideContent h3 {
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   color: #1e293b;
   margin-bottom: 2rem;
   text-align: center;
@@ -616,14 +616,14 @@ body:has(.pitchDeck) main {
 }
 
 .slideContent h4 {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   color: #334155;
   margin-bottom: 0.75rem;
   font-weight: 500;
 }
 
 .slideContent p {
-  font-size: 1rem;
+  font-size: 1.15rem;
   line-height: 1.5;
   color: #64748b;
   margin-bottom: 1rem;
@@ -2459,7 +2459,7 @@ body:has(.pitchDeck) main {
 
 .flowPanel {
   background: white;
-  padding: 1.5rem;
+  padding: 2rem;
   border-radius: 16px;
   text-align: center;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -2468,6 +2468,10 @@ body:has(.pitchDeck) main {
   flex: 1;
   min-width: 280px;
   max-width: 320px;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .flowPanel:hover {
@@ -2493,14 +2497,18 @@ body:has(.pitchDeck) main {
 .diagnostician {
   background: linear-gradient(135deg, #fee2e2 0%, #fef2f2 100%);
   padding: 2rem;
-  border-radius: 20px;
+  border-radius: 16px;
   text-align: center;
   border: 3px solid #ef4444;
   box-shadow: 0 8px 30px rgba(239, 68, 68, 0.2);
   flex: 1;
   min-width: 280px;
   max-width: 320px;
+  min-height: 220px;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .diagnostician::before {
@@ -2659,14 +2667,6 @@ body:has(.pitchDeck) main {
   letter-spacing: 0.5px;
   max-width: 800px;
   margin: 0 auto;
-}
-
-.companyDetails {
-  font-size: 1rem;
-  color: #94a3b8;
-  font-weight: 400;
-  margin-top: 1.5rem;
-  letter-spacing: 0.5px;
 }
 
 .titleVisual {
@@ -2905,7 +2905,6 @@ body:has(.pitchDeck) main {
   padding: 2rem;
   text-align: center;
   margin-top: 2rem;
-  box-shadow: 0 10px 30px rgba(0, 150, 136, 0.2);
 }
 
 .timeComparison {
@@ -2940,6 +2939,7 @@ body:has(.pitchDeck) main {
   color: #ffcccb;
   margin-bottom: 0.3rem;
   line-height: 1.1;
+  word-spacing: 0.3em;
 }
 
 .afterValue {
@@ -5538,204 +5538,6 @@ body:has(.pitchDeck) main {
   margin-top: 1rem;
 }
 
-/* Use of Funds Slide */
-.useOfFundsLayout {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 0.75rem;
-}
-
-.fundsHeader {
-  text-align: center;
-  margin-bottom: 0.5rem;
-}
-
-.totalRaising {
-  display: inline-block;
-  text-align: center;
-}
-
-.raisingLabel {
-  font-size: 0.7rem;
-  color: #64748b;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 0.15rem;
-}
-
-.raisingAmount {
-  font-size: 2rem;
-  font-weight: 800;
-  background: linear-gradient(135deg, var(--primary-color), #06b6d4);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1;
-  margin-bottom: 0.15rem;
-}
-
-.raisingSubtext {
-  font-size: 0.75rem;
-  color: #64748b;
-}
-
-.fundsContentGrid {
-  display: grid;
-  grid-template-columns: 240px 1fr;
-  gap: 1.5rem;
-  margin-bottom: 0.75rem;
-  align-items: start;
-}
-
-.pieChartSection {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.5rem 0;
-}
-
-.pieChart {
-  width: 100%;
-  max-width: 220px;
-  height: auto;
-  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.1));
-}
-
-.fundsBreakdownList {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-
-.fundItem {
-  display: grid;
-  grid-template-columns: 14px 1fr auto auto;
-  gap: 0.6rem;
-  align-items: center;
-  background: white;
-  padding: 0.4rem 0.7rem;
-  border-radius: 6px;
-  border: 1px solid #e2e8f0;
-  transition: all 0.2s ease;
-}
-
-.fundItem:hover {
-  transform: translateX(5px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  border-color: #cbd5e1;
-}
-
-.fundColor {
-  width: 14px;
-  height: 14px;
-  border-radius: 3px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.fundDetails {
-  display: flex;
-  flex-direction: column;
-  gap: 0.05rem;
-}
-
-.fundName {
-  font-weight: 600;
-  font-size: 0.75rem;
-  color: #1e293b;
-  line-height: 1.2;
-}
-
-.fundDescription {
-  font-size: 0.65rem;
-  color: #64748b;
-  line-height: 1.2;
-}
-
-.fundAmount {
-  font-weight: 700;
-  font-size: 0.85rem;
-  color: #0f172a;
-  text-align: right;
-  min-width: 50px;
-}
-
-.fundPercent {
-  font-weight: 600;
-  font-size: 0.75rem;
-  color: #64748b;
-  text-align: right;
-  min-width: 35px;
-}
-
-.fundsFooter {
-  text-align: center;
-  padding: 0.65rem;
-  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-  border-radius: 8px;
-  border: 2px solid #10b981;
-  font-size: 0.75rem;
-  color: #064e3b;
-  line-height: 1.3;
-}
-
-.fundsFooter strong {
-  color: #047857;
-}
-
-@media (max-width: 1100px) {
-  .fundsContentGrid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  
-  .pieChartSection {
-    order: -1;
-  }
-  
-  .pieChart {
-    max-width: 300px;
-  }
-}
-
-@media (max-width: 768px) {
-  .raisingAmount {
-    font-size: 3rem;
-  }
-  
-  .fundItem {
-    grid-template-columns: 16px 1fr;
-    gap: 0.75rem;
-  }
-  
-  .fundAmount,
-  .fundPercent {
-    grid-column: 2;
-    text-align: left;
-    margin-top: 0.25rem;
-  }
-  
-  .fundAmount {
-    font-size: 1rem;
-  }
-  
-  .fundColor {
-    width: 16px;
-    height: 16px;
-  }
-  
-  .fundName {
-    font-size: 0.9rem;
-  }
-  
-  .fundDescription {
-    font-size: 0.75rem;
-  }
-  
-  .pieChart {
-    max-width: 250px;
-  }
-}
-
 @media (max-width: 900px) {
   .runwayBreakdown {
     grid-template-columns: 1fr;
@@ -6576,21 +6378,26 @@ body:has(.pitchDeck) main {
 
 .costStats {
   display: flex;
-  align-items: center;
-  justify-content: space-around;
+  align-items: stretch;
+  justify-content: space-between;
   background: linear-gradient(135deg, #fef2f2 0%, white 100%);
   border: 2px solid #fca5a5;
   border-radius: 16px;
-  padding: 3rem 2rem;
+  padding: 3rem 3rem;
+  gap: 2rem;
 }
 
 .statBlock {
   text-align: center;
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .statNumber {
-  font-size: 2.5rem;
+  font-size: 2.3rem;
   font-weight: 800;
   color: #dc2626;
   margin-bottom: 0.5rem;
@@ -6607,6 +6414,8 @@ body:has(.pitchDeck) main {
   width: 2px;
   height: 80px;
   background: linear-gradient(180deg, transparent, #fca5a5, transparent);
+  flex-shrink: 0;
+  align-self: center;
 }
 
 .clinicalQuoteBox {
@@ -7406,20 +7215,27 @@ body:has(.pitchDeck) main {
 
 .transformLeft,
 .transformRight {
-  background: white;
+  background: #f1f5f9;
   border-radius: 10px;
   padding: 1.5rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  min-height: 450px;
+  max-height: 450px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .yearLabel {
   display: inline-block;
-  padding: 0.35rem 1rem;
-  border-radius: 15px;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
   color: white;
   font-weight: 700;
-  font-size: 0.9rem;
-  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  align-self: flex-start;
+  width: auto;
 }
 
 .transformLeft h3,
@@ -7492,6 +7308,7 @@ body:has(.pitchDeck) main {
   text-align: center;
   font-weight: 600;
   font-size: 0.95rem;
+  margin-top: auto;
 }
 
 .transformArrow {
@@ -7870,6 +7687,178 @@ body:has(.pitchDeck) main {
   color: var(--primary-color);
 }
 
+/* Alternative Revenue Stream Slide */
+.alternativeRevenueLayout {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.revenueStreamIntro {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.revenueStreamIntro .leadText {
+  font-size: 1.1rem;
+  line-height: 1.4;
+  color: #1e293b;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.serviceModelGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 1rem 0;
+}
+
+.serviceColumn {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border: 2px solid #e5e7eb;
+}
+
+.serviceColumn h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #1e293b;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.solutionColumn {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border-color: var(--primary-color);
+}
+
+.solutionColumn h3 {
+  color: var(--primary-color);
+}
+
+.problemList,
+.solutionList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.problemList li {
+  padding-left: 1.5rem;
+  position: relative;
+  font-size: 0.95rem;
+  color: #475569;
+  line-height: 1.4;
+}
+
+.problemList li:before {
+  content: "×";
+  position: absolute;
+  left: 0;
+  color: #dc2626;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.solutionList li {
+  padding-left: 1.5rem;
+  position: relative;
+  font-size: 0.95rem;
+  color: #166534;
+  line-height: 1.4;
+}
+
+.solutionList li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.pricingHighlight {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
+  border: 3px solid #eab308;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin: 1rem 0 0.75rem 0;
+  gap: 1.5rem;
+}
+
+.priceBox {
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.priceAmount {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #854d0e;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.priceLabel {
+  font-size: 0.9rem;
+  color: #92400e;
+  font-weight: 600;
+}
+
+.priceDetails {
+  flex: 1;
+}
+
+.priceDetails p {
+  margin: 0.25rem 0;
+  font-size: 1rem;
+  color: #713f12;
+  font-weight: 500;
+}
+
+.revenueStreamFooter {
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  border: 2px solid #3b82f6;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  font-size: 1rem;
+  color: #1e40af;
+  line-height: 1.5;
+}
+
+.revenueStreamFooter strong {
+  color: #1e3a8a;
+}
+
+@media (max-width: 1024px) {
+  .serviceModelGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .pricingHighlight {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .priceAmount {
+    font-size: 2.5rem;
+  }
+}
+
 @media (max-width: 1024px) {
   .pricingCards {
     grid-template-columns: 1fr;
@@ -7956,7 +7945,7 @@ body:has(.pitchDeck) main {
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  background: #3b82f6;
+  background: #10b981;
   color: white;
   border-radius: 8px;
   font-weight: 600;
@@ -8043,128 +8032,368 @@ body:has(.pitchDeck) main {
   }
 }
 
-/* SWOT Analysis Styles */
-.swotTableContainer {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 0.5rem;
-}
+/* === NEW: Deck restructure additions === */
 
-.swotTable {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 0.75rem;
-  background: white;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-.swotTable thead th {
-  padding: 0.6rem 1rem;
-  font-size: 1rem;
-  font-weight: 700;
-  text-align: left;
+.seedBadge {
+  display: inline-block;
+  background: var(--primary-color);
   color: white;
-  width: 50%;
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  letter-spacing: 0.5px;
 }
 
-.swotHeaderStrength {
-  background: #10b981;
+.demoGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 1.5rem 0;
 }
 
-.swotHeaderWeakness {
-  background: #f59e0b;
-}
-
-.swotHeaderOpportunity {
-  background: #3b82f6;
-}
-
-.swotHeaderThreat {
-  background: #ef4444;
-}
-
-.swotTable tbody td {
-  padding: 0.75rem 1rem;
-  vertical-align: top;
-  border: 1px solid #e2e8f0;
-  width: 50%;
-}
-
-.swotCellStrength {
-  background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
-  border-left: 4px solid #10b981;
-}
-
-.swotCellWeakness {
-  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
-  border-left: 4px solid #f59e0b;
-}
-
-.swotCellOpportunity {
-  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-  border-left: 4px solid #3b82f6;
-}
-
-.swotCellThreat {
-  background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
-  border-left: 4px solid #ef4444;
-}
-
-.swotTable ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.swotTable li {
-  padding: 0.25rem 0;
-  padding-left: 1.2rem;
+.demoCard {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  border: 1px solid #f1f5f9;
   position: relative;
-  font-size: 0.8rem;
+}
+
+.demoCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), #22d3ee);
+  z-index: 1;
+}
+
+.demoCard img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.demoCaption {
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  color: #334155;
+  font-weight: 500;
+  text-align: center;
+}
+
+.accuracyMetrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border-radius: 16px;
+}
+
+.accuracyItem {
+  text-align: center;
+}
+
+.accuracyValue {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.accuracyLabel {
+  font-size: 0.85rem;
+  color: #475569;
+  margin-top: 0.25rem;
+}
+
+.milestoneTimeline {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.milestoneItem {
+  background: white;
+  border-radius: 12px;
+  padding: 1.25rem;
+  border-left: 3px solid var(--primary-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.milestoneTime {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.milestoneText {
+  font-size: 0.9rem;
   color: #475569;
   line-height: 1.4;
 }
 
-.swotTable li:before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  font-weight: bold;
+.ctaSlide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 60vh;
+  gap: 1.5rem;
+}
+
+.ctaTagline {
+  font-size: 1.3rem;
+  color: #64748b;
+  max-width: 600px;
+  line-height: 1.5;
+}
+
+.ctaContact {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  color: #475569;
+}
+
+.ctaContact a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.ctaContact a:hover {
+  text-decoration: underline;
+}
+
+.ctaBadge {
+  background: linear-gradient(135deg, var(--primary-color), #22d3ee);
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+.revenueSimple {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.revenueYear {
+  background: white;
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f1f5f9;
+  text-align: center;
+}
+
+.revenueYear h4 {
+  color: var(--primary-color);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.revenueYear p {
   font-size: 0.9rem;
+  color: #475569;
+  line-height: 1.4;
 }
 
-.swotCellStrength li:before {
-  color: #10b981;
+.nearTermRevenue {
+  background: linear-gradient(135deg, #fefce8 0%, #fef9c3 100%);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-top: 1rem;
+  border-left: 3px solid #ca8a04;
 }
 
-.swotCellWeakness li:before {
-  color: #f59e0b;
+.nearTermRevenue strong {
+  color: #854d0e;
 }
 
-.swotCellOpportunity li:before {
-  color: #3b82f6;
+.nearTermRevenue p {
+  font-size: 0.9rem;
+  color: #713f12;
+  margin-top: 0.25rem;
 }
 
-.swotCellThreat li:before {
-  color: #ef4444;
-}
-
-@media (max-width: 968px) {
-  .swotTable thead th {
-    font-size: 1rem;
-    padding: 0.75rem 1rem;
+@media (max-width: 768px) {
+  .demoGrid {
+    grid-template-columns: 1fr;
   }
 
-  .swotTable tbody td {
-    padding: 1rem;
-    display: block;
-    width: 100%;
-    border-left: none;
+  .accuracyMetrics {
+    grid-template-columns: 1fr;
   }
 
-  .swotTable li {
-    font-size: 0.85rem;
+  .milestoneTimeline {
+    grid-template-columns: 1fr;
+  }
+
+  .revenueSimple {
+    grid-template-columns: 1fr;
+  }
+
+  .ctaContact {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+/* Horizontal Flow (Solution slide) */
+.horizontalFlow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin: 2.5rem 0;
+}
+
+.hFlowStep {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.25rem;
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border-radius: 12px;
+  font-size: 0.95rem;
+  color: #166534;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.hFlowArrow {
+  font-size: 2rem;
+  color: var(--primary-color);
+  font-weight: 700;
+  padding: 0 1.25rem;
+  flex-shrink: 0;
+}
+
+/* Clinical Validation slide */
+.validationLayout {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.fundingBanner {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border: 2px solid #7dd3fc;
+  border-radius: 12px;
+  padding: 1rem 2rem;
+  text-align: center;
+}
+
+.fundingAmount {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  line-height: 1.2;
+  margin-bottom: 0.25rem;
+}
+
+.fundingBanner p {
+  font-size: 1rem;
+  color: #075985;
+  margin: 0;
+  font-weight: 500;
+}
+
+.quoteGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.quoteCard {
+  background: white;
+  border-left: 4px solid var(--primary-color);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.quoteText {
+  font-size: 0.92rem;
+  color: #1e293b;
+  font-style: italic;
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+}
+
+.quoteText::before {
+  content: '\201C';
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  font-weight: 700;
+  line-height: 0;
+  margin-right: 2px;
+  vertical-align: -0.25em;
+}
+
+.quoteAttribution {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.quoteAttribution strong {
+  font-size: 0.9rem;
+  color: var(--primary-color);
+}
+
+.quoteAttribution span {
+  font-size: 0.8rem;
+  color: #64748b;
+  line-height: 1.3;
+}
+
+.validationFooter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: linear-gradient(135deg, var(--primary-color) 0%, #0f766e 100%);
+  border-radius: 8px;
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .horizontalFlow {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .hFlowArrow {
+    transform: rotate(90deg);
+    padding: 0;
+  }
+
+  .quoteGrid {
+    grid-template-columns: 1fr;
   }
 }
