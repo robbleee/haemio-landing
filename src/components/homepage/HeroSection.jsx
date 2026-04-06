@@ -6,7 +6,7 @@ import Image from 'next/image';
 import styles from './HeroSection.module.css';
 
 const SCREENSHOTS = [
-  { src: '/new-screenshots-for-landing/diagnostic-path.png', label: 'Diagnostic Pathway', alt: 'ICC 2022 AML Execution Path showing the full diagnostic decision tree' },
+  { src: '/new-screenshots-for-landing/diagnostic-path.png', label: 'Diagnostic Pathway', alt: 'ICC 2022 Execution Path showing the full diagnostic decision tree' },
   { src: '/new-screenshots-for-landing/classification-result.png', label: 'Classification', alt: 'WHO 2022 and ICC 2022 classification results with clinical reasoning traces' },
   { src: '/new-screenshots-for-landing/data-entry.png', label: 'Report Upload', alt: 'Patient report upload with AI-powered analysis and data extraction' },
   { src: '/new-screenshots-for-landing/data-inspector.png', label: 'Data Inspector', alt: 'Input data summary showing parsed mutations, cytogenetics, and clinical parameters' },
@@ -36,7 +36,7 @@ export default function HeroSection() {
             </div>
 
             <h1 className={styles.title}>
-              <span className={styles.titleLine}>Classify AML &amp; MDS</span>
+              <span className={styles.titleLine}>Classify leukaemia</span>
               <span className={styles.titleAccent}>in minutes, not hours</span>
             </h1>
 

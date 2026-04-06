@@ -17,7 +17,7 @@ export async function GET(request) {
   try {
     const res = await fetch(
       `${API_BASE_URL}/api/v1/clinical-trials/?${params.toString()}`,
-      { headers: { 'Content-Type': 'application/json' }, next: { revalidate: 300 } }
+      { headers: { 'Content-Type': 'application/json' }, cache: 'no-store' }
     );
     if (!res.ok) throw new Error(`API returned ${res.status}`);
     const data = await res.json();

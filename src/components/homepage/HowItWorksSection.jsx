@@ -37,7 +37,7 @@ const steps = [
     number: '03',
     title: 'Act',
     shortDesc: 'Support next-step decisions with diagnosis, risk, and rationale.',
-    detail: 'Generates ELN 2022 risk for AML, IPSS-M/R for MDS. Provides rationale and evidence for clinical decision support alongside treatment considerations.',
+    detail: 'Generates ELN 2022 and ELN 2024 risk stratification with IPSS-M/R scoring. Provides rationale and evidence for clinical decision support alongside treatment considerations.',
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="M22 12h-4l-3 9L9 3l-3 9H2" />

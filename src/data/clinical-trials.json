@@ -7,13 +7,13 @@
     "weblink": "https://www.cancerresearchuk.org/about-cancer/find-a-clinical-trial/a-trial-of-venetoclax-with-low-dose-cytarabine-for-acute-myeloid-leukaemia-victor",
     "weblinkText": "A trial of venetoclax with low dose cytarabine for acute myeloid leukaemia (VICTOR)",
     "inclusionCriteria": [
-      "Age \u226560 years (adaptive expansion to \u226550 years subject to interim analysis)",
+      "Age ≥60 years (adaptive expansion to ≥50 years subject to interim analysis)",
       "Diagnosis of CD33 positive AML",
       "Genotype NPM1 mutated, FLT3-ITD negative",
       "Fit for intensive chemotherapy with anthracyclines per treating physician",
-      "ECOG performance status 0\u20132",
-      "Serum creatinine \u22641.5\u00d7 ULN",
-      "ALT and AST \u22642.5\u00d7 ULN, bilirubin \u22642\u00d7 ULN",
+      "ECOG performance status 0–2",
+      "Serum creatinine ≤1.5× ULN",
+      "ALT and AST ≤2.5× ULN, bilirubin ≤2× ULN",
       "Able to provide written informed consent"
     ],
     "exclusionCriteria": [
@@ -29,9 +29,15 @@
     "contact": "VICTOR@trials.bham.ac.uk",
     "sites": "41 UK sites + Denmark, New Zealand (UK lead: University of Birmingham). Contact VICTOR@trials.bham.ac.uk for site list",
     "genetics": {
-      "required": ["NPM1"],
-      "excluded": ["FLT3-ITD"],
-      "iccMatch": ["AML with mutated NPM1"]
+      "required": [
+        "NPM1"
+      ],
+      "excluded": [
+        "FLT3-ITD"
+      ],
+      "iccMatch": [
+        "AML with mutated NPM1"
+      ]
     },
     "fitness": "intensive",
     "phase": "Phase 2"
@@ -44,7 +50,7 @@
     "weblink": "https://www.cancerresearchuk.org/about-cancer/find-a-clinical-trial/a-trial-looking-at-the-best-treatment-for-acute-myeloid-leukaemia-optimise-flt3",
     "weblinkText": "",
     "inclusionCriteria": [
-      "Age \u226516",
+      "Age ≥16",
       "Fit for intensive therapy",
       "FLT3-ITD or FLT3-TKD mutated",
       "New presentations requiring emergency treatment can be enrolled prior to FLT3 result"
@@ -57,9 +63,16 @@
     "contact": "optimise-flt3@cardiff.ac.uk",
     "sites": "~80 UK centres + international sites (led by Cardiff University). Contact optimise-flt3@cardiff.ac.uk for site list",
     "genetics": {
-      "required": ["FLT3-ITD"],
+      "required": [
+        "FLT3-ITD"
+      ],
       "excluded": [],
-      "iccMatch": ["AML with mutated NPM1", "AML, NOS", "AML with myelodysplasia related gene mutation", "AML with myelodysplasia related cytogenetic abnormality"]
+      "iccMatch": [
+        "AML with mutated NPM1",
+        "AML, NOS",
+        "AML with myelodysplasia related gene mutation",
+        "AML with myelodysplasia related cytogenetic abnormality"
+      ]
     },
     "fitness": "intensive",
     "phase": "Phase 3"
@@ -68,19 +81,19 @@
     "id": "evolve-1",
     "category": "Newly Diagnosed",
     "name": "EVOLVE-1",
-    "description": "International phase 3 randomised trial of newly diagnosed patients ineligible for intensive chemotherapy with IDH1m AML using ivosidenib plus azacitidine \u00b1 venetoclax.",
+    "description": "International phase 3 randomised trial of newly diagnosed patients ineligible for intensive chemotherapy with IDH1m AML using ivosidenib plus azacitidine ± venetoclax.",
     "weblink": "https://clinicaltrials.gov/study/NCT07075016",
     "weblinkText": "",
     "inclusionCriteria": [
       "Patients with newly diagnosed IDH1-mutated AML or MDS/AML according to the 2022 International Consensus Classification",
-      "Age \u2265 18 years, no upper age limit",
+      "Age ≥ 18 years, no upper age limit",
       "Ineligible for intensive induction chemotherapy by meeting at least 1 of the following criteria:",
-      "\u2265 75 years of age ineligible for intensive chemotherapy per physician\u2019s discretion (ECOG PS 0-2)",
+      "≥ 75 years of age ineligible for intensive chemotherapy per physician’s discretion (ECOG PS 0-2)",
       "18-74 years: not eligible for standard chemotherapy with any of the following co-morbidities:",
       "ECOG PS 2 or 3",
-      "Cardiac history of chronic heart failure requiring treatment; or with an ejection fraction \u226450%; or chronic stable angina",
-      "DLCO \u2264 65% or FEV1 \u2264 65%",
-      "Creatinine clearance \u2265 30 mL/min to <45 ml/min calculated by the Cockcroft Gault formula",
+      "Cardiac history of chronic heart failure requiring treatment; or with an ejection fraction ≤50%; or chronic stable angina",
+      "DLCO ≤ 65% or FEV1 ≤ 65%",
+      "Creatinine clearance ≥ 30 mL/min to <45 ml/min calculated by the Cockcroft Gault formula",
       "Moderate hepatic impairment with total bilirubin > 1.5 to < 3.0 x upper limit of normal (ULN)"
     ],
     "exclusionCriteria": [
@@ -90,7 +103,9 @@
     "contact": "",
     "sites": "Birmingham, Blackpool, Bristol, Cardiff, Glasgow, Leeds, Leicester, King's College Hospital London, Royal Marsden London, UCLH London, The Christie Manchester, Manchester Royal Infirmary, Freeman Hospital Newcastle, Nottingham, Churchill Hospital Oxford, Portsmouth, Southampton, Wolverhampton",
     "genetics": {
-      "required": ["IDH1"],
+      "required": [
+        "IDH1"
+      ],
       "excluded": [],
       "iccMatch": []
     },
@@ -101,19 +116,19 @@
     "id": "evolve-2",
     "category": "Newly Diagnosed",
     "name": "EVOLVE-2",
-    "description": "International phase 3 randomised trial of newly diagnosed patients ineligible for intensive chemotherapy with either NPM1m or KMT2Ar AML 1:1 to venetoclax plus-azacitidine \u00b1 revumenib (menin inhibitor).",
+    "description": "International phase 3 randomised trial of newly diagnosed patients ineligible for intensive chemotherapy with either NPM1m or KMT2Ar AML 1:1 to venetoclax plus-azacitidine ± revumenib (menin inhibitor).",
     "weblink": "https://clinicaltrials.gov/study/NCT06652438",
     "weblinkText": "",
     "inclusionCriteria": [
       "Patients with newly diagnosed NPM1-mutated or KMT2A-rearranged AML or MDS/AML according to the 2022 International Consensus Classification",
-      "Age \u2265 18 years, no upper age limit",
+      "Age ≥ 18 years, no upper age limit",
       "Ineligible for intensive induction chemotherapy by meeting at least 1 of the following criteria:",
-      "\u2265 75 years of age ineligible for intensive chemotherapy per physician\u2019s discretion (ECOG PS 0-2)",
+      "≥ 75 years of age ineligible for intensive chemotherapy per physician’s discretion (ECOG PS 0-2)",
       "18-74 years: not eligible for standard chemotherapy with any of the following co-morbidities:",
       "ECOG PS 2 or 3",
-      "Cardiac history of chronic heart failure requiring treatment; or with an ejection fraction \u226450%; or chronic stable angina",
-      "DLCO \u2264 65% or FEV1 \u2264 65%",
-      "Creatinine clearance \u2265 30 mL/min to <45 ml/min calculated by the Cockcroft Gault formula",
+      "Cardiac history of chronic heart failure requiring treatment; or with an ejection fraction ≤50%; or chronic stable angina",
+      "DLCO ≤ 65% or FEV1 ≤ 65%",
+      "Creatinine clearance ≥ 30 mL/min to <45 ml/min calculated by the Cockcroft Gault formula",
       "Moderate hepatic impairment with total bilirubin > 1.5 to < 3.0 x upper limit of normal (ULN)"
     ],
     "exclusionCriteria": [
@@ -123,9 +138,15 @@
     "contact": "",
     "sites": "Belfast, Birmingham, Blackpool, Bristol, Cardiff, Glasgow, Leeds, Leicester, Liverpool, King's College Hospital London, St Bartholomew's Hospital London, The Christie Manchester, Newcastle, Nottingham, Churchill Hospital Oxford, Southampton, The Royal Marsden Sutton, Wolverhampton",
     "genetics": {
-      "required": ["NPM1", "KMT2A"],
+      "required": [
+        "NPM1",
+        "KMT2A"
+      ],
       "excluded": [],
-      "iccMatch": ["AML with mutated NPM1", "AML with KMT2A rearrangement"]
+      "iccMatch": [
+        "AML with mutated NPM1",
+        "AML with KMT2A rearrangement"
+      ]
     },
     "fitness": "non-intensive",
     "phase": "Phase 3"
@@ -140,13 +161,13 @@
     "inclusionCriteria": [
       "Histological confirmation of newly diagnosed AML by WHO 2022 criteria",
       "Projected life expectancy of at least 12 weeks",
-      "Ineligible for intensive induction chemotherapy: aged \u226575 years, OR aged 18\u201374 with \u22651 comorbidity:",
-      "Severe cardiac disorder (e.g. CHF requiring treatment, ejection fraction \u226450%, chronic stable angina)",
-      "Severe pulmonary disorder (DLCO \u226465% or FEV1 \u226465%)",
-      "Creatinine clearance \u226530 mL/min to <45 mL/min",
-      "Moderate hepatic impairment (total bilirubin >1.5 to \u22643.0\u00d7 ULN)",
+      "Ineligible for intensive induction chemotherapy: aged ≥75 years, OR aged 18–74 with ≥1 comorbidity:",
+      "Severe cardiac disorder (e.g. CHF requiring treatment, ejection fraction ≤50%, chronic stable angina)",
+      "Severe pulmonary disorder (DLCO ≤65% or FEV1 ≤65%)",
+      "Creatinine clearance ≥30 mL/min to <45 mL/min",
+      "Moderate hepatic impairment (total bilirubin >1.5 to ≤3.0× ULN)",
       "ECOG PS 2 or 3",
-      "ECOG PS 0\u20132 for participants \u226575 years; ECOG PS 0\u20133 for 18\u201374 years",
+      "ECOG PS 0–2 for participants ≥75 years; ECOG PS 0–3 for 18–74 years",
       "Able to swallow required number of tablets within 10 minutes and tolerate 4 hours fasting"
     ],
     "exclusionCriteria": [
@@ -174,12 +195,12 @@
     "weblink": "https://clinicaltrials.gov/study/NCT07007312",
     "weblinkText": "",
     "inclusionCriteria": [
-      "Age \u226518 years",
+      "Age ≥18 years",
       "Diagnosis of AML per the 2022 WHO Classification (5th Edition)",
       "ECOG performance status 0, 1, or 2",
       "Adequate liver and kidney function per protocol",
-      "Non-intensive arm (Ven+Aza): Documented NPM1 mutation; ineligible for intensive therapy (\u226575 years, or <75 with ECOG 2 or cardiac/renal/hepatic impairment)",
-      "Intensive arm (7+3): Documented NPM1 mutation or KMT2A rearrangement (KMT2A-PTD not eligible); FLT3 wild-type or ITD ratio <0.05 or ineligible for FLT3-targeted therapy; ejection fraction \u226550%; fit for intensive therapy"
+      "Non-intensive arm (Ven+Aza): Documented NPM1 mutation; ineligible for intensive therapy (≥75 years, or <75 with ECOG 2 or cardiac/renal/hepatic impairment)",
+      "Intensive arm (7+3): Documented NPM1 mutation or KMT2A rearrangement (KMT2A-PTD not eligible); FLT3 wild-type or ITD ratio <0.05 or ineligible for FLT3-targeted therapy; ejection fraction ≥50%; fit for intensive therapy"
     ],
     "exclusionCriteria": [
       "Prior therapy for AML (except hydroxyurea or leukapheresis for WBC control)",
@@ -187,7 +208,7 @@
       "Known BCR-ABL mutation",
       "Active concurrent malignancies (exceptions: basal/squamous cell skin cancer, previously treated localised cancer, adjuvant hormonal therapy for prostate/breast cancer)",
       "Active CNS involvement by AML",
-      "Clinical signs of leukostasis or WBC >25\u00d710\u2079/L prior to start of ziftomenib/placebo",
+      "Clinical signs of leukostasis or WBC >25×10⁹/L prior to start of ziftomenib/placebo",
       "Known uncontrolled HIV, active hepatitis B/C, or other uncontrolled infection",
       "Uncontrolled intercurrent illness including cardiac illness per protocol",
       "Women who are pregnant or lactating"
@@ -195,9 +216,15 @@
     "contact": "",
     "sites": "Barts, Guys & St Thomas', Leeds, St George's, Wolverhampton",
     "genetics": {
-      "required": ["NPM1", "KMT2A"],
+      "required": [
+        "NPM1",
+        "KMT2A"
+      ],
       "excluded": [],
-      "iccMatch": ["AML with mutated NPM1", "AML with KMT2A rearrangement"]
+      "iccMatch": [
+        "AML with mutated NPM1",
+        "AML with KMT2A rearrangement"
+      ]
     },
     "fitness": "both",
     "phase": "Phase 3"
@@ -210,9 +237,9 @@
     "weblink": "https://clinicaltrials.gov/study/NCT06852222",
     "weblinkText": "",
     "inclusionCriteria": [
-      "Age \u226518 years",
-      "Previously untreated KMT2A-rearranged or NPM1-mutated AML with \u226510% bone marrow blasts per 2022 ICC criteria",
-      "Ineligible for intensive chemotherapy: \u226575 years and ineligible per physician\u2019s discretion (ECOG PS 0-2), OR \u226518 to <75 years with \u22651 comorbidity (ECOG PS 2, severe cardiac disorder, severe pulmonary disorder, renal impairment, moderate hepatic impairment, or other comorbidity per investigator)",
+      "Age ≥18 years",
+      "Previously untreated KMT2A-rearranged or NPM1-mutated AML with ≥10% bone marrow blasts per 2022 ICC criteria",
+      "Ineligible for intensive chemotherapy: ≥75 years and ineligible per physician’s discretion (ECOG PS 0-2), OR ≥18 to <75 years with ≥1 comorbidity (ECOG PS 2, severe cardiac disorder, severe pulmonary disorder, renal impairment, moderate hepatic impairment, or other comorbidity per investigator)",
       "Adequate hepatic and renal function",
       "Ineligibility for intensive chemotherapy should be explicitly approved by a multidisciplinary team where this is standard of care"
     ],
@@ -228,9 +255,15 @@
     "contact": "",
     "sites": "Brighton, Cambridge, Canterbury, Colchester, Edinburgh, Liverpool, Guys & St Thomas', Plymouth, Worthing",
     "genetics": {
-      "required": ["NPM1", "KMT2A"],
+      "required": [
+        "NPM1",
+        "KMT2A"
+      ],
       "excluded": [],
-      "iccMatch": ["AML with mutated NPM1", "AML with KMT2A rearrangement"]
+      "iccMatch": [
+        "AML with mutated NPM1",
+        "AML with KMT2A rearrangement"
+      ]
     },
     "fitness": "non-intensive",
     "phase": "Phase 3"
@@ -243,23 +276,29 @@
     "weblink": "https://clinicaltrials.gov/study/NCT06578247",
     "weblinkText": "",
     "inclusionCriteria": [
-      "Age \u2265 18 years and \u226470",
+      "Age ≥ 18 years and ≤70",
       "Newly diagnosed, morphologically documented primary AML based on World Health Organization (WHO) 2016 classification",
       "ECOG performance status 0-2",
-      "Patient fit for standard \u201c7+3\u201d induction chemotherapy regimen"
+      "Patient fit for standard “7+3” induction chemotherapy regimen"
     ],
     "exclusionCriteria": [
       "Acute promyelocytic leukemia (APL), or BCR-ABL positive leukaemia",
       "AML secondary to prior chemotherapy or radiotherapy",
       "AML with known antecedent MDS, MPN or MDS/MPNs including chronic myelomonocytic leukemia (CMML), atypical chronic myeloid leukemia (aCML), juvenile myelomonocytic leukemia (JMML) and others",
-      "Newly diagnosed AML with FLT3-ITD mutations \u22655% VAF (or \u22650.05 SR) based on a validated FLT3 mutation assay"
+      "Newly diagnosed AML with FLT3-ITD mutations ≥5% VAF (or ≥0.05 SR) based on a validated FLT3 mutation assay"
     ],
     "contact": "",
     "sites": "Queen Elizabeth Hospital Birmingham, King's College Hospital, Hammersmith Hospital, Maidstone, Manchester Royal Infirmary, Oxford, Torquay",
     "genetics": {
       "required": [],
-      "excluded": ["FLT3-ITD"],
-      "iccMatch": ["AML with mutated NPM1", "AML with in-frame bZIP mutated CEBPA", "AML, NOS"]
+      "excluded": [
+        "FLT3-ITD"
+      ],
+      "iccMatch": [
+        "AML with mutated NPM1",
+        "AML with in-frame bZIP mutated CEBPA",
+        "AML, NOS"
+      ]
     },
     "fitness": "intensive",
     "phase": "Phase 3"
@@ -272,30 +311,36 @@
     "weblink": "https://clinicaltrials.gov/study/NCT04811560",
     "weblinkText": "",
     "inclusionCriteria": [
-      "Phase 1: Age \u22652 years (paediatric cohort), \u226518 years (all other cohorts)",
-      "Phase 2: Age \u226518 years",
+      "Phase 1: Age ≥2 years (paediatric cohort), ≥18 years (all other cohorts)",
+      "Phase 2: Age ≥18 years",
       "Relapsed or refractory acute leukemia harboring KMT2A, NPM1 or NUP98/NUP214 alterations (Phase 1)",
       "Phase 2: R/R AML per WHO 2022 with KMT2A rearrangement or NPM1 mutation only",
       "ECOG performance status 0, 1, or 2",
-      "WBC \u226420\u00d710\u2079/L (Phase 1) or adequate per protocol (Phase 2)",
-      "eGFR \u226530 mL/min (adults), >50 mL/min (paediatric)",
+      "WBC ≤20×10⁹/L (Phase 1) or adequate per protocol (Phase 2)",
+      "eGFR ≥30 mL/min (adults), >50 mL/min (paediatric)",
       "Adequate contraception required per protocol"
     ],
     "exclusionCriteria": [
       "Acute promyelocytic leukemia, Down syndrome-associated leukemia, or juvenile myelomonocytic leukemia",
       "Active CNS disease",
       "Prior solid organ transplantation",
-      "QTcF \u2265450 ms (males) or \u2265470 ms (females); family history of Long QT syndrome",
-      "Allogeneic stem cell transplant \u22643 months before first dose, or evidence of GVHD, or requiring immunosuppressant therapy post-HSCT",
-      "Donor lymphocyte infusion \u226428 days before first dose",
+      "QTcF ≥450 ms (males) or ≥470 ms (females); family history of Long QT syndrome",
+      "Allogeneic stem cell transplant ≤3 months before first dose, or evidence of GVHD, or requiring immunosuppressant therapy post-HSCT",
+      "Donor lymphocyte infusion ≤28 days before first dose",
       "Prior cancer immunotherapy within 4 weeks (blinatumomab within 2 weeks)"
     ],
     "contact": "",
     "sites": "Cardiff, The Christie, Liverpool, Guys & St Thomas', Leeds, Oxford, Plymouth, UCLH",
     "genetics": {
-      "required": ["NPM1", "KMT2A"],
+      "required": [
+        "NPM1",
+        "KMT2A"
+      ],
       "excluded": [],
-      "iccMatch": ["AML with mutated NPM1", "AML with KMT2A rearrangement"]
+      "iccMatch": [
+        "AML with mutated NPM1",
+        "AML with KMT2A rearrangement"
+      ]
     },
     "fitness": null,
     "phase": "Phase 1/2"
@@ -309,21 +354,21 @@
     "weblinkText": "",
     "inclusionCriteria": [
       "Phase 1: R/R AML, ALL, acute leukemia of ambiguous lineage (WHO 2022), or MDS/MM at selected sites; documented KMT2A fusion or NPM1 mutation (in regions where required)",
-      "Phase 2: R/R AML or ALL with \u22655% bone marrow blasts and documented KMT2A fusion; must not have had prior menin inhibitor exposure",
-      "Age \u226518 years (or \u226512 years at selected sites for monotherapy)",
-      "ECOG performance status \u22642",
-      "WBC <30,000/\u00b5L (monotherapy) or <25,000/\u00b5L (combinations)",
-      "Creatinine clearance \u226550 mL/min (CKD-EPI formula)",
-      "Total bilirubin \u22641.5\u00d7 ULN (\u22642.0\u00d7 for Gilbert\u2019s syndrome)",
-      "AST and ALT \u22643.0\u00d7 ULN",
-      "Estimated life expectancy \u22653 months"
+      "Phase 2: R/R AML or ALL with ≥5% bone marrow blasts and documented KMT2A fusion; must not have had prior menin inhibitor exposure",
+      "Age ≥18 years (or ≥12 years at selected sites for monotherapy)",
+      "ECOG performance status ≤2",
+      "WBC <30,000/µL (monotherapy) or <25,000/µL (combinations)",
+      "Creatinine clearance ≥50 mL/min (CKD-EPI formula)",
+      "Total bilirubin ≤1.5× ULN (≤2.0× for Gilbert’s syndrome)",
+      "AST and ALT ≤3.0× ULN",
+      "Estimated life expectancy ≥3 months"
     ],
     "exclusionCriteria": [
       "Left ventricular ejection fraction <50%",
       "Acute promyelocytic leukemia",
       "Systemic calcineurin inhibitors within 2 weeks prior to first dose",
-      "QTc >480 ms (or \u2265470 ms females / \u2265450 ms males at UK sites); history of prolonged QT syndrome",
-      "Active uncontrolled bacterial, viral, or fungal infection requiring parenteral therapy; must be afebrile with negative blood cultures \u226572 hours prior to Cycle 1 Day 1",
+      "QTc >480 ms (or ≥470 ms females / ≥450 ms males at UK sites); history of prolonged QT syndrome",
+      "Active uncontrolled bacterial, viral, or fungal infection requiring parenteral therapy; must be afebrile with negative blood cultures ≥72 hours prior to Cycle 1 Day 1",
       "Concurrent sensitive substrates or strong inhibitors/inducers of CYP3A4/5 (ketoconazole, isavuconazole, itraconazole excluded; other standard antifungals permitted)",
       "Major surgery within 28 days prior to first dose",
       "Active CNS leukemia (prophylactic intrathecal chemotherapy allowed)",
@@ -334,9 +379,17 @@
     "contact": "",
     "sites": "Queen Elizabeth Hospital Birmingham, Bristol, Edinburgh, King's College Hospital, Sarah Cannon Research Institute London, UCLH, The Christie Manchester, Oxford, Stoke-on-Trent, The Royal Marsden Sutton",
     "genetics": {
-      "required": ["NPM1", "KMT2A", "TP53"],
+      "required": [
+        "NPM1",
+        "KMT2A",
+        "TP53"
+      ],
       "excluded": [],
-      "iccMatch": ["AML with mutated NPM1", "AML with KMT2A rearrangement", "AML with mutated TP53"]
+      "iccMatch": [
+        "AML with mutated NPM1",
+        "AML with KMT2A rearrangement",
+        "AML with mutated TP53"
+      ]
     },
     "fitness": null,
     "phase": "Phase 1/2"
@@ -349,8 +402,8 @@
     "weblink": "https://clinicaltrials.gov/study/NCT06372717",
     "weblinkText": "",
     "inclusionCriteria": [
-      "Age \u226518",
-      "R/R AML (primary or secondary, including treatment-related), participant is intolerant to, or considered ineligible for available therapies known to provide clinical benefit. Must have \u22655% blasts in BM or \u22651% blasts in the peripheral blood.",
+      "Age ≥18",
+      "R/R AML (primary or secondary, including treatment-related), participant is intolerant to, or considered ineligible for available therapies known to provide clinical benefit. Must have ≥5% blasts in BM or ≥1% blasts in the peripheral blood.",
       "MDS/AML defined as diagnosis of MDS with 10-19% BM blasts who have not had a response after at least four cycles of treatment with a monotherapy hypomethylating agent (HMA)",
       "MDS with 5%-9% bone marrow blasts who are not benefiting with monotherapy hypomethylating agents (Phase 1 only; MDS-EB patients will not be enrolled in the Phase 2 part of the study)"
     ],
@@ -371,15 +424,15 @@
     "id": "jnj-89853413",
     "category": "Relapsed/Refractory",
     "name": "JNJ-89853413",
-    "description": "Phase 1/2 study of a CD33xV\u03b42 T-Cell Engager for Relapsed or Refractory Acute Myeloid Leukemia or Myelodysplastic Neoplasms",
+    "description": "Phase 1/2 study of a CD33xVδ2 T-Cell Engager for Relapsed or Refractory Acute Myeloid Leukemia or Myelodysplastic Neoplasms",
     "weblink": "https://clinicaltrials.gov/study/NCT06618001",
     "weblinkText": "",
     "inclusionCriteria": [
       "Diagnosis per WHO 2022: R/R AML or R/R moderate-high, high, or very-high risk MDS per IPSS-M",
-      "Age \u226518 years",
-      "Body weight \u226540 kg",
+      "Age ≥18 years",
+      "Body weight ≥40 kg",
       "ECOG performance status 0-2",
-      "eGFR \u226540 mL/min (CKD-EPI)",
+      "eGFR ≥40 mL/min (CKD-EPI)",
       "Laboratory parameters within required range per protocol"
     ],
     "exclusionCriteria": [
@@ -407,19 +460,19 @@
     "weblink": "https://clinicaltrials.gov/study/NCT07155226",
     "weblinkText": "",
     "inclusionCriteria": [
-      "Age \u226516 years",
+      "Age ≥16 years",
       "Adequate organ function",
       "Module 1 (dose escalation): Diagnosis of acute leukemia or MDS harbouring genetic alterations associated with upregulation of HOX; backfill requires KMT2A rearrangement or NPM1 mutation",
-      "R/R after standard of care therapy including \u22652 cycles of intensive chemotherapy, HMA monotherapy, or HMA/venetoclax combinations",
-      "R/R MDS: \u22655% bone marrow blasts and/or persistence of peripheral blasts after \u22652 cycles of HMA",
-      "WBC <25,000/\u00b5L (cytoreduction permitted per protocol)",
-      "ECOG performance status \u22642",
-      "Life expectancy \u22658 weeks"
+      "R/R after standard of care therapy including ≥2 cycles of intensive chemotherapy, HMA monotherapy, or HMA/venetoclax combinations",
+      "R/R MDS: ≥5% bone marrow blasts and/or persistence of peripheral blasts after ≥2 cycles of HMA",
+      "WBC <25,000/µL (cytoreduction permitted per protocol)",
+      "ECOG performance status ≤2",
+      "Life expectancy ≥8 weeks"
     ],
     "exclusionCriteria": [
       "Burkitt lymphoma/leukaemia or acute promyelocytic leukemia",
       "Active testicular or active CNS involvement (>CNS1 or radiographic) by leukaemia",
-      "Unresolved treatment-related toxicities Grade \u22652 from prior therapy",
+      "Unresolved treatment-related toxicities Grade ≥2 from prior therapy",
       "Abnormal levels of potassium or magnesium prior to first dose",
       "Module 1: Non-CNS radiation within 2 weeks, CNS radiation within 8 weeks of first dose; prior menin inhibitor exposure (backfill only)",
       "Module 2: Posaconazole contraindicated per local prescribing information"
@@ -427,9 +480,15 @@
     "contact": "",
     "sites": "Edinburgh, London, The Christie Manchester, Newcastle",
     "genetics": {
-      "required": ["NPM1", "KMT2A"],
+      "required": [
+        "NPM1",
+        "KMT2A"
+      ],
       "excluded": [],
-      "iccMatch": ["AML with mutated NPM1", "AML with KMT2A rearrangement"]
+      "iccMatch": [
+        "AML with mutated NPM1",
+        "AML with KMT2A rearrangement"
+      ]
     },
     "fitness": null,
     "phase": "Phase 1/2"
@@ -442,8 +501,8 @@
     "weblink": "https://biodrive-rct.com/",
     "weblinkText": "",
     "inclusionCriteria": [
-      "Age \u226516 years",
-      "Diagnosis of new, or relapsed, acute leukaemia or haematological disorder judged to need chemotherapy by the patient\u2019s clinical care team, including AML, ALL, HRMDS, or AML transformation of a myeloproliferative neoplasm (tMPN)",
+      "Age ≥16 years",
+      "Diagnosis of new, or relapsed, acute leukaemia or haematological disorder judged to need chemotherapy by the patient’s clinical care team, including AML, ALL, HRMDS, or AML transformation of a myeloproliferative neoplasm (tMPN)",
       "Patient expected to have prolonged neutropenia related to chemotherapy which would mandate either antifungal prophylaxis and/or systematic invasive fungal infection biomarker monitoring (at least weekly)"
     ],
     "exclusionCriteria": [
@@ -469,10 +528,10 @@
     "weblink": "https://www.cancerresearchuk.org/about-cancer/find-a-clinical-trial/a-study-looking-at-personalised-prehabilitation-for-myeloid-leukaemia-and-myelodysplastic-syndrome",
     "weblinkText": "",
     "inclusionCriteria": [
-      "Age \u2265 16 years, treated on adult AML pathway",
-      "Diagnosis of either AML or MDS-EB2 (MDS with \u226510% blasts in the bone marrow) following first diagnosis or disease relapse",
+      "Age ≥ 16 years, treated on adult AML pathway",
+      "Diagnosis of either AML or MDS-EB2 (MDS with ≥10% blasts in the bone marrow) following first diagnosis or disease relapse",
       "In complete morphological remission (defined <5% blasts in bone marrow)",
-      "Planned to receive either: Intensive treatment (e.g. anthracycline/cytarabine based chemotherapy and/or HSCT), or lower intensity treatment (i.e. Venetoclax based treatment) with HSCT \u2013 Pathway 1",
+      "Planned to receive either: Intensive treatment (e.g. anthracycline/cytarabine based chemotherapy and/or HSCT), or lower intensity treatment (i.e. Venetoclax based treatment) with HSCT – Pathway 1",
       "Or: Planned to receive lower intensity treatment without HSCT (e.g. Venetoclax or Ivosidenib based treatment) - Pathway 2",
       "Prior to, or within the 1st course of treatment following remission",
       "Planned to receive at least one further full cycle of treatment (chemotherapy or HSCT) post randomisation",
@@ -504,9 +563,9 @@
       "AML according to WHO 2022 classification",
       "ELN high-risk or intermediate-risk in CR1, any risk AML in CR2",
       "Planned allogeneic transplant from 9/10-10/10 HLA-matched donor or haploidentical donor with use of PBSC graft",
-      "Any conditioning regime with a Transplant conditioning Score (TCI) \u2265 1.5",
+      "Any conditioning regime with a Transplant conditioning Score (TCI) ≥ 1.5",
       "Use of Tacrolimus-based GVHD prophylaxis",
-      "Age \u226518 and \u226475"
+      "Age ≥18 and ≤75"
     ],
     "exclusionCriteria": [
       "Use of ciclosporin, anti-thymocyte globulin (ATG), alemtuzumab or abatacept for GVHD prophylaxis",
@@ -539,7 +598,7 @@
       "Early relapse (<6 months) after chemotherapy alone (excluding t(16;16), inv(16) or t(8;21))",
       "Bone marrow performed within 28 days of starting conditioning chemotherapy demonstrates either: <10% blasts; or >10% blasts with a hypocellular background",
       "FEV1 >65% without dyspnoea on mild activity",
-      "AST/ALT <3 x ULN, Bilirubin <1.5 x ULN (excluding Gilbert\u2019s syndrome)",
+      "AST/ALT <3 x ULN, Bilirubin <1.5 x ULN (excluding Gilbert’s syndrome)",
       "Performance Status (ECOG) of 0 or 1"
     ],
     "exclusionCriteria": [
@@ -550,11 +609,771 @@
     "contact": "kch-tr.gracestudy@nhs.net",
     "sites": "King's College Hospital London, The Royal Marsden London, The Christie Manchester",
     "genetics": {
-      "required": ["TP53"],
+      "required": [
+        "TP53"
+      ],
       "excluded": [],
-      "iccMatch": ["AML with mutated TP53"]
+      "iccMatch": [
+        "AML with mutated TP53"
+      ]
     },
     "fitness": "intensive",
     "phase": "Phase 1/2"
+  },
+  {
+    "id": "inobrodib",
+    "category": "Relapsed/Refractory",
+    "name": "Inobrodib (CCS1477)",
+    "needsReview": true,
+    "description": "Phase 1/2a adaptive open-label study of CCS1477 (inobrodib), a first-in-class p300/CBP bromodomain inhibitor, as monotherapy and in combination with azacitidine ± venetoclax in relapsed/refractory AML and higher-risk MDS. NCT04068597. CRUK 17062.",
+    "weblink": "https://clinicaltrials.gov/study/NCT04068597",
+    "weblinkText": "A trial of inobrodib for some types of blood cancer",
+    "inclusionCriteria": [
+      "Confirmed relapsed or refractory haematological malignancy (AML or higher-risk MDS)",
+      "Prior standard therapy received",
+      "ECOG 0-2",
+      "Adequate organ function"
+    ],
+    "exclusionCriteria": [
+      "Chemotherapy/investigational agents within 14 days or 5 half-lives",
+      "Major surgery within 4 weeks",
+      "Strong CYP3A4 inhibitors within 2 weeks or inducers within 4 weeks",
+      "Statins must be discontinued",
+      "Unresolved toxicities >CTCAE Grade 1 (except alopecia, Grade 2 neuropathy)",
+      "Severe/uncontrolled systemic diseases",
+      "QTcF >470 msec"
+    ],
+    "contact": "Tomasz.Knurowski@cellcentric.com / Karen.Clegg@cellcentric.com",
+    "sites": "18 UK sites (recruiting): Royal Marsden Sutton, Clatterbridge Cancer Centre, University Hospitals Bristol, University Hospital of Wales Cardiff, Royal Derby Hospital, Western General Hospital Edinburgh, Gartnavel General Glasgow, Leicester Royal Infirmary, St Bartholomew's London, Sarah Cannon Research Institute London, NIHR UCL London, Imperial College London, Christie Manchester, Newcastle upon Tyne Hospitals, Nottingham University Hospitals, Cancer and Haematology Centre Oxford, University Hospital Southampton, Royal Stoke University Hospital",
+    "genetics": {
+      "required": [],
+      "excluded": [],
+      "iccMatch": []
+    },
+    "fitness": null,
+    "phase": "Phase 1/2a"
+  },
+  {
+    "id": "ep0042",
+    "category": "Relapsed/Refractory",
+    "name": "EP0042",
+    "needsReview": true,
+    "description": "Phase 1/2a modular study of EP0042, a dual FLT3 and Aurora kinase inhibitor, as monotherapy and in combination with venetoclax ± azacitidine in relapsed/refractory FLT3-wildtype AML, CMML, and MDS. NCT04581512.",
+    "weblink": "https://clinicaltrials.gov/study/NCT04581512",
+    "weblinkText": "",
+    "inclusionCriteria": [
+      "Age ≥18 with histological/cytological AML confirmation",
+      "FLT3 wildtype, relapsed/refractory AML",
+      "Mutation status known at trial entry",
+      "Failed all approved therapies or ineligible/intolerant",
+      "ECOG 0-2",
+      "Life expectancy sufficient to complete ≥1 cycle (28 days)",
+      "CrCl ≥50 mL/min",
+      "Adequate liver function"
+    ],
+    "exclusionCriteria": [
+      "APL (FAB M3)",
+      "Symptomatic/untreated brain/leptomeningeal metastases",
+      "Systemic anti-cancer therapy within 2 weeks",
+      "Allo/auto transplantation within 90 days or active immunosuppression for GVHD within 2 weeks",
+      "CrCl <50 mL/min",
+      "Inadequate liver function: bilirubin ≥1.5× ULN, or ALT/AST ≥3× ULN"
+    ],
+    "contact": "Enquiries@ellipses.life (+44 20 3743 0992)",
+    "sites": "3 UK sites (recruiting): University College London Hospital, The Royal Marsden London, The Christie Manchester. Plus sites in Australia and Netherlands.",
+    "genetics": {
+      "required": [],
+      "excluded": [
+        "FLT3-ITD",
+        "FLT3-TKD"
+      ],
+      "iccMatch": []
+    },
+    "fitness": null,
+    "phase": "Phase 1/2a"
+  },
+  {
+    "id": "augment-101",
+    "category": "Relapsed/Refractory",
+    "name": "AUGMENT-101 (Revumenib)",
+    "needsReview": true,
+    "description": "Phase 1/2 open-label dose escalation and expansion study of revumenib (SNDX-5613), a menin inhibitor, in relapsed/refractory acute leukemias harbouring KMT2A rearrangements, NPM1 mutations, or NUP98 rearrangements. 447 patients across 57+ sites. Led to FDA approval of revumenib. NCT04065399.",
+    "weblink": "https://clinicaltrials.gov/study/NCT04065399",
+    "weblinkText": "",
+    "inclusionCriteria": [
+      "Active acute leukemia (bone marrow blasts ≥5% or blasts in peripheral blood)",
+      "Documented R/R disease per NCCN guidelines (Phase 2)",
+      "KMT2A rearrangement, NPM1 mutation, or NUP98 rearrangement/HOX upregulation",
+      "WBC <25,000/µL at enrollment",
+      "Age ≥30 days (Cohort 2D: ≥18 yrs, body weight ≥40 kg)",
+      "ECOG 0-2 or Karnofsky/Lansky ≥50"
+    ],
+    "exclusionCriteria": [
+      "Active APL",
+      "Active CNS disease",
+      "HIV, HBV or HCV",
+      "Cardiac disease within 6 months: MI, unstable angina, CHF (NYHA ≥II), QTc >450 ms",
+      "GI issues affecting oral absorption; cirrhosis Child-Pugh B or C",
+      "GVHD >Grade 0 within 4 weeks",
+      "Pregnant or nursing"
+    ],
+    "contact": "clinicaltrials@syndax.com (781-419-1400)",
+    "sites": "57+ sites across US, Australia, Canada, France, Germany, Israel, Italy, Lithuania, Netherlands, Spain. No UK sites currently.",
+    "genetics": {
+      "required": [
+        "NPM1",
+        "KMT2A",
+        "NUP98"
+      ],
+      "excluded": [],
+      "iccMatch": [
+        "AML with mutated NPM1",
+        "AML with KMT2A rearrangement"
+      ]
+    },
+    "fitness": null,
+    "phase": "Phase 1/2"
+  },
+  {
+    "id": "komet-007",
+    "category": "Newly Diagnosed",
+    "name": "KOMET-007 (Ziftomenib)",
+    "needsReview": true,
+    "description": "Phase 1 study of ziftomenib (menin inhibitor, FDA-approved for R/R NPM1m AML) in combination with venetoclax/azacitidine, venetoclax alone, or 7+3 chemotherapy ± quizartinib in newly diagnosed and R/R AML with NPM1 mutations or KMT2A rearrangements. 420 patients. NCT05735184.",
+    "weblink": "https://clinicaltrials.gov/study/NCT05735184",
+    "weblinkText": "",
+    "inclusionCriteria": [
+      "Documented NPM1 mutation or KMT2A rearrangement",
+      "Newly diagnosed or R/R AML",
+      "ECOG 0-2",
+      "Adequate liver, renal, and cardiac function",
+      "Arm C: NPM1-mutated and FLT3-ITD+ with allelic ratio ≥0.05"
+    ],
+    "exclusionCriteria": [
+      "APL or blast phase CML; known BCR-ABL",
+      "Active CNS involvement by AML",
+      "Leukostasis or WBC >25,000/µL (cytoreduction permitted)",
+      "Active HIV, HBV, or HCV",
+      "QTcF >480 ms (Arms A/B) or >450 ms (Arm C)",
+      "Active GVHD requiring >0.5 mg/kg prednisone",
+      "Pregnant or lactating"
+    ],
+    "contact": "medinfo@kuraoncology.com (844-KURAONC)",
+    "sites": "45+ US sites only. No UK sites currently.",
+    "genetics": {
+      "required": [
+        "NPM1",
+        "KMT2A"
+      ],
+      "excluded": [],
+      "iccMatch": [
+        "AML with mutated NPM1",
+        "AML with KMT2A rearrangement"
+      ]
+    },
+    "fitness": null,
+    "phase": "Phase 1"
+  },
+  {
+    "id": "pyramidh",
+    "category": "Newly Diagnosed",
+    "name": "PyramIDH",
+    "needsReview": true,
+    "description": "Phase 3, open-label, randomised, non-comparative study of ivosidenib monotherapy versus azacitidine monotherapy in HMA-naive adults with IDH1-mutated MDS. Prior Phase 2 showed 72% overall response rate for ivosidenib. 48 patients. NCT06465953.",
+    "weblink": "https://clinicaltrials.gov/study/NCT06465953",
+    "weblinkText": "",
+    "inclusionCriteria": [
+      "Diagnosis of HMA-naive IDH1 R132-mutated MDS per WHO 5th edition",
+      "Moderate-high, high, or very-high risk per IPSS-M (any blast count 0-19%)",
+      "For Low/Moderate-Low risk: cytopenias (platelets <100, ANC <1000, Hb <10), blasts 5-19%, eligible for HMA",
+      "Age ≥18"
+    ],
+    "exclusionCriteria": [
+      "Prior anticancer/disease-modifying treatment for MDS (HMAs, chemo, HSCT, IDH1 inhibitors)",
+      ">20% blasts",
+      "For LR-MDS: prior growth factors, luspatercept, lenalidomide, imetelstat are allowed"
+    ],
+    "contact": "scientificinformation@servier.com (+33 1 55 72 60 00)",
+    "sites": "6 UK sites: University College London Hospital (recruiting), King's College Hospital London (recruiting), Churchill Hospital Oxford (recruiting), Western General Hospital Edinburgh (not yet recruiting), Torbay Hospital (not yet recruiting).",
+    "genetics": {
+      "required": [
+        "IDH1"
+      ],
+      "excluded": [],
+      "iccMatch": [
+        "MDS with mutated IDH1"
+      ]
+    },
+    "fitness": "non-intensive",
+    "phase": "Phase 3"
+  },
+  {
+    "id": "renew",
+    "category": "Supportive Care",
+    "name": "RENEW (Elritercept)",
+    "needsReview": true,
+    "description": "Phase 3, randomised, double-blind, placebo-controlled study of elritercept (KER-050/TAK-226) for transfusion-dependent anaemia in very low-, low-, or intermediate-risk MDS. 225 patients globally. NCT06499285.",
+    "weblink": "https://clinicaltrials.gov/study/NCT06499285",
+    "weblinkText": "",
+    "inclusionCriteria": [
+      "MDS per WHO 2016, IPSS-R very low/low/intermediate",
+      "Transfusion dependent: LTB (4-7 RBC units/16 weeks) or HTB (≥8 units/16 weeks)",
+      "Refractory/intolerant to prior ESA, or unlikely to respond (EPO >200 U/L)",
+      "<5% bone marrow blasts",
+      "ECOG 0-2"
+    ],
+    "exclusionCriteria": [
+      "Del(5q) or therapy-related MDS",
+      "Prior luspatercept, sotatercept, or elritercept",
+      "Prior HMAs, IDH inhibitors, lenalidomide, imetelstat, or immunosuppressive therapy for MDS",
+      "Platelet >450 or ≤25 ×10⁹/L; ANC ≤500",
+      "NYHA Class III/IV; QTcF >500ms; BMI ≥40",
+      "History of AML; EF <35%"
+    ],
+    "contact": "medinfoUS@takeda.com (+1-877-825-3327)",
+    "sites": "8 UK sites (all recruiting): Queen Elizabeth Hospital Birmingham, Addenbrooke's Hospital Cambridge, St James's University Hospital Leeds, King's College Hospital London, Sarah Cannon Research Institute London, Christie Manchester, Nottingham City Hospital, Churchill Hospital Oxford.",
+    "genetics": {
+      "required": [],
+      "excluded": [
+        "del(5q)"
+      ],
+      "iccMatch": [
+        "MDS with low blasts"
+      ]
+    },
+    "fitness": "non-intensive",
+    "phase": "Phase 3"
+  },
+  {
+    "id": "mithridate",
+    "category": "Newly Diagnosed",
+    "name": "MITHRIDATE",
+    "needsReview": true,
+    "description": "Phase 3, randomised, open-label, multicentre international trial comparing ruxolitinib with either hydroxycarbamide or interferon-alpha as first-line therapy for high-risk polycythaemia vera (PV). 586 patients. NCT04116502.",
+    "weblink": "https://clinicaltrials.gov/study/NCT04116502",
+    "weblinkText": "",
+    "inclusionCriteria": [
+      "Age ≥18, PV per WHO criteria within past 15 years",
+      "JAK2 mutation positive",
+      "High-risk PV: WBC >11 ×10⁹/L AND at least one of: age >60, prior thrombosis/haemorrhage, platelets >1000, hypertension or diabetes requiring pharmacotherapy",
+      "Hb >8 g/dL",
+      "May have had ONE cytoreductive therapy <10 years (if not resistant/intolerant)"
+    ],
+    "exclusionCriteria": [
+      "PV diagnosis >15 years ago",
+      "Absence of JAK2 mutation",
+      ">1 cytoreductive therapy or duration >10 years or resistance/intolerance",
+      "Active infection (HIV, HBV, HCV, TB)",
+      "ECOG ≥3",
+      "Transformation to myelofibrosis",
+      "Prior ruxolitinib",
+      "Platelets <100 or neutrophils <1 in last 12 months (not therapy-related)"
+    ],
+    "contact": "mithridate@trials.bham.ac.uk (+44(0)121 414 2535)",
+    "sites": "47 UK sites (recruiting): Aberdeen, Bath, Belfast, Birmingham Heartlands, Blackpool, Bournemouth, Bristol Southmead, Cambridge Addenbrooke's, Canterbury, Cardiff, Chichester, Colchester, Cottingham Castle Hill, Dudley Russells Hall, Edinburgh Western General, Exeter, Gloucester, Inverness Raigmore, Kettering, Leicester, Livingston, London (UCH, Guy's, St George's), Manchester Wythenshawe, Wirral, Middlesbrough James Cook, Newcastle Freeman, Newport, North Tyneside, Northampton, Norwich, Nottingham, Oxford Churchill, Reading, Runcorn, Slough, Southampton, Stoke, Sunderland, Sutton Coldfield Good Hope, Truro, Warwick, Wolverhampton, Worthing.",
+    "genetics": {
+      "required": [
+        "JAK2"
+      ],
+      "excluded": [],
+      "iccMatch": [
+        "Polycythaemia vera"
+      ]
+    },
+    "fitness": null,
+    "phase": "Phase 3"
+  },
+  {
+    "id": "verify",
+    "category": "Newly Diagnosed",
+    "name": "VERIFY (Rusfertide)",
+    "needsReview": true,
+    "description": "Phase 3 study of rusfertide (PTG-300), a hepcidin mimetic, versus placebo as add-on to existing PV therapy for haematocrit control in phlebotomy-dependent polycythaemia vera. 293 patients. NCT05210790. Active, not currently recruiting.",
+    "weblink": "https://clinicaltrials.gov/study/NCT05210790",
+    "weblinkText": "",
+    "inclusionCriteria": [
+      "Age ≥18, PV per WHO 2016 criteria",
+      "≥3 phlebotomies in 6 months OR ≥5 in 1 year before randomisation",
+      "Haematocrit <45%, WBC 4,000-20,000, platelets 100,000-1,000,000",
+      "Stable PV therapy regimen if on cytoreductive therapy"
+    ],
+    "exclusionCriteria": [
+      "Phlebotomy required at Hct <45%",
+      "Clinically significant thrombosis within 2 months",
+      "Active/chronic bleeding within 2 months",
+      "Invasive malignancy within 5 years",
+      "Prior busulfan, pipobroman, or ³²-phosphorus within 7 months"
+    ],
+    "contact": "",
+    "sites": "8 UK sites: Hillingdon Hospital Uxbridge, Barnet Hospital, Pilgrim Hospital Boston, Northwick Park Hospital Harrow, Royal London Hospital, University College London Hospital, Royal Free Hospital London, Churchill Hospital Oxford.",
+    "genetics": {
+      "required": [
+        "JAK2"
+      ],
+      "excluded": [],
+      "iccMatch": [
+        "Polycythaemia vera"
+      ]
+    },
+    "fitness": null,
+    "phase": "Phase 3"
+  },
+  {
+    "id": "giv-in-pv",
+    "category": "Newly Diagnosed",
+    "name": "GIV-IN-PV (Givinostat)",
+    "needsReview": true,
+    "description": "Phase 3, randomised, open-label study comparing givinostat (HDAC inhibitor) versus hydroxyurea in JAK2V617F-positive high-risk polycythaemia vera patients. 220 patients over 48-week core phase. NCT06093672.",
+    "weblink": "https://clinicaltrials.gov/study/NCT06093672",
+    "weblinkText": "",
+    "inclusionCriteria": [
+      "PV per WHO 2016 criteria, JAK2V617F-positive",
+      "High-risk (age ≥60 and/or prior thrombosis) within 3 years of screening",
+      "Treatment need: Hct ≥45% (or <45% with phlebotomy in prior 3 months), WBC >10, or platelets >400",
+      "Normalised haematocrit (<45%) at randomisation"
+    ],
+    "exclusionCriteria": [
+      "Prior HU with documented resistance/intolerance per ELN criteria",
+      "QTcF >450ms (males) or >460ms (females)",
+      "Splanchnic/cerebral venous sinus thrombosis or prior splenectomy",
+      "Prior JAK2 inhibitor, HDAC inhibitor, or ³²-phosphorus therapy",
+      "MI, stroke, unstable angina within 6 months",
+      "Uncontrolled hypertriglyceridaemia (TG >1.5× ULN)"
+    ],
+    "contact": "patientadvocacy@italfarmacogroup.com (+39 02 6443 1)",
+    "sites": "5 UK sites (recruiting): Pilgrim Hospital Boston, Imperial College Healthcare London, Milton Keynes University Hospital, Southampton General Hospital, University of Oxford/WIMM.",
+    "genetics": {
+      "required": [
+        "JAK2V617F"
+      ],
+      "excluded": [],
+      "iccMatch": [
+        "Polycythaemia vera"
+      ]
+    },
+    "fitness": null,
+    "phase": "Phase 3"
+  },
+  {
+    "id": "imprssion",
+    "category": "Newly Diagnosed",
+    "name": "IMPRSSION (Sapablursen)",
+    "needsReview": true,
+    "description": "Phase 2a, randomised, open-label study of sapablursen (TMPRSS6 antisense inhibitor) for reducing phlebotomy frequency and improving quality of life in phlebotomy-dependent polycythaemia vera. 50 patients. NCT05143957. Active, not currently recruiting.",
+    "weblink": "https://clinicaltrials.gov/study/NCT05143957",
+    "weblinkText": "",
+    "inclusionCriteria": [
+      "Meet modified WHO 2016 diagnostic criteria for PV",
+      "Must be phlebotomy dependent",
+      "Cytoreductive therapy: discontinued ≥3 months pre-screening with resolved AEs, OR stable dose for ≥3 months (hydroxyurea, interferon, ruxolitinib)"
+    ],
+    "exclusionCriteria": [
+      "Meets criteria for post-polycythaemia vera myelofibrosis (PPV-MF)",
+      "Moderate to severe splenic pain or spleen-related organ obstruction",
+      "Active or chronic bleeding within 1 month",
+      "Known primary or secondary immunodeficiency",
+      "Active HIV, hepatitis C, or hepatitis B",
+      "Malignancy within 5 years",
+      "Surgery requiring general anaesthesia within 1 month"
+    ],
+    "contact": "",
+    "sites": "2 UK sites: Oxford University Hospitals, University College London Hospitals.",
+    "genetics": {
+      "required": [],
+      "excluded": [],
+      "iccMatch": [
+        "Polycythaemia vera"
+      ]
+    },
+    "fitness": null,
+    "phase": "Phase 2a"
+  },
+  {
+    "id": "shorespan-006",
+    "category": "Relapsed/Refractory",
+    "name": "Bomedemstat (SHORESPAN-006)",
+    "needsReview": true,
+    "description": "Phase 3, randomised, open-label study of bomedemstat (LSD1 inhibitor) versus best available therapy in essential thrombocythaemia with inadequate response to or intolerance of hydroxyurea. 340 patients. NCT06079879.",
+    "weblink": "https://clinicaltrials.gov/study/NCT06079879",
+    "weblinkText": "",
+    "inclusionCriteria": [
+      "Diagnosis of ET per WHO 2016 diagnostic criteria (confirmed by central pathologist)",
+      "Centrally assessed bone marrow fibrosis score Grade 0 or Grade 1",
+      "History of inadequate response to or intolerance of hydroxyurea (modified ELN criteria)",
+      "Platelet count >450 ×10⁹/L",
+      "ANC ≥0.75 ×10⁹/L",
+      "Up to 3 prior ET-directed cytoreductive agents including hydroxyurea",
+      "Age ≥18"
+    ],
+    "exclusionCriteria": [
+      "Known hypersensitivity to bomedemstat or LSDi/MAOi",
+      "History of GI function impairment interfering with drug absorption",
+      "Evidence of increased risk of bleeding at screening",
+      "History of malignancy unless curative treatment completed with no evidence for 2 years",
+      "HIV-infected with history of Kaposi's sarcoma/Multicentric Castleman's Disease"
+    ],
+    "contact": "Trialsites@msd.com (1-888-577-8839)",
+    "sites": "10 UK sites: Pilgrim Hospital Boston (recruiting), Addenbrooke's Cambridge, Gloucestershire Royal Hospital, Lincoln County Hospital, University College London Hospital, Guy's & St Thomas' London, King's College Hospital London, Royal Gwent Hospital Newport, GenesisCare Windsor, Christie Manchester.",
+    "genetics": {
+      "required": [],
+      "excluded": [],
+      "iccMatch": [
+        "Essential thrombocythaemia"
+      ]
+    },
+    "fitness": null,
+    "phase": "Phase 3"
+  },
+  {
+    "id": "stp938",
+    "category": "Relapsed/Refractory",
+    "name": "STP938 (Dencatistat)",
+    "needsReview": true,
+    "description": "Phase 1b, open-label study of STP938 (CTPS1 inhibitor) in adults with high-risk essential thrombocythaemia who cannot tolerate or have failed hydroxycarbamide. 20 patients. NCT06786234.",
+    "weblink": "https://clinicaltrials.gov/study/NCT06786234",
+    "weblinkText": "",
+    "inclusionCriteria": [
+      "Age ≥18",
+      "Confirmed diagnosis of ET per WHO or BSH criteria",
+      "High-risk ET",
+      "Raised platelet count (>600 ×10⁹/L) requiring cytoreductive therapy",
+      "Neutrophil count >1.0 ×10⁹/L",
+      "Either intolerant of or resistant to hydroxycarbamide",
+      "Adequate hepatic function and blood coagulation parameters",
+      "ECOG 0-2"
+    ],
+    "exclusionCriteria": [
+      "Currently or recently receiving cytoreductive therapy for ET (wash out periods apply)",
+      "Investigational agents for ET within 4 weeks",
+      "Proven or suspected transformation to PV, myelofibrosis, MDS, AML or another myeloid neoplasm",
+      "Known malabsorption syndrome",
+      "Previous splenectomy",
+      "Any uncontrolled intercurrent illness",
+      "Active hepatitis B or HCV infection",
+      "QTcF >470 msec"
+    ],
+    "contact": "STP938-301@step-ph.com (+33 1 86 26 43 56)",
+    "sites": "6 UK sites: University Hospital of Wales Cardiff (recruiting), Imperial College/Hammersmith Hospital London (recruiting), Sarah Cannon Research Institute London (recruiting), Churchill Hospital Oxford (recruiting), University of Southampton Hospital (recruiting), Royal Hallamshire Hospital Sheffield (not yet recruiting). Plus 7 sites in France.",
+    "genetics": {
+      "required": [],
+      "excluded": [],
+      "iccMatch": [
+        "Essential thrombocythaemia"
+      ]
+    },
+    "fitness": null,
+    "phase": "Phase 1b"
+  },
+  {
+    "id": "pacifica",
+    "category": "Relapsed/Refractory",
+    "name": "PACIFICA (Pacritinib)",
+    "needsReview": true,
+    "description": "Phase 3, randomised, controlled study of pacritinib versus physician's choice in myelofibrosis with severe thrombocytopenia (platelets <50,000/µL). 399 patients. NCT03165734.",
+    "weblink": "https://clinicaltrials.gov/study/NCT03165734",
+    "weblinkText": "",
+    "inclusionCriteria": [
+      "PMF, post-PV MF, or post-ET MF",
+      "Platelets <50,000/µL",
+      "DIPSS Int-1, Int-2, or High-risk",
+      "Palpable spleen ≥5cm below costal margin",
+      "TSS ≥10 (MPN-SAF TSS 2.0) or single symptom ≥5 or two symptoms ≥3",
+      "ECOG 0-2, peripheral blasts <10%, ANC ≥500",
+      "LVEF ≥50%"
+    ],
+    "exclusionCriteria": [
+      "Life expectancy <6 months",
+      "Prior pacritinib; >1 prior JAK2 inhibitor",
+      "Prior ruxolitinib at >10mg daily for >90 days within 120 days of Day 1",
+      "History of splenectomy; QTcF >450ms; NYHA Class II-IV",
+      "Active GI/bowel disorders interfering with absorption"
+    ],
+    "contact": "medical.info@sobi.com (+4686972000)",
+    "sites": "7 UK sites: Barts Health/Royal London Hospital London (recruiting), Guy's and St Thomas' Hospital London (recruiting), Hammersmith Hospital/Imperial College London (recruiting), Churchill Hospital Oxford (recruiting), Gloucestershire Royal Hospital (recruiting). Royal Hallamshire Sheffield and Beatson Glasgow completed.",
+    "genetics": {
+      "required": [],
+      "excluded": [],
+      "iccMatch": [
+        "Primary myelofibrosis",
+        "Post-PV myelofibrosis",
+        "Post-ET myelofibrosis"
+      ]
+    },
+    "fitness": null,
+    "phase": "Phase 3"
+  },
+  {
+    "id": "impactmf",
+    "category": "Relapsed/Refractory",
+    "name": "IMpactMF (Imetelstat)",
+    "needsReview": true,
+    "description": "Phase 3, randomised, open-label study of imetelstat (telomerase inhibitor) versus best available therapy in intermediate-2 or high-risk myelofibrosis relapsed/refractory to JAK inhibitor. 327 patients. NCT04576156. Active, not currently recruiting.",
+    "weblink": "https://clinicaltrials.gov/study/NCT04576156",
+    "weblinkText": "",
+    "inclusionCriteria": [
+      "PMF, post-ET/PV MF per WHO or IWG-MRT criteria",
+      "DIPSS Int-2 or High-risk",
+      "Relapsed/refractory to JAK inhibitor (≥6 months at optimal dose or ≥3 months at maximal doses)",
+      "Measurable splenomegaly: palpable ≥5cm OR volume ≥450cm³",
+      "Active symptoms on MFSAF v4.0 (score ≥5)",
+      "ECOG 0-2"
+    ],
+    "exclusionCriteria": [
+      "Peripheral or bone marrow blasts ≥10%",
+      "Prior imetelstat",
+      "MF-directed therapy or JAK inhibitor within 14 days",
+      "Other malignancy unless disease-free ≥3 years",
+      "Active hepatitis or HIV",
+      "Major surgery within 28 days"
+    ],
+    "contact": "",
+    "sites": "3 UK sites: St Bartholomew's Hospital London, Guy's and St Thomas' Hospital London, Oxford University Hospitals.",
+    "genetics": {
+      "required": [],
+      "excluded": [],
+      "iccMatch": [
+        "Primary myelofibrosis",
+        "Post-PV myelofibrosis",
+        "Post-ET myelofibrosis"
+      ]
+    },
+    "fitness": null,
+    "phase": "Phase 3"
+  },
+  {
+    "id": "poiesis",
+    "category": "Newly Diagnosed",
+    "name": "POIESIS (Navtemadlin)",
+    "needsReview": true,
+    "description": "Phase 3, randomised, double-blind, add-on study of navtemadlin (MDM2 inhibitor) plus ruxolitinib versus placebo plus ruxolitinib in JAK inhibitor-naive myelofibrosis patients with suboptimal response to ruxolitinib. Requires TP53 wild-type. 600 patients. NCT06479135.",
+    "weblink": "https://clinicaltrials.gov/study/NCT06479135",
+    "weblinkText": "",
+    "inclusionCriteria": [
+      "Confirmed PMF, post-PV MF, or post-ET MF per WHO criteria",
+      "High, Intermediate-1, or Intermediate-2 risk (IPSS)",
+      "ECOG 0-2",
+      "JAK inhibitor treatment naive",
+      "TP53 wild-type as assessed by central testing (for randomisation)",
+      "Suboptimal response to ruxolitinib run-in"
+    ],
+    "exclusionCriteria": [
+      "Prior splenectomy",
+      "Splenic irradiation within 3 months",
+      "Prior BCL-XL, BET, MDM2, PI3K, PIM, or XPO1 inhibitor therapy or p53-directed therapy",
+      "Eligible for bone marrow transplant",
+      "Peripheral blood or bone marrow blast count ≥10%",
+      "TP53 mutation (excluded from randomisation)"
+    ],
+    "contact": "jmei@kartosthera.com (650-542-0136)",
+    "sites": "14 UK sites: Birmingham Heartlands, Lincoln County Hospital, Pilgrim Hospital Boston, Addenbrooke's Cambridge, University Hospital of Wales Cardiff, Western General Hospital Edinburgh, Gloucestershire Royal Hospital, Harrogate District Hospital, Leicester Royal Infirmary, Clatterbridge Cancer Centre Liverpool, University College Hospital London, Guy's Hospital London, GenesisCare Oxford, GenesisCare Windsor.",
+    "genetics": {
+      "required": [],
+      "excluded": [
+        "TP53"
+      ],
+      "iccMatch": [
+        "Primary myelofibrosis",
+        "Post-PV myelofibrosis",
+        "Post-ET myelofibrosis"
+      ]
+    },
+    "fitness": null,
+    "phase": "Phase 3"
+  },
+  {
+    "id": "jnj-88549968-mpn",
+    "category": "Relapsed/Refractory",
+    "name": "JNJ-88549968 (CALR Bispecific)",
+    "needsReview": true,
+    "description": "Phase 1, first-in-human study of JNJ-88549968, a T-cell redirecting bispecific antibody targeting CD3 and mutant calreticulin (CALR) on MPN cancer cells, in CALR-mutated essential thrombocythaemia and myelofibrosis. 220 patients. NCT06150157.",
+    "weblink": "https://clinicaltrials.gov/study/NCT06150157",
+    "weblinkText": "",
+    "inclusionCriteria": [
+      "Age ≥18",
+      "Positive for a CALR driver mutation of ET or MF",
+      "ET: failed ≥2 lines including hydroxyurea",
+      "MF: failed ≥1 JAK inhibitor",
+      "ECOG ≤2"
+    ],
+    "exclusionCriteria": [
+      "Known allergies/hypersensitivity to excipients",
+      "Concurrent or recently diagnosed malignancies (standard exceptions)",
+      "Prior solid organ transplantation",
+      "Prior allogeneic stem cell transplant ≤6 months or evidence of GVHD requiring immunosuppression",
+      "History of clinically significant cardiovascular disease within 6 months"
+    ],
+    "contact": "Participate-In-This-Study1@its.jnj.com (844-434-4210)",
+    "sites": "3 UK sites (all recruiting): University College London Hospitals, Guy's and St Thomas' Hospital London, Churchill Hospital Oxford. Plus sites in US, Canada, France, Germany, Italy, Spain, Israel.",
+    "genetics": {
+      "required": [
+        "CALR"
+      ],
+      "excluded": [],
+      "iccMatch": [
+        "Essential thrombocythaemia",
+        "Primary myelofibrosis"
+      ]
+    },
+    "fitness": null,
+    "phase": "Phase 1"
+  },
+  {
+    "id": "cardinal",
+    "category": "Relapsed/Refractory",
+    "name": "CARDINAL (TERN-701)",
+    "needsReview": true,
+    "description": "Phase 1/2 study of TERN-701, a highly selective allosteric BCR-ABL1 inhibitor, in previously treated chronic-phase CML. Includes mutation cohort targeting T315I. 75% MMR rate reported at RP2D. 180 patients. NCT06163430.",
+    "weblink": "https://clinicaltrials.gov/study/NCT06163430",
+    "weblinkText": "",
+    "inclusionCriteria": [
+      "Age ≥18",
+      "ECOG 0-2",
+      "Cytopathologically confirmed BCR-ABL1 positive CML in chronic phase",
+      "At least one prior TKI with treatment failure, suboptimal response, or intolerance",
+      "Prior asciminib allowed",
+      "Adequate organ function"
+    ],
+    "exclusionCriteria": [
+      "Systemic antineoplastic therapy or experimental therapy within 7 days",
+      "Unresolved clinically significant toxicity from prior therapy (>Grade 2 or baseline)"
+    ],
+    "contact": "clinicaltrials@ternspharma.com (650-525-5535)",
+    "sites": "1 UK site: Imperial College Healthcare NHS Trust, London (recruiting). Plus sites in US, Australia, France, Germany, Italy, New Zealand, South Korea, Spain.",
+    "genetics": {
+      "required": [
+        "BCR-ABL1"
+      ],
+      "excluded": [],
+      "iccMatch": [
+        "CML, BCR::ABL1 positive"
+      ]
+    },
+    "fitness": null,
+    "phase": "Phase 1/2"
+  },
+  {
+    "id": "paxis",
+    "category": "Newly Diagnosed",
+    "name": "PAXIS (Pacritinib for VEXAS)",
+    "needsReview": true,
+    "description": "Phase 2, randomised, double-blind, placebo-controlled dose-finding study of pacritinib (IRAK1/JAK2 inhibitor) in VEXAS syndrome. 24-week double-blind period followed by 48-week open-label period. Requires UBA1 mutation. 78 patients. NCT06782373.",
+    "weblink": "https://clinicaltrials.gov/study/NCT06782373",
+    "weblinkText": "",
+    "inclusionCriteria": [
+      "Documented pathogenic UBA1 mutation at M41 or neighbouring splice site (c.118-1, c.118-2)",
+      "Current or documented past (within 6 months) inflammatory involvement",
+      "Ongoing glucocorticoid therapy: stable prednisone/prednisolone 15-45 mg/day",
+      "Karnofsky Performance Status ≥50%",
+      "AST/ALT ≤3× ULN; bilirubin ≤4× ULN; CrCl ≥30 mL/min",
+      "ANC ≥500/µL; platelets ≥25 ×10⁹/L; peripheral blasts <5%"
+    ],
+    "exclusionCriteria": [
+      "Prior allo-HSCT or solid organ transplant",
+      ">1 ICU admission for VEXAS flare in prior 6 months",
+      "≥9 RBC transfusion units in 90 days pre-enrollment",
+      "Known concurrent high/very high-risk MDS (IPSS-R) requiring antineoplastic treatment",
+      "HMA exposure within 6 months OR >6 lifetime cycles",
+      "Clinically significant cardiovascular disease",
+      "Arterial/venous thrombotic events within 60 days"
+    ],
+    "contact": "medical.info@sobi.com (+45 86 97 2000)",
+    "sites": "4 UK sites: St James's University Hospital Leeds (recruiting), King's College Hospital London (recruiting), Royal Free Hospital London (not yet recruiting), Churchill Hospital Oxford (not yet recruiting). Plus sites in US, Canada, France, Germany, Italy, Japan, Spain.",
+    "genetics": {
+      "required": [
+        "UBA1"
+      ],
+      "excluded": [],
+      "iccMatch": []
+    },
+    "fitness": null,
+    "phase": "Phase 2"
+  },
+  {
+    "id": "impact-aml",
+    "category": "Relapsed/Refractory",
+    "name": "IMPACT-AML",
+    "needsReview": true,
+    "description": "Phase 3, multicentre, randomised, open-label, pragmatic trial comparing high-intensity reinduction chemotherapy with low-intensity therapies (VenAza, Ven+LDAC, gilteritinib, etc.) in 1st or 2nd relapse AML. EU-funded. 339 patients. NCT06713837.",
+    "weblink": "https://clinicaltrials.gov/study/NCT06713837",
+    "weblinkText": "",
+    "inclusionCriteria": [
+      "Non-APL AML per WHO 2022 or ICC 2022",
+      "1st or 2nd relapse or refractory per ELN 2022",
+      "Clinically candidate for both low-intensity and high-dose chemotherapy",
+      "Both treatment arms available per local practice",
+      "Age >18",
+      "ECOG <4"
+    ],
+    "exclusionCriteria": [
+      "Known contraindication to selected study drug",
+      "Participation in another clinical trial with investigational agents within 14 days or 5 drug half-lives",
+      "Active infections or other clinical conditions making patient ineligible per investigator"
+    ],
+    "contact": "impact-aml@irst.emr.it",
+    "sites": "22 sites in Italy, 6 in Germany, 5 in Czechia, plus Lithuania, Portugal, Romania, Spain. No UK sites currently.",
+    "genetics": {
+      "required": [],
+      "excluded": [],
+      "iccMatch": []
+    },
+    "fitness": "intensive",
+    "phase": "Phase 3"
+  },
+  {
+    "id": "fedora",
+    "category": "Newly Diagnosed",
+    "name": "FEDORA",
+    "needsReview": true,
+    "description": "Phase 2, open-label study of fedratinib (JAK2 inhibitor) combined with ropeginterferon alfa-2b in treatment-naive, JAK2 V617F-mutated myelofibrosis. Met its primary tolerability endpoint. 30 patients across 13 UK TAP centres. ISRCTN88102629.",
+    "weblink": "https://www.isrctn.com/ISRCTN88102629",
+    "weblinkText": "",
+    "inclusionCriteria": [
+      "Treatment-naive myelofibrosis",
+      "JAK2 V617F mutation positive",
+      "Details to be confirmed from full protocol"
+    ],
+    "exclusionCriteria": [
+      "Details to be confirmed from full protocol"
+    ],
+    "contact": "",
+    "sites": "13 UK TAP centres including UCL. Contact via ISRCTN registry for site list.",
+    "genetics": {
+      "required": [
+        "JAK2V617F"
+      ],
+      "excluded": [],
+      "iccMatch": [
+        "Primary myelofibrosis"
+      ]
+    },
+    "fitness": null,
+    "phase": "Phase 2"
+  },
+  {
+    "id": "ammo",
+    "category": "Newly Diagnosed",
+    "name": "AMMO (ASTX727)",
+    "needsReview": true,
+    "description": "Phase 2, randomised UK trial of oral decitabine/cedazuridine (ASTX727) versus hydroxycarbamide/best supportive care in CMML and MDS/MPN overlap syndromes. Showed superior ORR (53% vs 30%) and PFS (23.5 vs 13.9 months). 13 UK hospitals.",
+    "weblink": "https://mdspatientsupport.org.uk/category/trials/",
+    "weblinkText": "",
+    "inclusionCriteria": [
+      "CMML or MDS/MPN overlap syndrome",
+      "Details to be confirmed from full protocol"
+    ],
+    "exclusionCriteria": [
+      "Details to be confirmed from full protocol"
+    ],
+    "contact": "",
+    "sites": "13 UK hospitals: Christie Manchester, Churchill Hospital Oxford, Belfast City Hospital, St James's Leeds, QE Birmingham, Aberdeen Royal Infirmary, King's College Hospital London, Nottingham City Hospital, Southampton General, UCLH London, University Hospital of Wales Cardiff, Beatson Glasgow, Sheffield Teaching Hospitals.",
+    "genetics": {
+      "required": [],
+      "excluded": [],
+      "iccMatch": [
+        "CMML"
+      ]
+    },
+    "fitness": "non-intensive",
+    "phase": "Phase 2"
   }
 ]

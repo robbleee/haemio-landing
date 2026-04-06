@@ -32,12 +32,12 @@ export default function Home() {
       },
       {
         '@type': 'SoftwareApplication',
-        name: 'Haem.io AML/MDS Classifier',
+        name: 'Haem.io Leukaemia Classifier',
         applicationCategory: 'HealthApplication',
         operatingSystem: 'Web',
         url: 'https://haem.io/interactive-classifier',
         description:
-          'A leukemia and myeloid disease diagnostic classifier supporting AML and MDS pathways with WHO 2022 and ICC 2022 logic.'
+          'A leukaemia and myeloid disease diagnostic classifier supporting WHO 2022 and ICC 2022 classification logic.'
       }
     ]
   };

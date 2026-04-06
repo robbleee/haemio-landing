@@ -26,7 +26,7 @@ export default function CtaSection() {
             Ready to modernise your diagnostic workflow?
           </h2>
           <p className={styles.subtitle}>
-            Try the interactive AML/MDS classifier — no login required.
+            Try the interactive leukaemia classifier — no login required.
           </p>
           <div className={styles.ctaGroup}>
             <Link href="/interactive-classifier" className={styles.ctaPrimary}>

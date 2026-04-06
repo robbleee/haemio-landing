@@ -29,7 +29,7 @@ const sections = [
       'Side-by-side view: parsed data vs original report',
       'Genetic mutations with classification significance flags',
       'TP53 allelic status detection (LOH, del17p, multi-hit)',
-      'Cytogenetic complexity and MDS-related abnormalities identified',
+      'Cytogenetic complexity and myeloid-related abnormalities identified',
     ],
     image: '/new-screenshots-for-landing/data-inspector.png',
     alt: 'Data inspector showing parsed mutations (TP53, DNMT3A, TET2, ASXL1), cytogenetics, and original report',
@@ -47,7 +47,7 @@ const sections = [
       'Dual classification: WHO 2022 5th Edition + ICC 2022',
     ],
     image: '/new-screenshots-for-landing/diagnostic-path.png',
-    alt: 'ICC 2022 AML Execution Path showing the complete diagnostic decision tree with highlighted route',
+    alt: 'ICC 2022 Execution Path showing the complete diagnostic decision tree with highlighted route',
     align: 'right',
   },
   {

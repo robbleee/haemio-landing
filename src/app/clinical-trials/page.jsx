@@ -6,11 +6,17 @@ import siteCoords from '../../data/site-coordinates.json';
 import styles from './clinical-trials.module.css';
 
 const GENETIC_MARKERS = [
-  { key: 'NPM1', label: 'NPM1 mutation' },
-  { key: 'FLT3-ITD', label: 'FLT3-ITD mutation' },
-  { key: 'KMT2A', label: 'KMT2A rearrangement' },
-  { key: 'TP53', label: 'TP53 mutation' },
-  { key: 'IDH1', label: 'IDH1 mutation' },
+  { key: 'NPM1', label: 'NPM1' },
+  { key: 'FLT3-ITD', label: 'FLT3-ITD' },
+  { key: 'KMT2A', label: 'KMT2A' },
+  { key: 'TP53', label: 'TP53' },
+  { key: 'IDH1', label: 'IDH1' },
+];
+
+const FITNESS_OPTIONS = [
+  { key: '', label: 'Any' },
+  { key: 'intensive', label: 'Fit for intensive' },
+  { key: 'non-intensive', label: 'Non-intensive only' },
 ];
 
 // --- Haversine distance (km) ---
@@ -25,15 +31,12 @@ function haversine(lat1, lon1, lat2, lon2) {
   return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
 
-// Parse trial sites string into individual site names
 function parseSites(sitesStr) {
   if (!sitesStr) return [];
-  // Skip descriptive strings like "~80 UK centres..." or "Multiple UK centres..."
   if (/^[~\d]/.test(sitesStr) || /^Multiple/.test(sitesStr)) return [];
   return sitesStr.split(',').map(s => s.trim()).filter(Boolean);
 }
 
-// Calculate nearest site distance for a trial given user coordinates
 function getNearestSite(trial, userLat, userLng) {
   const sites = parseSites(trial.sites);
   let nearest = null;
@@ -72,6 +75,61 @@ function matchesLocation(trial, selectedLocation) {
   return trial.sites.toLowerCase().includes(selectedLocation.toLowerCase());
 }
 
+function matchesFitness(trial, fitnessFilter) {
+  if (!fitnessFilter) return true;
+  if (!trial.fitness) return true; // null fitness = no restriction
+  if (trial.fitness === 'both') return true;
+  return trial.fitness === fitnessFilter;
+}
+
+function matchesPhase(trial, phaseFilter) {
+  if (!phaseFilter) return true;
+  if (!trial.phase) return false;
+  return trial.phase.toLowerCase().includes(phaseFilter.toLowerCase());
+}
+
+// Compute a match score for a trial based on patient profile
+function computeMatchScore(trial, { selectedMarkers, fitnessFilter, categoryFilter }) {
+  let score = 0;
+  let maxScore = 0;
+
+  const genetics = trial.genetics || { required: [], excluded: [] };
+
+  // Genetics matching (weight: 3)
+  if (selectedMarkers.length > 0) {
+    maxScore += 3;
+    // Check exclusions
+    const hasExclusion = selectedMarkers.some(m => genetics.excluded.includes(m));
+    if (hasExclusion) {
+      score -= 3; // hard penalty
+    } else if (genetics.required.length > 0) {
+      const requiredMatch = genetics.required.some(r => selectedMarkers.includes(r));
+      if (requiredMatch) score += 3;
+    } else {
+      score += 2; // no genetic requirement = broadly eligible
+    }
+  }
+
+  // Fitness matching (weight: 2)
+  if (fitnessFilter) {
+    maxScore += 2;
+    if (!trial.fitness || trial.fitness === 'both') {
+      score += 2;
+    } else if (trial.fitness === fitnessFilter) {
+      score += 2;
+    }
+  }
+
+  // Category matching (weight: 1)
+  if (categoryFilter && categoryFilter !== 'All') {
+    maxScore += 1;
+    if (trial.category === categoryFilter) score += 1;
+  }
+
+  if (maxScore === 0) return null; // no patient profile set
+  return { score, maxScore, percentage: Math.max(0, Math.round((score / maxScore) * 100)) };
+}
+
 export default function ClinicalTrialsPage() {
   const [trials, setTrials] = useState(fallbackTrials);
   const [search, setSearch] = useState('');
@@ -79,14 +137,16 @@ export default function ClinicalTrialsPage() {
   const [expandedTrial, setExpandedTrial] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Enhanced filters
+  // Patient profile filters
   const [selectedMarkers, setSelectedMarkers] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState('');
+  const [fitnessFilter, setFitnessFilter] = useState('');
+  const [phaseFilter, setPhaseFilter] = useState('');
   const [showFilters, setShowFilters] = useState(false);
 
   // Postcode distance
   const [postcode, setPostcode] = useState('');
-  const [userCoords, setUserCoords] = useState(null); // { lat, lng }
+  const [userCoords, setUserCoords] = useState(null);
   const [postcodeError, setPostcodeError] = useState('');
   const [postcodeLoading, setPostcodeLoading] = useState(false);
   const [sortByDistance, setSortByDistance] = useState(false);
@@ -123,12 +183,12 @@ export default function ClinicalTrialsPage() {
       } else {
         setUserCoords(null);
         setSortByDistance(false);
-        setPostcodeError('Postcode not found. Please enter a valid UK postcode.');
+        setPostcodeError('Postcode not found');
       }
     } catch {
       setUserCoords(null);
       setSortByDistance(false);
-      setPostcodeError('Could not look up postcode. Please try again.');
+      setPostcodeError('Could not look up postcode');
     } finally {
       setPostcodeLoading(false);
     }
@@ -145,9 +205,16 @@ export default function ClinicalTrialsPage() {
     return ['All', ...new Set(trials.map(t => t.category))];
   }, [trials]);
 
+  const phases = useMemo(() => {
+    const p = new Set();
+    trials.forEach(t => {
+      if (t.phase) p.add(t.phase);
+    });
+    return Array.from(p).sort();
+  }, [trials]);
+
   const locations = useMemo(() => extractLocations(trials), [trials]);
 
-  // Pre-compute distances for all trials
   const trialDistances = useMemo(() => {
     if (!userCoords) return {};
     const map = {};
@@ -158,11 +225,15 @@ export default function ClinicalTrialsPage() {
     return map;
   }, [trials, userCoords]);
 
+  const hasPatientProfile = selectedMarkers.length > 0 || fitnessFilter || (categoryFilter !== 'All');
+
   const filtered = useMemo(() => {
     let result = trials.filter(trial => {
       if (categoryFilter !== 'All' && trial.category !== categoryFilter) return false;
       if (!matchesGenetics(trial, selectedMarkers)) return false;
       if (!matchesLocation(trial, selectedLocation)) return false;
+      if (!matchesFitness(trial, fitnessFilter)) return false;
+      if (!matchesPhase(trial, phaseFilter)) return false;
 
       if (search) {
         const q = search.toLowerCase();
@@ -179,17 +250,23 @@ export default function ClinicalTrialsPage() {
       return true;
     });
 
-    // Sort by distance if postcode is active
+    // Sort by distance if postcode is active, otherwise by match score
     if (sortByDistance && userCoords) {
       result = [...result].sort((a, b) => {
         const da = trialDistances[a.id]?.distance ?? Infinity;
         const db = trialDistances[b.id]?.distance ?? Infinity;
         return da - db;
       });
+    } else if (hasPatientProfile) {
+      result = [...result].sort((a, b) => {
+        const sa = computeMatchScore(a, { selectedMarkers, fitnessFilter, categoryFilter });
+        const sb = computeMatchScore(b, { selectedMarkers, fitnessFilter, categoryFilter });
+        return (sb?.percentage ?? 0) - (sa?.percentage ?? 0);
+      });
     }
 
     return result;
-  }, [trials, search, categoryFilter, selectedMarkers, selectedLocation, sortByDistance, userCoords, trialDistances]);
+  }, [trials, search, categoryFilter, selectedMarkers, selectedLocation, fitnessFilter, phaseFilter, sortByDistance, userCoords, trialDistances, hasPatientProfile]);
 
   const counts = useMemo(() => {
     const map = { All: trials.length };
@@ -203,13 +280,15 @@ export default function ClinicalTrialsPage() {
     );
   };
 
-  const activeFilterCount = selectedMarkers.length + (selectedLocation ? 1 : 0) + (userCoords ? 1 : 0);
+  const activeFilterCount = selectedMarkers.length + (selectedLocation ? 1 : 0) + (userCoords ? 1 : 0) + (fitnessFilter ? 1 : 0) + (phaseFilter ? 1 : 0);
 
   const clearAllFilters = () => {
     setSelectedMarkers([]);
     setSelectedLocation('');
     setCategoryFilter('All');
     setSearch('');
+    setFitnessFilter('');
+    setPhaseFilter('');
     clearPostcode();
   };
 
@@ -220,8 +299,8 @@ export default function ClinicalTrialsPage() {
         <p>Browse open clinical trials in AML, MDS, and related haematological malignancies across the UK.</p>
       </section>
 
+      {/* Search + category + phase filters */}
       <section className={styles.controls}>
-        {/* Search */}
         <div className={styles.searchWrapper}>
           <svg className={styles.searchIcon} width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <circle cx="11" cy="11" r="8" />
@@ -229,7 +308,7 @@ export default function ClinicalTrialsPage() {
           </svg>
           <input
             type="text"
-            placeholder="Search by trial name, description, site, or criteria..."
+            placeholder="Search trials by name, drug, site, or criteria..."
             value={search}
             onChange={e => setSearch(e.target.value)}
             className={styles.searchInput}
@@ -239,45 +318,48 @@ export default function ClinicalTrialsPage() {
           )}
         </div>
 
-        {/* Postcode + Search row */}
-        <div className={styles.postcodeRow}>
-          <input
-            type="text"
-            placeholder="Enter UK postcode"
-            value={postcode}
-            onChange={e => setPostcode(e.target.value)}
-            onKeyDown={e => e.key === 'Enter' && lookupPostcode()}
-            className={styles.postcodeInput}
-          />
-          <button
-            onClick={lookupPostcode}
-            disabled={postcodeLoading || !postcode.trim()}
-            className={styles.postcodeBtn}
-          >
-            {postcodeLoading ? '...' : 'Find nearest'}
-          </button>
-          {userCoords && (
-            <button onClick={clearPostcode} className={styles.postcodeClear} aria-label="Clear postcode">&times;</button>
-          )}
-          {postcodeError && <span className={styles.postcodeError}>{postcodeError}</span>}
-          {userCoords && <span className={styles.postcodeSuccess}>Sorted by approximate distance</span>}
+        <div className={styles.filterRows}>
+          {/* Category pills */}
+          <div className={styles.filterRow}>
+            <span className={styles.filterRowLabel}>Category</span>
+            <div className={styles.filters}>
+              {categories.map(cat => (
+                <button
+                  key={cat}
+                  className={`${styles.filterBtn} ${categoryFilter === cat ? styles.filterBtnActive : ''}`}
+                  onClick={() => setCategoryFilter(cat)}
+                >
+                  {cat}
+                  <span className={styles.count}>{counts[cat] || 0}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Phase pills */}
+          <div className={styles.filterRow}>
+            <span className={styles.filterRowLabel}>Phase</span>
+            <div className={styles.filters}>
+              <button
+                className={`${styles.filterBtn} ${!phaseFilter ? styles.filterBtnActive : ''}`}
+                onClick={() => setPhaseFilter('')}
+              >
+                All
+              </button>
+              {phases.map(phase => (
+                <button
+                  key={phase}
+                  className={`${styles.filterBtn} ${phaseFilter === phase ? styles.filterBtnActive : ''}`}
+                  onClick={() => setPhaseFilter(phaseFilter === phase ? '' : phase)}
+                >
+                  {phase}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
 
-        {/* Category pills */}
-        <div className={styles.filters}>
-          {categories.map(cat => (
-            <button
-              key={cat}
-              className={`${styles.filterBtn} ${categoryFilter === cat ? styles.filterBtnActive : ''}`}
-              onClick={() => setCategoryFilter(cat)}
-            >
-              {cat}
-              <span className={styles.count}>{counts[cat] || 0}</span>
-            </button>
-          ))}
-        </div>
-
-        {/* Toggle advanced filters */}
+        {/* Toggle advanced / patient filters */}
         <button
           className={styles.advancedToggle}
           onClick={() => setShowFilters(!showFilters)}
@@ -291,37 +373,77 @@ export default function ClinicalTrialsPage() {
           </svg>
         </button>
 
-        {/* Advanced filter panel */}
         {showFilters && (
           <div className={styles.advancedPanel}>
-            {/* Genetic markers */}
-            <div className={styles.filterGroup}>
-              <h3 className={styles.filterGroupTitle}>Genetic Markers</h3>
-              <p className={styles.filterGroupHint}>Select markers present in the patient to find eligible trials</p>
-              <div className={styles.checkboxGrid}>
-                {GENETIC_MARKERS.map(({ key, label }) => (
-                  <label key={key} className={styles.checkboxLabel}>
-                    <input
-                      type="checkbox"
-                      checked={selectedMarkers.includes(key)}
-                      onChange={() => toggleMarker(key)}
-                      className={styles.checkbox}
-                    />
-                    <span className={styles.checkboxText}>{label}</span>
-                  </label>
+            {/* Fitness */}
+            <div className={styles.profileField}>
+              <label className={styles.profileLabel}>Fitness for chemotherapy</label>
+              <div className={styles.fitnessToggle}>
+                {FITNESS_OPTIONS.map(opt => (
+                  <button
+                    key={opt.key}
+                    className={`${styles.fitnessBtn} ${fitnessFilter === opt.key ? styles.fitnessBtnActive : ''}`}
+                    onClick={() => setFitnessFilter(opt.key)}
+                  >
+                    {opt.label}
+                  </button>
                 ))}
               </div>
             </div>
 
-            {/* Location */}
-            <div className={styles.filterGroup}>
-              <h3 className={styles.filterGroupTitle}>Location</h3>
+            {/* Genetic markers */}
+            <div className={styles.profileField}>
+              <label className={styles.profileLabel}>Genetic markers present</label>
+              <p className={styles.profileHint}>Select markers present in the patient to find eligible trials</p>
+              <div className={styles.markerChips}>
+                {GENETIC_MARKERS.map(({ key, label }) => (
+                  <button
+                    key={key}
+                    className={`${styles.markerChip} ${selectedMarkers.includes(key) ? styles.markerChipActive : ''}`}
+                    onClick={() => toggleMarker(key)}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Postcode */}
+            <div className={styles.profileField}>
+              <label className={styles.profileLabel}>Patient location</label>
+              <div className={styles.locationRow}>
+                <input
+                  type="text"
+                  placeholder="UK postcode"
+                  value={postcode}
+                  onChange={e => setPostcode(e.target.value)}
+                  onKeyDown={e => e.key === 'Enter' && lookupPostcode()}
+                  className={styles.postcodeInput}
+                />
+                <button
+                  onClick={lookupPostcode}
+                  disabled={postcodeLoading || !postcode.trim()}
+                  className={styles.postcodeBtn}
+                >
+                  {postcodeLoading ? '...' : 'Find nearest'}
+                </button>
+                {userCoords && (
+                  <button onClick={clearPostcode} className={styles.postcodeClear} aria-label="Clear postcode">&times;</button>
+                )}
+              </div>
+              {postcodeError && <span className={styles.postcodeError}>{postcodeError}</span>}
+              {userCoords && <span className={styles.postcodeSuccess}>Sorted by distance</span>}
+            </div>
+
+            {/* Hospital / site */}
+            <div className={styles.profileField}>
+              <label className={styles.profileLabel}>Hospital / site</label>
               <select
                 value={selectedLocation}
                 onChange={e => setSelectedLocation(e.target.value)}
                 className={styles.selectInput}
               >
-                <option value="">Any location</option>
+                <option value="">Any site</option>
                 {locations.map(loc => (
                   <option key={loc} value={loc}>{loc}</option>
                 ))}
@@ -329,9 +451,14 @@ export default function ClinicalTrialsPage() {
             </div>
 
             {activeFilterCount > 0 && (
-              <button className={styles.clearAllBtn} onClick={clearAllFilters}>
-                Clear all filters
-              </button>
+              <div className={styles.profileActions}>
+                <span className={styles.activeFilterSummary}>
+                  {activeFilterCount} filter{activeFilterCount !== 1 ? 's' : ''} active
+                </span>
+                <button className={styles.clearAllBtn} onClick={clearAllFilters}>
+                  Clear all
+                </button>
+              </div>
             )}
           </div>
         )}
@@ -341,8 +468,8 @@ export default function ClinicalTrialsPage() {
         <div className={styles.resultsHeader}>
           <p className={styles.resultCount}>
             {loading ? 'Loading...' : `${filtered.length} trial${filtered.length !== 1 ? 's' : ''} found`}
-            {activeFilterCount > 0 && !loading && (
-              <span className={styles.filterNote}> (filtered by {activeFilterCount} patient criteria)</span>
+            {hasPatientProfile && !loading && !sortByDistance && (
+              <span className={styles.filterNote}> — sorted by match</span>
             )}
             {sortByDistance && !loading && (
               <span className={styles.filterNote}> — sorted by distance</span>
@@ -356,8 +483,12 @@ export default function ClinicalTrialsPage() {
             const isExpanded = expandedTrial === trial.id;
             const genetics = trial.genetics || { required: [], excluded: [] };
             const nearest = trialDistances[trial.id];
+            const matchScore = hasPatientProfile
+              ? computeMatchScore(trial, { selectedMarkers, fitnessFilter, categoryFilter })
+              : null;
+
             return (
-              <div key={trial.id} className={styles.trialCard}>
+              <div key={trial.id} className={`${styles.trialCard} ${matchScore && matchScore.percentage === 100 ? styles.trialCardHighMatch : ''}`}>
                 <div className={styles.trialHeader} onClick={() => setExpandedTrial(isExpanded ? null : trial.id)}>
                   <div className={styles.trialMeta}>
                     <span className={`${styles.categoryBadge} ${styles[`cat${trial.category.replace(/[^a-zA-Z]/g, '')}`]}`}>
@@ -366,6 +497,11 @@ export default function ClinicalTrialsPage() {
                     {trial.phase && (
                       <span className={styles.phaseBadge}>{trial.phase}</span>
                     )}
+                    {trial.fitness && (
+                      <span className={`${styles.fitnessBadge} ${styles[`fitness${trial.fitness.replace('-', '')}`]}`}>
+                        {trial.fitness === 'intensive' ? 'Intensive' : trial.fitness === 'non-intensive' ? 'Non-intensive' : 'Both'}
+                      </span>
+                    )}
                     {nearest && (
                       <span className={styles.distanceBadge}>
                         ~{Math.round(nearest.distance * 0.621371)} miles — {nearest.city}
@@ -373,6 +509,11 @@ export default function ClinicalTrialsPage() {
                     )}
                     {!nearest && userCoords && (
                       <span className={styles.distanceBadgeUnknown}>Distance N/A</span>
+                    )}
+                    {matchScore && (
+                      <span className={`${styles.matchBadge} ${matchScore.percentage >= 80 ? styles.matchHigh : matchScore.percentage >= 50 ? styles.matchMedium : styles.matchLow}`}>
+                        {matchScore.percentage}% match
+                      </span>
                     )}
                   </div>
                   <div className={styles.trialTitleRow}>
@@ -391,14 +532,17 @@ export default function ClinicalTrialsPage() {
                     <span className={styles.siteBadge}>{trial.sites}</span>
                   </div>
 
-                  {/* Genetic marker tags */}
                   {(genetics.required.length > 0 || genetics.excluded.length > 0) && (
                     <div className={styles.markerTags}>
                       {genetics.required.map(m => (
-                        <span key={m} className={`${styles.markerTag} ${styles.markerRequired}`}>{m}</span>
+                        <span key={m} className={`${styles.markerTag} ${styles.markerRequired} ${selectedMarkers.includes(m) ? styles.markerMatched : ''}`}>
+                          {m} {selectedMarkers.includes(m) ? '\u2713' : 'required'}
+                        </span>
                       ))}
                       {genetics.excluded.map(m => (
-                        <span key={m} className={`${styles.markerTag} ${styles.markerExcluded}`}>{m} excluded</span>
+                        <span key={m} className={`${styles.markerTag} ${styles.markerExcluded}`}>
+                          {m} excluded
+                        </span>
                       ))}
                     </div>
                   )}
