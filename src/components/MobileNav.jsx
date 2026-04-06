@@ -43,9 +43,6 @@ export default function MobileNav() {
           <li style={{ padding: '0.75rem 0', borderBottom: '1px solid #f0f0f0' }}>
             <Link href="/clinical-trials" style={{ textDecoration: 'none', display: 'block' }} onClick={closeMenu}>Clinical Trials</Link>
           </li>
-          <li style={{ padding: '0.75rem 0', borderBottom: '1px solid #f0f0f0' }}>
-            <Link href="/conference-ai" style={{ textDecoration: 'none', display: 'block' }} onClick={closeMenu}>ConferenceAI</Link>
-          </li>
           <li style={{ padding: '0.75rem 0' }}>
             <a className="button" href="https://app.haem.io/" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', width: '100%', textAlign: 'center' }}>Login</a>
           </li>

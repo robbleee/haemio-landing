@@ -8,40 +8,40 @@ import MobileNav from '../components/MobileNav';
 export const metadata = {
   metadataBase: new URL('https://haem.io'),
   title: {
-    default: 'Haem.io | Leukemia Diagnostic Tool and AML Classifier',
+    default: 'Haem.io | Leukaemia Diagnostic Classifier',
     template: '%s | Haem.io'
   },
-  description: 'Haem.io (Haemio) is a haematology diagnostic platform for leukemia and myeloid disease classification with WHO 2022, ICC 2022, and ELN-aligned logic.',
+  description: 'Haem.io (Haemio) is a haematology diagnostic platform for leukaemia and myeloid disease classification with WHO 2022, ICC 2022, and ELN-aligned logic.',
   alternates: {
     canonical: '/'
   },
   keywords: [
     'Haem.io',
     'Haemio',
-    'leukemia diagnostic tool',
-    'AML classifier',
-    'MDS diagnosis tool',
+    'leukaemia diagnostic tool',
+    'leukaemia classifier',
+    'myeloid disease diagnosis',
     'haematology diagnosis platform'
   ],
   openGraph: {
     type: 'website',
     url: 'https://haem.io',
     siteName: 'Haem.io',
-    title: 'Haem.io | Leukemia Diagnostic Tool and AML Classifier',
-    description: 'Haem.io (Haemio) provides explainable leukemia and myeloid disease classification using WHO 2022, ICC 2022, and ELN-guided logic.',
+    title: 'Haem.io | Leukaemia Diagnostic Classifier',
+    description: 'Haem.io (Haemio) provides explainable leukaemia and myeloid disease classification using WHO 2022, ICC 2022, and ELN-guided logic.',
     images: [
       {
         url: '/new-screenshots-for-landing/classification-result.png',
         width: 1200,
         height: 630,
-        alt: 'Haem.io — WHO 2022 and ICC 2022 AML classification with clinical reasoning',
+        alt: 'Haem.io — WHO 2022 and ICC 2022 leukaemia classification with clinical reasoning',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Haem.io | Leukemia Diagnostic Tool and AML Classifier',
-    description: 'Haem.io (Haemio) provides explainable leukemia and myeloid disease classification using WHO 2022, ICC 2022, and ELN-guided logic.',
+    title: 'Haem.io | Leukaemia Diagnostic Classifier',
+    description: 'Haem.io (Haemio) provides explainable leukaemia and myeloid disease classification using WHO 2022, ICC 2022, and ELN-guided logic.',
     images: ['/new-screenshots-for-landing/classification-result.png'],
   },
   robots: {
@@ -83,7 +83,6 @@ export default function RootLayout({ children }) {
                 <li><Link href="/articles" style={{ textDecoration: 'none' }}>Articles</Link></li>
                 <li><a href="https://learn.haem.io" style={{ textDecoration: 'none' }}>Learn</a></li>
                 <li><Link href="/clinical-trials" style={{ textDecoration: 'none' }}>Clinical Trials</Link></li>
-                <li><Link href="/conference-ai" style={{ textDecoration: 'none' }}>ConferenceAI</Link></li>
                 <li><a className="button" href="https://app.haem.io/" target="_blank" rel="noopener noreferrer">Login</a></li>
               </ul>
             </nav>
