@@ -137,12 +137,66 @@
   border-radius: 10px;
   overflow: hidden;
   background: #fff;
+  position: relative;
 }
 
 .diagramWrapper :global(svg) {
   display: block;
   width: 100%;
   height: auto;
+}
+
+.diagramWrapper :global(g[data-node-id]) {
+  cursor: pointer;
+}
+
+.diagramWrapper :global(g[data-node-id]:hover) {
+  filter: brightness(0.95);
+}
+
+/* ── Node popover ────────────────────────────────────────── */
+
+.popover {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  background: #fff;
+  border: 1px solid #cfd8dc;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+  z-index: 100;
+  min-width: 180px;
+  max-width: 320px;
+  pointer-events: none;
+  animation: popoverIn 0.12s ease-out;
+}
+
+@keyframes popoverIn {
+  from { opacity: 0; transform: translate(-50%, -100%) translateY(6px); }
+  to   { opacity: 1; transform: translate(-50%, -100%) translateY(0); }
+}
+
+.popoverLabel {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 0.25rem;
+  line-height: 1.3;
+}
+
+.popoverDesc {
+  font-size: 0.82rem;
+  color: #546e7a;
+  line-height: 1.45;
+  margin-bottom: 0.35rem;
+}
+
+.popoverType {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #90a4ae;
 }
 
 .diagramRow {

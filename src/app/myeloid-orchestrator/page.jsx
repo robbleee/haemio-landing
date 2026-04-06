@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { FlowDiagram } from '@haemio/flowdiagram/react';
 import {
   orchestrationFlow,
@@ -11,6 +11,51 @@ import {
   elnFlow,
 } from './flows';
 import styles from './orchestrator.module.css';
+
+function InteractiveDiagram({ config }) {
+  const [popover, setPopover] = useState(null);
+  const wrapperRef = useRef(null);
+
+  const handleClick = useCallback((e) => {
+    let el = e.target;
+    while (el && el !== e.currentTarget) {
+      if (el.tagName === 'g' && el.dataset?.nodeId) {
+        const nodeId = el.dataset.nodeId;
+        const node = config.nodes.find(n => n.id === nodeId);
+        if (node) {
+          const rect = el.getBoundingClientRect();
+          const wrapperRect = wrapperRef.current.getBoundingClientRect();
+          setPopover({
+            node,
+            x: rect.left + rect.width / 2 - wrapperRect.left,
+            y: rect.top - wrapperRect.top - 8,
+          });
+        }
+        return;
+      }
+      el = el.parentElement;
+    }
+    setPopover(null);
+  }, [config]);
+
+  return (
+    <div ref={wrapperRef} className={styles.diagramWrapper} onClick={handleClick} style={{ position: 'relative' }}>
+      <FlowDiagram config={config} />
+      {popover && (
+        <div
+          className={styles.popover}
+          style={{ left: popover.x, top: popover.y }}
+        >
+          <div className={styles.popoverLabel}>{popover.node.label}</div>
+          {popover.node.description && (
+            <div className={styles.popoverDesc}>{popover.node.description}</div>
+          )}
+          <div className={styles.popoverType}>{popover.node.type}</div>
+        </div>
+      )}
+    </div>
+  );
+}
 
 const TABS = [
   { key: 'orchestrator', label: 'Orchestrator' },
@@ -29,9 +74,7 @@ function OrchestratorTab() {
         Every report enters the AML classifier first. Based on sentinels and
         intercept checks, the orchestrator routes to CML, MDS, or CMML.
       </p>
-      <div className={styles.diagramWrapper}>
-        <FlowDiagram config={orchestrationFlow} />
-      </div>
+      <InteractiveDiagram config={orchestrationFlow} />
 
       <h3>Orchestration Steps</h3>
       <div className={styles.tableWrapper}>
@@ -86,14 +129,10 @@ function AmlTab() {
       </p>
 
       <h3>WHO 2022</h3>
-      <div className={styles.diagramWrapper}>
-        <FlowDiagram config={amlWhoFlow} />
-      </div>
+      <InteractiveDiagram config={amlWhoFlow} />
 
       <h3>ICC 2022</h3>
-      <div className={styles.diagramWrapper}>
-        <FlowDiagram config={amlIccFlow} />
-      </div>
+      <InteractiveDiagram config={amlIccFlow} />
 
       <h3>Key Differences — WHO vs ICC</h3>
       <div className={styles.tableWrapper}>
@@ -148,14 +187,10 @@ function MdsTab() {
       </p>
 
       <h3>WHO 2022</h3>
-      <div className={styles.diagramWrapper}>
-        <FlowDiagram config={mdsWhoFlow} />
-      </div>
+      <InteractiveDiagram config={mdsWhoFlow} />
 
       <h3>ICC 2022</h3>
-      <div className={styles.diagramWrapper}>
-        <FlowDiagram config={mdsIccFlow} />
-      </div>
+      <InteractiveDiagram config={mdsIccFlow} />
 
       <h3>Key Differences — WHO vs ICC</h3>
       <div className={styles.tableWrapper}>
@@ -166,8 +201,8 @@ function MdsTab() {
           <tbody>
             <tr><td>TP53 criteria</td><td>Biallelic (2x mutations, +del(17p), +LOH, &ge;50% VAF)</td><td>Adds &ge;10% VAF + complex karyotype</td></tr>
             <tr><td>MDS/AML overlap (10-19%)</td><td>MDS with increased blasts 2</td><td>MDS/AML category</td></tr>
-            <tr><td>Hypoplastic MDS</td><td>Separate category</td><td>Not a separate category</td></tr>
-            <tr><td>Fibrotic MDS</td><td>Separate category</td><td>Not a separate category</td></tr>
+            <tr><td>Hypoplastic MDS</td><td>Separate category</td><td>Separate category</td></tr>
+            <tr><td>Fibrotic MDS</td><td>Separate category (blasts 5-19%)</td><td>Not a separate category</td></tr>
             <tr><td>Naming</td><td>&ldquo;MDS with low blasts&rdquo;</td><td>&ldquo;MDS, NOS&rdquo;</td></tr>
           </tbody>
         </table>
@@ -194,12 +229,8 @@ function CmlTab() {
         ICC 2022 retains 3 phases with an accelerated category.
       </p>
       <div className={styles.diagramRow}>
-        <div className={styles.diagramWrapper}>
-          <FlowDiagram config={cmlWhoFlow} />
-        </div>
-        <div className={styles.diagramWrapper}>
-          <FlowDiagram config={cmlIccFlow} />
-        </div>
+        <InteractiveDiagram config={cmlWhoFlow} />
+        <InteractiveDiagram config={cmlIccFlow} />
       </div>
 
       <h3>Phase Criteria Comparison</h3>
@@ -241,9 +272,7 @@ function CmmlTab() {
         The classifier applies eligibility gates, then classifies by AMC level, blast
         subtype (CMML-1/2), and WBC count (MP/MD).
       </p>
-      <div className={styles.diagramWrapper}>
-        <FlowDiagram config={cmmlFlow} />
-      </div>
+      <InteractiveDiagram config={cmmlFlow} />
 
       <h3>WHO 2022 vs ICC 2022 — Key Differences</h3>
       <div className={styles.tableWrapper}>
@@ -289,9 +318,7 @@ function ElnTab() {
         risk category. Adverse markers are checked first, followed by favorable markers
         (with FLT3-ITD override). Everything else falls to intermediate.
       </p>
-      <div className={styles.diagramWrapper}>
-        <FlowDiagram config={elnFlow} />
-      </div>
+      <InteractiveDiagram config={elnFlow} />
 
       <h3>Adverse Markers</h3>
       <p>Any single adverse marker immediately classifies the patient as adverse risk:</p>
