@@ -336,6 +336,41 @@ export const cmmlFlow = {
   ],
 };
 
+// ── ELN 2024 Non-Intensive Treatment ────────────────────────
+
+export const eln2024NonIntensiveFlow = {
+  title: "ELN 2024 — Non-Intensive Treatment Pathway",
+  nodes: [
+    { id: "input", label: "AML Confirmed, Non-Intensive", type: "input", description: "Patient unfit for intensive (7+3) chemotherapy" },
+    { id: "apl_check", label: "APL (PML::RARA)?", type: "decision", description: "Acute promyelocytic leukaemia requires distinct treatment" },
+    { id: "return_apl", label: "APL Protocol", type: "output", description: "ATRA + ATO (arsenic trioxide); do NOT give venetoclax-based therapy" },
+    { id: "tp53_check", label: "TP53 mutated?", type: "decision", description: "TP53 mutation (especially multi-hit / biallelic)" },
+    { id: "return_tp53", label: "VEN+AZA (limited efficacy)", type: "output", description: "Poor prognosis; median OS ~6 months. Consider clinical trial (e.g. magrolimab, sabatolimab, anti-CD47)" },
+    { id: "idh1_check", label: "IDH1 mutated?", type: "decision", description: "IDH1 R132 mutation" },
+    { id: "return_idh1", label: "Ivosidenib + AZA (± VEN)", type: "output", description: "AGILE trial: CR/CRi ~53%, median OS ~24 months. Ivosidenib + AZA preferred frontline" },
+    { id: "idh2_check", label: "IDH2 mutated?", type: "decision", description: "IDH2 R140 or R172 mutation" },
+    { id: "return_idh2", label: "VEN+AZA", type: "output", description: "Enasidenib + AZA is an option. VEN+AZA shows good responses in IDH2-mutated AML" },
+    { id: "flt3_check", label: "FLT3 mutated?", type: "decision", description: "FLT3-ITD or FLT3-TKD" },
+    { id: "return_flt3", label: "VEN+AZA (consider FLT3i)", type: "output", description: "VEN+AZA backbone; FLT3 inhibitor combinations under investigation. Caution with VEN+AZA+FLT3i myelosuppression" },
+    { id: "default", label: "Default pathway", type: "process", description: "No targetable mutation or favorable/intermediate genetics" },
+    { id: "return_ven_aza", label: "VEN+AZA", type: "output", description: "Venetoclax + Azacitidine — standard of care for non-intensive. VIALE-A: CR/CRi ~66%, median OS ~14.7 months" },
+  ],
+  edges: [
+    { from: "input", to: "apl_check" },
+    { from: "apl_check", to: "return_apl", label: "Yes" },
+    { from: "apl_check", to: "tp53_check", label: "No" },
+    { from: "tp53_check", to: "return_tp53", label: "Yes" },
+    { from: "tp53_check", to: "idh1_check", label: "No" },
+    { from: "idh1_check", to: "return_idh1", label: "Yes" },
+    { from: "idh1_check", to: "idh2_check", label: "No" },
+    { from: "idh2_check", to: "return_idh2", label: "Yes" },
+    { from: "idh2_check", to: "flt3_check", label: "No" },
+    { from: "flt3_check", to: "return_flt3", label: "Yes" },
+    { from: "flt3_check", to: "default", label: "No" },
+    { from: "default", to: "return_ven_aza" },
+  ],
+};
+
 // ── ELN 2022 Risk ───────────────────────────────────────────
 
 export const elnFlow = {

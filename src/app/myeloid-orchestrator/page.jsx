@@ -9,6 +9,7 @@ import {
   cmlWhoFlow, cmlIccFlow,
   cmmlFlow,
   elnFlow,
+  eln2024NonIntensiveFlow,
 } from './flows';
 import styles from './orchestrator.module.css';
 
@@ -64,6 +65,7 @@ const TABS = [
   { key: 'cml', label: 'CML' },
   { key: 'cmml', label: 'CMML' },
   { key: 'eln', label: 'ELN Risk' },
+  { key: 'eln2024ni', label: 'ELN 2024 Non-Intensive' },
 ];
 
 function OrchestratorTab() {
@@ -361,6 +363,121 @@ function ElnTab() {
   );
 }
 
+function Eln2024NonIntensiveTab() {
+  return (
+    <>
+      <h2>ELN 2024 — Non-Intensive Treatment Pathway</h2>
+      <p>
+        For patients with confirmed AML who are unfit for intensive (7+3) chemotherapy,
+        the ELN 2024 recommendations establish venetoclax + azacitidine (VEN+AZA) as the
+        standard backbone, with mutation-directed modifications for actionable targets.
+        Treatment selection is driven by molecular profile — particularly TP53, IDH1/2,
+        and FLT3 status.
+      </p>
+      <InteractiveDiagram config={eln2024NonIntensiveFlow} />
+
+      <h3>Standard of Care: Venetoclax + Azacitidine</h3>
+      <p>
+        The VIALE-A trial established VEN+AZA as the standard non-intensive regimen.
+        Venetoclax (BCL-2 inhibitor) combined with azacitidine (hypomethylating agent)
+        achieves CR/CRi rates of approximately 66% with a median overall survival of
+        14.7 months — a significant improvement over azacitidine monotherapy.
+      </p>
+
+      <h3>Mutation-Directed Therapy</h3>
+      <div className={styles.tableWrapper}>
+        <table className={styles.table}>
+          <thead>
+            <tr><th>Mutation</th><th>Recommended Regimen</th><th>Key Evidence</th><th>Expected Outcome</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span className={styles.chip}>IDH1</span></td>
+              <td>Ivosidenib + AZA (&plusmn; VEN)</td>
+              <td>AGILE trial</td>
+              <td>CR/CRi ~53%, median OS ~24 months</td>
+            </tr>
+            <tr>
+              <td><span className={styles.chip}>IDH2</span></td>
+              <td>VEN+AZA (enasidenib + AZA as alternative)</td>
+              <td>VIALE-A subgroup; enasidenib studies</td>
+              <td>Favourable responses with VEN+AZA</td>
+            </tr>
+            <tr>
+              <td><span className={styles.chip}>FLT3-ITD / TKD</span></td>
+              <td>VEN+AZA (FLT3 inhibitor combinations under investigation)</td>
+              <td>Ongoing trials (e.g. VEN+AZA+gilteritinib)</td>
+              <td>Caution: overlapping myelosuppression</td>
+            </tr>
+            <tr>
+              <td><span className={styles.chipAdverse}>TP53</span></td>
+              <td>VEN+AZA (limited efficacy); clinical trial preferred</td>
+              <td>VIALE-A subgroup; magrolimab/sabatolimab trials</td>
+              <td>Poor prognosis — median OS ~6 months</td>
+            </tr>
+            <tr>
+              <td><span className={styles.chipFavorable}>NPM1</span></td>
+              <td>VEN+AZA</td>
+              <td>VIALE-A subgroup</td>
+              <td>High CR/CRi rates, favourable survival</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Response Assessment</h3>
+      <p>
+        ELN 2024 recommends response evaluation after 1-2 cycles. Bone marrow assessment
+        at cycle 1 day 28 (or delayed if counts recovering). Key response categories:
+      </p>
+      <div className={styles.tableWrapper}>
+        <table className={styles.table}>
+          <thead>
+            <tr><th>Category</th><th>Definition</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span className={styles.riskFavorable}>CR</span></td><td>Blasts &lt;5%, ANC &ge;1.0 x10&#x2079;/L, platelets &ge;100 x10&#x2079;/L, no Auer rods, no extramedullary disease</td></tr>
+            <tr><td><span className={styles.riskFavorable}>CRi</span></td><td>CR criteria except incomplete count recovery (ANC &lt;1.0 or platelets &lt;100)</td></tr>
+            <tr><td><span className={styles.riskIntermediate}>MLFS</span></td><td>Blasts &lt;5%, no Auer rods, no extramedullary disease; count recovery not required</td></tr>
+            <tr><td><span className={styles.riskAdverse}>Resistant</span></td><td>Failure to achieve CR/CRi/MLFS after adequate therapy</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Key Considerations for Non-Intensive Patients</h3>
+      <div className={styles.tableWrapper}>
+        <table className={styles.table}>
+          <thead>
+            <tr><th>Factor</th><th>Guidance</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Tumour lysis syndrome</td><td>VEN ramp-up over 3-4 days mandatory; monitor uric acid, potassium, phosphate, calcium</td></tr>
+            <tr><td>CYP3A4 interactions</td><td>Reduce VEN dose with strong CYP3A4 inhibitors (azole antifungals). Posaconazole: reduce VEN to 70mg</td></tr>
+            <tr><td>Myelosuppression</td><td>VEN dose interruptions common; cycle length adjustment (21-28 day VEN per cycle) based on count recovery</td></tr>
+            <tr><td>Duration of therapy</td><td>Continue until progression or unacceptable toxicity; MRD-guided discontinuation under investigation</td></tr>
+            <tr><td>APL exclusion</td><td>PML::RARA-positive patients must NOT receive VEN+AZA — treat with ATRA + ATO</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Emerging Targets &amp; Trials</h3>
+      <p>
+        Several novel agents are being evaluated in the non-intensive setting, particularly
+        for patients with TP53 mutations or relapsed/refractory disease:
+      </p>
+      <div className={styles.chipGroup}>
+        {[
+          'Magrolimab (anti-CD47)', 'Sabatolimab (anti-TIM-3)', 'Revumenib (menin inhibitor)',
+          'Ziftomenib (menin inhibitor)', 'Pivekimab (anti-CD123 ADC)',
+          'Oral decitabine/cedazuridine', 'Glasdegib (Hedgehog inhibitor)',
+        ].map(m => (
+          <span key={m} className={styles.chip}>{m}</span>
+        ))}
+      </div>
+    </>
+  );
+}
+
 const TAB_COMPONENTS = {
   orchestrator: OrchestratorTab,
   aml: AmlTab,
@@ -368,6 +485,7 @@ const TAB_COMPONENTS = {
   cml: CmlTab,
   cmml: CmmlTab,
   eln: ElnTab,
+  eln2024ni: Eln2024NonIntensiveTab,
 };
 
 export default function MyeloidOrchestratorPage() {
@@ -379,7 +497,7 @@ export default function MyeloidOrchestratorPage() {
       <div className={styles.header}>
         <h1>Myeloid Classification Pipeline</h1>
         <p className={styles.subtitle}>
-          Complete diagnostic logic for AML, CML, MDS, CMML, and ELN risk — WHO 2022 &amp; ICC 2022
+          Complete diagnostic logic for AML, CML, MDS, CMML, and ELN risk — WHO 2022, ICC 2022 &amp; ELN 2024
         </p>
         <div className={styles.badges}>
           <span className={styles.badge} data-type="aml">AML</span>
