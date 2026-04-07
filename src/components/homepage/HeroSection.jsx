@@ -36,8 +36,8 @@ export default function HeroSection() {
             </div>
 
             <h1 className={styles.title}>
-              <span className={styles.titleLine}>Classify leukaemia</span>
-              <span className={styles.titleAccent}>in minutes, not hours</span>
+              <span className={styles.titleLine}>The intelligent layer between</span>
+              <span className={styles.titleAccent}>clinicians, labs and pharma</span>
             </h1>
 
             <p className={styles.subtitle}>

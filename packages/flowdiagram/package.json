@@ -1,0 +1,40 @@
+{
+  "name": "@haemio/flowdiagram",
+  "version": "0.1.0",
+  "description": "Flow diagram renderer for classifiers and workflows",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./react": {
+      "types": "./dist/react.d.ts",
+      "import": "./dist/react.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "demo": "tsx demo/demo.ts"
+  },
+  "dependencies": {
+    "elkjs": "^0.9.3"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0",
+    "tsx": "^4.19.0",
+    "@types/react": "^18.2.0",
+    "react": "^18.2.0"
+  }
+}
