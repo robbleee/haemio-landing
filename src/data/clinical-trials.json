@@ -40,7 +40,14 @@
       ]
     },
     "fitness": "intensive",
-    "phase": "Phase 2"
+    "phase": "Phase 2",
+    "ageMin": 60,
+    "ageMax": null,
+    "ecogMax": 2,
+    "disease": [
+      "AML"
+    ],
+    "recruitmentStatus": "recruiting"
   },
   {
     "id": "optimise-flt3",
@@ -75,7 +82,14 @@
       ]
     },
     "fitness": "intensive",
-    "phase": "Phase 3"
+    "phase": "Phase 3",
+    "ageMin": 16,
+    "ageMax": null,
+    "ecogMax": null,
+    "disease": [
+      "AML"
+    ],
+    "recruitmentStatus": "recruiting"
   },
   {
     "id": "evolve-1",
@@ -110,7 +124,14 @@
       "iccMatch": []
     },
     "fitness": "non-intensive",
-    "phase": "Phase 3"
+    "phase": "Phase 3",
+    "ageMin": 18,
+    "ageMax": null,
+    "ecogMax": 2,
+    "disease": [
+      "AML"
+    ],
+    "recruitmentStatus": "recruiting"
   },
   {
     "id": "evolve-2",
@@ -149,7 +170,14 @@
       ]
     },
     "fitness": "non-intensive",
-    "phase": "Phase 3"
+    "phase": "Phase 3",
+    "ageMin": 18,
+    "ageMax": null,
+    "ecogMax": 2,
+    "disease": [
+      "AML"
+    ],
+    "recruitmentStatus": "recruiting"
   },
   {
     "id": "aztound",
@@ -185,7 +213,14 @@
       "iccMatch": []
     },
     "fitness": "non-intensive",
-    "phase": "Phase 2"
+    "phase": "Phase 2",
+    "ageMin": 18,
+    "ageMax": null,
+    "ecogMax": 3,
+    "disease": [
+      "AML"
+    ],
+    "recruitmentStatus": "recruiting"
   },
   {
     "id": "komen-017",
@@ -227,7 +262,14 @@
       ]
     },
     "fitness": "both",
-    "phase": "Phase 3"
+    "phase": "Phase 3",
+    "ageMin": 18,
+    "ageMax": null,
+    "ecogMax": null,
+    "disease": [
+      "AML"
+    ],
+    "recruitmentStatus": "recruiting"
   },
   {
     "id": "camelot-2",
@@ -266,7 +308,14 @@
       ]
     },
     "fitness": "non-intensive",
-    "phase": "Phase 3"
+    "phase": "Phase 3",
+    "ageMin": 18,
+    "ageMax": null,
+    "ecogMax": 2,
+    "disease": [
+      "AML"
+    ],
+    "recruitmentStatus": "recruiting"
   },
   {
     "id": "quantum-wild",
@@ -301,7 +350,14 @@
       ]
     },
     "fitness": "intensive",
-    "phase": "Phase 3"
+    "phase": "Phase 3",
+    "ageMin": 18,
+    "ageMax": 70,
+    "ecogMax": null,
+    "disease": [
+      "AML"
+    ],
+    "recruitmentStatus": "recruiting"
   },
   {
     "id": "camelot-1",
@@ -343,7 +399,14 @@
       ]
     },
     "fitness": null,
-    "phase": "Phase 1/2"
+    "phase": "Phase 1/2",
+    "ageMin": 18,
+    "ageMax": null,
+    "ecogMax": null,
+    "disease": [
+      "AML"
+    ],
+    "recruitmentStatus": "recruiting"
   },
   {
     "id": "dsp-5336",
@@ -392,7 +455,15 @@
       ]
     },
     "fitness": null,
-    "phase": "Phase 1/2"
+    "phase": "Phase 1/2",
+    "ageMin": 18,
+    "ageMax": null,
+    "ecogMax": 2,
+    "disease": [
+      "AML",
+      "MDS"
+    ],
+    "recruitmentStatus": "recruiting"
   },
   {
     "id": "apl0498",
@@ -418,7 +489,15 @@
       "iccMatch": []
     },
     "fitness": null,
-    "phase": "Phase 1"
+    "phase": "Phase 1",
+    "ageMin": 18,
+    "ageMax": null,
+    "ecogMax": null,
+    "disease": [
+      "AML",
+      "MDS"
+    ],
+    "recruitmentStatus": "recruiting"
   },
   {
     "id": "jnj-89853413",
@@ -450,7 +529,15 @@
       "iccMatch": []
     },
     "fitness": null,
-    "phase": "Phase 1/2"
+    "phase": "Phase 1/2",
+    "ageMin": 18,
+    "ageMax": null,
+    "ecogMax": null,
+    "disease": [
+      "AML",
+      "MDS"
+    ],
+    "recruitmentStatus": "recruiting"
   },
   {
     "id": "momentum",
@@ -491,7 +578,15 @@
       ]
     },
     "fitness": null,
-    "phase": "Phase 1/2"
+    "phase": "Phase 1/2",
+    "ageMin": 16,
+    "ageMax": null,
+    "ecogMax": 2,
+    "disease": [
+      "AML",
+      "MDS"
+    ],
+    "recruitmentStatus": "recruiting"
   },
   {
     "id": "biodrive-afs",
@@ -518,7 +613,15 @@
       "iccMatch": []
     },
     "fitness": null,
-    "phase": "Randomised Controlled Trial"
+    "phase": "Randomised Controlled Trial",
+    "ageMin": 16,
+    "ageMax": null,
+    "ecogMax": null,
+    "disease": [
+      "AML",
+      "MDS"
+    ],
+    "recruitmentStatus": "recruiting"
   },
   {
     "id": "propel",
@@ -550,7 +653,15 @@
       "iccMatch": []
     },
     "fitness": null,
-    "phase": "Randomised Controlled Trial"
+    "phase": "Randomised Controlled Trial",
+    "ageMin": 16,
+    "ageMax": null,
+    "ecogMax": null,
+    "disease": [
+      "AML",
+      "MDS"
+    ],
+    "recruitmentStatus": "recruiting"
   },
   {
     "id": "mo-trans",
@@ -579,7 +690,14 @@
       "iccMatch": []
     },
     "fitness": null,
-    "phase": "Phase 3"
+    "phase": "Phase 3",
+    "ageMin": 18,
+    "ageMax": 75,
+    "ecogMax": null,
+    "disease": [
+      "AML"
+    ],
+    "recruitmentStatus": "recruiting"
   },
   {
     "id": "grace",
@@ -618,7 +736,15 @@
       ]
     },
     "fitness": "intensive",
-    "phase": "Phase 1/2"
+    "phase": "Phase 1/2",
+    "ageMin": null,
+    "ageMax": 54,
+    "ecogMax": 1,
+    "disease": [
+      "AML",
+      "MDS"
+    ],
+    "recruitmentStatus": "recruiting"
   },
   {
     "id": "inobrodib",
@@ -651,7 +777,15 @@
       "iccMatch": []
     },
     "fitness": null,
-    "phase": "Phase 1/2a"
+    "phase": "Phase 1/2a",
+    "ageMin": null,
+    "ageMax": null,
+    "ecogMax": 2,
+    "disease": [
+      "AML",
+      "MDS"
+    ],
+    "recruitmentStatus": "recruiting"
   },
   {
     "id": "ep0042",
@@ -690,7 +824,15 @@
       "iccMatch": []
     },
     "fitness": null,
-    "phase": "Phase 1/2a"
+    "phase": "Phase 1/2a",
+    "ageMin": 18,
+    "ageMax": null,
+    "ecogMax": null,
+    "disease": [
+      "AML",
+      "MDS"
+    ],
+    "recruitmentStatus": "recruiting"
   },
   {
     "id": "augment-101",
@@ -732,7 +874,14 @@
       ]
     },
     "fitness": null,
-    "phase": "Phase 1/2"
+    "phase": "Phase 1/2",
+    "ageMin": 18,
+    "ageMax": null,
+    "ecogMax": 2,
+    "disease": [
+      "AML"
+    ],
+    "recruitmentStatus": "recruiting"
   },
   {
     "id": "komet-007",
@@ -772,7 +921,14 @@
       ]
     },
     "fitness": null,
-    "phase": "Phase 1"
+    "phase": "Phase 1",
+    "ageMin": null,
+    "ageMax": null,
+    "ecogMax": null,
+    "disease": [
+      "AML"
+    ],
+    "recruitmentStatus": "recruiting"
   },
   {
     "id": "pyramidh",
@@ -805,7 +961,14 @@
       ]
     },
     "fitness": "non-intensive",
-    "phase": "Phase 3"
+    "phase": "Phase 3",
+    "ageMin": 18,
+    "ageMax": null,
+    "ecogMax": null,
+    "disease": [
+      "MDS"
+    ],
+    "recruitmentStatus": "recruiting"
   },
   {
     "id": "renew",
@@ -842,7 +1005,14 @@
       ]
     },
     "fitness": "non-intensive",
-    "phase": "Phase 3"
+    "phase": "Phase 3",
+    "ageMin": null,
+    "ageMax": null,
+    "ecogMax": null,
+    "disease": [
+      "MDS"
+    ],
+    "recruitmentStatus": "recruiting"
   },
   {
     "id": "mithridate",
@@ -881,7 +1051,14 @@
       ]
     },
     "fitness": null,
-    "phase": "Phase 3"
+    "phase": "Phase 3",
+    "ageMin": 18,
+    "ageMax": null,
+    "ecogMax": null,
+    "disease": [
+      "PV"
+    ],
+    "recruitmentStatus": "recruiting"
   },
   {
     "id": "verify",
@@ -916,7 +1093,14 @@
       ]
     },
     "fitness": null,
-    "phase": "Phase 3"
+    "phase": "Phase 3",
+    "ageMin": 18,
+    "ageMax": null,
+    "ecogMax": null,
+    "disease": [
+      "PV"
+    ],
+    "recruitmentStatus": "not-recruiting"
   },
   {
     "id": "giv-in-pv",
@@ -952,7 +1136,14 @@
       ]
     },
     "fitness": null,
-    "phase": "Phase 3"
+    "phase": "Phase 3",
+    "ageMin": null,
+    "ageMax": null,
+    "ecogMax": null,
+    "disease": [
+      "PV"
+    ],
+    "recruitmentStatus": "recruiting"
   },
   {
     "id": "imprssion",
@@ -986,7 +1177,14 @@
       ]
     },
     "fitness": null,
-    "phase": "Phase 2a"
+    "phase": "Phase 2a",
+    "ageMin": null,
+    "ageMax": null,
+    "ecogMax": null,
+    "disease": [
+      "PV"
+    ],
+    "recruitmentStatus": "not-recruiting"
   },
   {
     "id": "shorespan-006",
@@ -1022,7 +1220,14 @@
       ]
     },
     "fitness": null,
-    "phase": "Phase 3"
+    "phase": "Phase 3",
+    "ageMin": 18,
+    "ageMax": null,
+    "ecogMax": null,
+    "disease": [
+      "ET"
+    ],
+    "recruitmentStatus": "recruiting"
   },
   {
     "id": "stp938",
@@ -1062,7 +1267,14 @@
       ]
     },
     "fitness": null,
-    "phase": "Phase 1b"
+    "phase": "Phase 1b",
+    "ageMin": 18,
+    "ageMax": null,
+    "ecogMax": null,
+    "disease": [
+      "ET"
+    ],
+    "recruitmentStatus": "recruiting"
   },
   {
     "id": "pacifica",
@@ -1100,7 +1312,14 @@
       ]
     },
     "fitness": null,
-    "phase": "Phase 3"
+    "phase": "Phase 3",
+    "ageMin": null,
+    "ageMax": null,
+    "ecogMax": 2,
+    "disease": [
+      "MF"
+    ],
+    "recruitmentStatus": "recruiting"
   },
   {
     "id": "impactmf",
@@ -1138,7 +1357,14 @@
       ]
     },
     "fitness": null,
-    "phase": "Phase 3"
+    "phase": "Phase 3",
+    "ageMin": null,
+    "ageMax": null,
+    "ecogMax": null,
+    "disease": [
+      "MF"
+    ],
+    "recruitmentStatus": "not-recruiting"
   },
   {
     "id": "poiesis",
@@ -1178,7 +1404,14 @@
       ]
     },
     "fitness": null,
-    "phase": "Phase 3"
+    "phase": "Phase 3",
+    "ageMin": null,
+    "ageMax": null,
+    "ecogMax": null,
+    "disease": [
+      "MF"
+    ],
+    "recruitmentStatus": "recruiting"
   },
   {
     "id": "jnj-88549968-mpn",
@@ -1215,7 +1448,15 @@
       ]
     },
     "fitness": null,
-    "phase": "Phase 1"
+    "phase": "Phase 1",
+    "ageMin": 18,
+    "ageMax": null,
+    "ecogMax": 2,
+    "disease": [
+      "ET",
+      "MF"
+    ],
+    "recruitmentStatus": "recruiting"
   },
   {
     "id": "cardinal",
@@ -1249,7 +1490,14 @@
       ]
     },
     "fitness": null,
-    "phase": "Phase 1/2"
+    "phase": "Phase 1/2",
+    "ageMin": 18,
+    "ageMax": null,
+    "ecogMax": null,
+    "disease": [
+      "CML"
+    ],
+    "recruitmentStatus": "recruiting"
   },
   {
     "id": "paxis",
@@ -1286,7 +1534,14 @@
       "iccMatch": []
     },
     "fitness": null,
-    "phase": "Phase 2"
+    "phase": "Phase 2",
+    "ageMin": null,
+    "ageMax": null,
+    "ecogMax": null,
+    "disease": [
+      "VEXAS"
+    ],
+    "recruitmentStatus": "recruiting"
   },
   {
     "id": "impact-aml",
@@ -1317,7 +1572,14 @@
       "iccMatch": []
     },
     "fitness": "intensive",
-    "phase": "Phase 3"
+    "phase": "Phase 3",
+    "ageMin": 18,
+    "ageMax": null,
+    "ecogMax": 3,
+    "disease": [
+      "AML"
+    ],
+    "recruitmentStatus": "recruiting"
   },
   {
     "id": "fedora",
@@ -1347,7 +1609,14 @@
       ]
     },
     "fitness": null,
-    "phase": "Phase 2"
+    "phase": "Phase 2",
+    "ageMin": null,
+    "ageMax": null,
+    "ecogMax": null,
+    "disease": [
+      "MF"
+    ],
+    "recruitmentStatus": "recruiting"
   },
   {
     "id": "ammo",
@@ -1374,6 +1643,13 @@
       ]
     },
     "fitness": "non-intensive",
-    "phase": "Phase 2"
+    "phase": "Phase 2",
+    "ageMin": null,
+    "ageMax": null,
+    "ecogMax": null,
+    "disease": [
+      "CMML"
+    ],
+    "recruitmentStatus": "recruiting"
   }
 ]
