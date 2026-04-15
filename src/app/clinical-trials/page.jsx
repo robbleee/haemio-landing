@@ -114,12 +114,6 @@ function matchesEcog(trial, patientEcog) {
   return parseInt(patientEcog, 10) <= trial.ecogMax;
 }
 
-// Only show trials relevant to AML or high-risk MDS
-function isAmlOrMds(trial) {
-  const d = trial.disease || [];
-  return d.includes('AML') || d.includes('MDS');
-}
-
 // Compute a match score — only scores dimensions where the trial specifies requirements.
 // A trial with no genetic requirements doesn't get a genetics score (it's open to everyone, not a "match").
 function computeMatchScore(trial, { selectedMarkers, fitnessFilter, categoryFilter }) {
@@ -366,11 +360,9 @@ export default function ClinicalTrialsPage() {
     });
   }, [enquiryModal]);
 
-  const amlMdsTrials = useMemo(() => trials.filter(isAmlOrMds), [trials]);
-
   const categories = useMemo(() => {
-    return ['All', ...new Set(amlMdsTrials.map(t => t.category))];
-  }, [amlMdsTrials]);
+    return ['All', ...new Set(trials.map(t => t.category))];
+  }, [trials]);
 
   const PHASE_OPTIONS = [
     { key: '1', label: 'Phase 1' },
@@ -378,7 +370,7 @@ export default function ClinicalTrialsPage() {
     { key: '3', label: 'Phase 3' },
   ];
 
-  const locations = useMemo(() => extractLocations(amlMdsTrials), [amlMdsTrials]);
+  const locations = useMemo(() => extractLocations(trials), [trials]);
 
   const trialDistances = useMemo(() => {
     if (!userCoords) return {};
@@ -394,7 +386,6 @@ export default function ClinicalTrialsPage() {
 
   const filtered = useMemo(() => {
     let result = trials.filter(trial => {
-      if (!isAmlOrMds(trial)) return false;
       if (categoryFilter !== 'All' && trial.category !== categoryFilter) return false;
       if (!matchesGenetics(trial, selectedMarkers)) return false;
       if (!matchesLocation(trial, selectedLocation)) return false;
