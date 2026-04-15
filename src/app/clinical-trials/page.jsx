@@ -447,10 +447,10 @@ export default function ClinicalTrialsPage() {
   }, [trials, search, categoryFilter, selectedMarkers, selectedLocation, fitnessFilter, phaseFilters, patientAge, patientEcog, sortByDistance, userCoords, trialDistances, hasPatientProfile, travelData, travelMode]);
 
   const counts = useMemo(() => {
-    const map = { All: amlMdsTrials.length };
-    amlMdsTrials.forEach(t => { map[t.category] = (map[t.category] || 0) + 1; });
+    const map = { All: trials.length };
+    trials.forEach(t => { map[t.category] = (map[t.category] || 0) + 1; });
     return map;
-  }, [amlMdsTrials]);
+  }, [trials]);
 
   const toggleMarker = (marker) => {
     setSelectedMarkers(prev =>
